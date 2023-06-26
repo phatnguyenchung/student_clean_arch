@@ -4,6 +4,7 @@ import com.example.studentcleanarch.application.port.in.CreateStudentCommand;
 import com.example.studentcleanarch.application.port.in.CreateStudentCommandResult;
 import com.example.studentcleanarch.application.port.in.CreateStudentUseCase;
 import com.example.studentcleanarch.application.port.out.CreateStudent;
+import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Student;
 import lombok.AllArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.transaction.Transactional;
 
 
 @AllArgsConstructor
+@UseCase
 public class StudentService implements CreateStudentUseCase {
     private final CreateStudent createStudent;
     @Override
