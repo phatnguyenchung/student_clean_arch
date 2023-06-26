@@ -12,8 +12,8 @@ import java.util.Optional;
 
 @Slf4j
 @Configuration
-@EntityScan(basePackages = "com.timo.platform.configurationservice.adapter.out.persistent")
-@EnableJpaRepositories(basePackages = "com.timo.platform.configurationservice.adapter.out.persistent")
+@EntityScan(basePackages = "com.examples.studentcleanarch.adapter.out")
+@EnableJpaRepositories(basePackages = "com.examples.studentcleanarch.adapter.out")
 @EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 public class PersistenceConfig {
     public PersistenceConfig() {
