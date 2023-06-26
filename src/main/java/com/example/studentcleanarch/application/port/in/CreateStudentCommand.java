@@ -10,7 +10,7 @@ import java.util.Date;
 @Builder
 public class CreateStudentCommand {
     @NotBlank
-    private String StudentId;
+    private Long StudentId;
     private String StudentName;
     private String ClassName;
     private String Gender;

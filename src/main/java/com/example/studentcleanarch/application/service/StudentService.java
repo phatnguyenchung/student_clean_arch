@@ -29,7 +29,7 @@ public class StudentService implements CreateStudentUseCase {
                 .birthParent(createStudentCommand.getBirthParent())
                 .phoneNumberParent(createStudentCommand.getPhoneNumberParent())
                 .build();
-
+        createStudent.saveStudent(student);
         return CreateStudentCommandResult.builder().result(true).build();
     }
 }
