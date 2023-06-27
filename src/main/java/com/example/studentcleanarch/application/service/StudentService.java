@@ -2,19 +2,22 @@ package com.example.studentcleanarch.application.service;
 
 import com.example.studentcleanarch.application.port.in.*;
 import com.example.studentcleanarch.application.port.out.CreateStudent;
+import com.example.studentcleanarch.application.port.out.GetStudent;
 import com.example.studentcleanarch.application.port.out.UpdateStudent;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Student;
 import lombok.AllArgsConstructor;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 
 @AllArgsConstructor
 @UseCase
-public class StudentService implements CreateStudentUseCase, UpdateStudentUseCase {
+public class StudentService implements CreateStudentUseCase, UpdateStudentUseCase, GetStudentUseCase {
     private final CreateStudent createStudent;
     private final UpdateStudent updateStudent;
+    private final GetStudent getStudent;
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public CreateStudentCommandResult createStudent(CreateStudentCommand createStudentCommand) {
@@ -55,5 +58,10 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .build();
         updateStudent.updateStudent(student);
         return UpdateStudentCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public List<Student> getAllStudent() {
+        return getStudent.getAllStudent();
     }
 }

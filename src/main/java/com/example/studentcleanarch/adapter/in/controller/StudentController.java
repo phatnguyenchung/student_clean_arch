@@ -4,6 +4,7 @@ import com.example.studentcleanarch.adapter.in.dto.request.CreateStudentRequest;
 import com.example.studentcleanarch.adapter.in.dto.request.UpdateStudentRequest;
 import com.example.studentcleanarch.adapter.in.dto.response.ApiResponse;
 import com.example.studentcleanarch.application.port.in.CreateStudentUseCase;
+import com.example.studentcleanarch.application.port.in.GetStudentUseCase;
 import com.example.studentcleanarch.application.port.in.UpdateStudentUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -16,6 +17,7 @@ public class StudentController {
 
     private final CreateStudentUseCase createStudentUseCase;
     private final UpdateStudentUseCase updateStudentUseCase;
+    private final GetStudentUseCase getStudentUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateStudentRequest createStudentRequest) {
@@ -25,5 +27,10 @@ public class StudentController {
     @PutMapping
     public ApiResponse<?> update(@RequestBody UpdateStudentRequest updateStudentRequest){
         return  ApiResponse.success(updateStudentUseCase.updateStudent(updateStudentRequest.toCommand()));
+    }
+
+    @GetMapping
+    public ApiResponse<?> get(){
+        return  ApiResponse.success(getStudentUseCase.getAllStudent());
     }
 }
