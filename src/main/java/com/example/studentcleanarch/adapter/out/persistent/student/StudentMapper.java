@@ -39,4 +39,21 @@ public class StudentMapper {
                 .phoneNumberParent(entity.getPhoneNumberParent())
                 .build();
     }
+
+    public static StudentJpaEntity mapToExistedJpaEntity(Student student, StudentJpaEntity entity){
+        entity.setId(student.getId());
+        entity.setStudentId(student.getStudentId());
+        entity.setStudentName(student.getStudentName());
+        entity.setClassName(student.getClassName());
+        entity.setGender(student.getGender());
+        entity.setBirthDate(student.getBirthDate());
+        entity.setAddress(student.getAddress());
+        entity.setPhoneNumber(student.getPhoneNumber());
+        entity.setStudentParent(student.getStudentParent());
+        entity.setStudentRelation(student.getStudentRelation());
+        entity.setJobTitle(student.getJobTitle());
+        entity.setBirthParent(student.getBirthParent());
+        entity.setPhoneNumberParent(student.getPhoneNumberParent());
+        return entity;
+    }
 }
