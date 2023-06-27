@@ -1,6 +1,7 @@
 package com.example.studentcleanarch.adapter.out.persistent.student;
 
 import com.example.studentcleanarch.application.port.out.CreateStudent;
+import com.example.studentcleanarch.application.port.out.DeleteStudent;
 import com.example.studentcleanarch.application.port.out.GetStudent;
 import com.example.studentcleanarch.application.port.out.UpdateStudent;
 import com.example.studentcleanarch.common.PersistenceAdapter;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent {
+public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent, DeleteStudent {
 
     private final StudentJpaRepository studentJpaRepository;
 
@@ -47,5 +48,10 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
         }catch (Exception e){
             throw new RuntimeException(new Exception());
         }
+    }
+
+    @Override
+    public void deleteStudent(Long id) {
+        studentJpaRepository.deleteById(id);
     }
 }

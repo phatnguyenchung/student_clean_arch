@@ -1,9 +1,11 @@
 package com.example.studentcleanarch.adapter.in.controller;
 
 import com.example.studentcleanarch.adapter.in.dto.request.CreateStudentRequest;
+import com.example.studentcleanarch.adapter.in.dto.request.DeleteStudentRequest;
 import com.example.studentcleanarch.adapter.in.dto.request.UpdateStudentRequest;
 import com.example.studentcleanarch.adapter.in.dto.response.ApiResponse;
 import com.example.studentcleanarch.application.port.in.CreateStudentUseCase;
+import com.example.studentcleanarch.application.port.in.DeleteStudentUseCase;
 import com.example.studentcleanarch.application.port.in.GetStudentUseCase;
 import com.example.studentcleanarch.application.port.in.UpdateStudentUseCase;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ public class StudentController {
     private final CreateStudentUseCase createStudentUseCase;
     private final UpdateStudentUseCase updateStudentUseCase;
     private final GetStudentUseCase getStudentUseCase;
+    private final DeleteStudentUseCase deleteStudentUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateStudentRequest createStudentRequest) {
@@ -32,5 +35,10 @@ public class StudentController {
     @GetMapping
     public ApiResponse<?> get(){
         return  ApiResponse.success(getStudentUseCase.getAllStudent());
+    }
+
+    @DeleteMapping
+    public ApiResponse<?> delete(@RequestBody DeleteStudentRequest deleteStudentRequest){
+        return  ApiResponse.success(deleteStudentUseCase.deleteStudent(deleteStudentRequest.getId()));
     }
 }

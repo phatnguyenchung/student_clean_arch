@@ -2,6 +2,7 @@ package com.example.studentcleanarch.application.service;
 
 import com.example.studentcleanarch.application.port.in.*;
 import com.example.studentcleanarch.application.port.out.CreateStudent;
+import com.example.studentcleanarch.application.port.out.DeleteStudent;
 import com.example.studentcleanarch.application.port.out.GetStudent;
 import com.example.studentcleanarch.application.port.out.UpdateStudent;
 import com.example.studentcleanarch.common.UseCase;
@@ -14,10 +15,11 @@ import java.util.List;
 
 @AllArgsConstructor
 @UseCase
-public class StudentService implements CreateStudentUseCase, UpdateStudentUseCase, GetStudentUseCase {
+public class StudentService implements CreateStudentUseCase, UpdateStudentUseCase, GetStudentUseCase, DeleteStudentUseCase {
     private final CreateStudent createStudent;
     private final UpdateStudent updateStudent;
     private final GetStudent getStudent;
+    private final DeleteStudent deleteStudent;
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public CreateStudentCommandResult createStudent(CreateStudentCommand createStudentCommand) {
@@ -63,5 +65,11 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     @Override
     public List<Student> getAllStudent() {
         return getStudent.getAllStudent();
+    }
+
+    @Override
+    public DeleteStudentCommandResult deleteStudent(Long id) {
+        deleteStudent.deleteStudent(id);
+        return DeleteStudentCommandResult.builder().status(true).build();
     }
 }
