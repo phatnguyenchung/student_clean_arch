@@ -19,6 +19,7 @@ public class StudentService implements CreateStudentUseCase {
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public CreateStudentCommandResult createStudent(CreateStudentCommand createStudentCommand) {
         Student student = Student.builder()
+                .studentId(createStudentCommand.getStudentId())
                 .studentName(createStudentCommand.getStudentName())
                 .className(createStudentCommand.getClassName())
                 .gender(createStudentCommand.getGender())

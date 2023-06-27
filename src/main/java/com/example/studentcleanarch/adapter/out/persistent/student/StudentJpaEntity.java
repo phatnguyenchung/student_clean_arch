@@ -1,7 +1,6 @@
 package com.example.studentcleanarch.adapter.out.persistent.student;
-
-import com.example.studentcleanarch.adapter.out.persistent.AuditEntity;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-public class StudentJpaEntity extends AuditEntity {
+public class StudentJpaEntity{
 
     @Id
     @Column(name = "Id")
@@ -55,4 +54,8 @@ public class StudentJpaEntity extends AuditEntity {
 
     @Column(name = "PhoneNumberParent")
     private Long phoneNumberParent;
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false, columnDefinition="TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
+    private Date createdDate;
 }
