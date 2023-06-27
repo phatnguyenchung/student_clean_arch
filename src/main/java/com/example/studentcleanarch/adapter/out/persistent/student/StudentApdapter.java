@@ -1,9 +1,6 @@
 package com.example.studentcleanarch.adapter.out.persistent.student;
 
-import com.example.studentcleanarch.application.port.out.CreateStudent;
-import com.example.studentcleanarch.application.port.out.DeleteStudent;
-import com.example.studentcleanarch.application.port.out.GetStudent;
-import com.example.studentcleanarch.application.port.out.UpdateStudent;
+import com.example.studentcleanarch.application.port.out.*;
 import com.example.studentcleanarch.common.PersistenceAdapter;
 import com.example.studentcleanarch.domain.Student;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +13,7 @@ import java.util.stream.Collectors;
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent, DeleteStudent {
+public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent, DeleteStudent, SearchStudent {
 
     private final StudentJpaRepository studentJpaRepository;
 
@@ -53,5 +50,12 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     @Override
     public void deleteStudent(Long id) {
         studentJpaRepository.deleteById(id);
+    }
+
+    @Override
+    public Student searchStudentByName(String studentName) {
+        return studentJpaRepository.findByStudentName(studentName)
+                .map(StudentMapper::mapToDomainEntity)
+                .orElseThrow();
     }
 }

@@ -1,25 +1,26 @@
 package com.example.studentcleanarch.application.service;
 
 import com.example.studentcleanarch.application.port.in.*;
-import com.example.studentcleanarch.application.port.out.CreateStudent;
-import com.example.studentcleanarch.application.port.out.DeleteStudent;
-import com.example.studentcleanarch.application.port.out.GetStudent;
-import com.example.studentcleanarch.application.port.out.UpdateStudent;
+import com.example.studentcleanarch.application.port.out.*;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Student;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 
-@AllArgsConstructor
+
 @UseCase
-public class StudentService implements CreateStudentUseCase, UpdateStudentUseCase, GetStudentUseCase, DeleteStudentUseCase {
+@RequiredArgsConstructor
+public class StudentService implements CreateStudentUseCase, UpdateStudentUseCase, GetStudentUseCase, DeleteStudentUseCase, SearchStudentUseCase {
     private final CreateStudent createStudent;
     private final UpdateStudent updateStudent;
     private final GetStudent getStudent;
     private final DeleteStudent deleteStudent;
+    private final SearchStudent searchStudent;
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public CreateStudentCommandResult createStudent(CreateStudentCommand createStudentCommand) {
@@ -71,5 +72,10 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     public DeleteStudentCommandResult deleteStudent(Long id) {
         deleteStudent.deleteStudent(id);
         return DeleteStudentCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public Student searchStudentByStudentName(String studentName) {
+        return searchStudent.searchStudentByName(studentName);
     }
 }

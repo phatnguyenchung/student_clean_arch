@@ -4,12 +4,11 @@ import com.example.studentcleanarch.adapter.in.dto.request.CreateStudentRequest;
 import com.example.studentcleanarch.adapter.in.dto.request.DeleteStudentRequest;
 import com.example.studentcleanarch.adapter.in.dto.request.UpdateStudentRequest;
 import com.example.studentcleanarch.adapter.in.dto.response.ApiResponse;
-import com.example.studentcleanarch.application.port.in.CreateStudentUseCase;
-import com.example.studentcleanarch.application.port.in.DeleteStudentUseCase;
-import com.example.studentcleanarch.application.port.in.GetStudentUseCase;
-import com.example.studentcleanarch.application.port.in.UpdateStudentUseCase;
+import com.example.studentcleanarch.application.port.in.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,6 +20,7 @@ public class StudentController {
     private final UpdateStudentUseCase updateStudentUseCase;
     private final GetStudentUseCase getStudentUseCase;
     private final DeleteStudentUseCase deleteStudentUseCase;
+    private final SearchStudentUseCase searchStudentUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateStudentRequest createStudentRequest) {
@@ -40,5 +40,10 @@ public class StudentController {
     @DeleteMapping
     public ApiResponse<?> delete(@RequestBody DeleteStudentRequest deleteStudentRequest){
         return  ApiResponse.success(deleteStudentUseCase.deleteStudent(deleteStudentRequest.getId()));
+    }
+
+    @GetMapping("/searchstudentname")
+    public ResponseEntity<Object> searchstudentname(@RequestParam String studentName){
+        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByStudentName(studentName), HttpStatus.OK);
     }
 }
