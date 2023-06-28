@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface GetStudentUseCase {
     List<Student> getAllStudent();
+
+    Student getStudentById(Long id);
 }

@@ -4,7 +4,6 @@ import com.example.studentcleanarch.application.port.in.*;
 import com.example.studentcleanarch.application.port.out.*;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Student;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 
@@ -66,6 +65,11 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     @Override
     public List<Student> getAllStudent() {
         return getStudent.getAllStudent();
+    }
+
+    @Override
+    public Student getStudentById(Long id) {
+        return getStudent.getStudentById(id);
     }
 
     @Override

@@ -48,6 +48,13 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
+    public Student getStudentById(long id) {
+        return studentJpaRepository.findById(id)
+                .map(StudentMapper::mapToDomainEntity)
+                .orElseThrow();
+    }
+
+    @Override
     public void deleteStudent(Long id) {
         studentJpaRepository.deleteById(id);
     }
