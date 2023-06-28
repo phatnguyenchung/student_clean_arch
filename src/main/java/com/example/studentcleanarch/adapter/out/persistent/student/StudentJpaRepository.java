@@ -11,4 +11,7 @@ import java.util.Optional;
 public interface StudentJpaRepository extends JpaRepository<StudentJpaEntity, Long>, JpaSpecificationExecutor<StudentJpaEntity> {
     @Query(value = "SELECT * FROM tblStudent WHERE studentName LIKE %?1%",nativeQuery = true)
     Optional<StudentJpaEntity> findByStudentName(String studentName);
+
+    @Query(value = "SELECT * FROM tblStudent WHERE phoneNumber LIKE %?1%",nativeQuery = true)
+    Optional<StudentJpaEntity> findByPhoneNumber(Long phoneNumber);
 }

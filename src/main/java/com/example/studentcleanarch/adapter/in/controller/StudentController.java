@@ -42,8 +42,13 @@ public class StudentController {
         return  ApiResponse.success(deleteStudentUseCase.deleteStudent(deleteStudentRequest.getId()));
     }
 
-    @GetMapping("/searchstudentname")
+    @GetMapping("/searchstudentbyname")
     public ResponseEntity<Object> searchstudentname(@RequestParam String studentName){
         return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByStudentName(studentName), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchstudentbyphonenumber")
+    public ResponseEntity<Object> searchstudentphonenumber(@RequestParam Long phoneNumber){
+        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByPhoneNumber(phoneNumber), HttpStatus.OK);
     }
 }

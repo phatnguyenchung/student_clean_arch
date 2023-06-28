@@ -58,4 +58,11 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
                 .map(StudentMapper::mapToDomainEntity)
                 .orElseThrow();
     }
+
+    @Override
+    public Student searchStudentByPhoneNumber(Long phoneNumber) {
+        return studentJpaRepository.findByPhoneNumber(phoneNumber)
+                .map(StudentMapper::mapToDomainEntity)
+                .orElseThrow();
+    }
 }
