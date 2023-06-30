@@ -56,7 +56,12 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
 
     @Override
     public void deleteStudent(Long id) {
-        studentJpaRepository.deleteById(id);
+        boolean existById = studentJpaRepository.existsById(id);
+        if(!existById){
+            System.out.print("Student is not exist for given id");
+        }else{
+            studentJpaRepository.deleteById(id);
+        }
     }
 
     @Override
