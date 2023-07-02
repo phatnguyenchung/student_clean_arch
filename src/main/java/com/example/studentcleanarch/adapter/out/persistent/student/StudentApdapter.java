@@ -59,7 +59,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     public void deleteStudent(Long id) {
         boolean existById = studentJpaRepository.existsById(id);
         if(!existById){
-            System.out.print("Student is not exist for given id");
+            System.out.println("Student is not exist for given id");
         }else{
             studentJpaRepository.deleteById(id);
         }
