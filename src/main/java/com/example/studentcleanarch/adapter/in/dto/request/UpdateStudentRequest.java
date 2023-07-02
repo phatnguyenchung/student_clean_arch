@@ -13,8 +13,10 @@ import java.util.Date;
 public class UpdateStudentRequest {
     private Long id;
     private Long studentId;
-    private String studentName;
+    private String studentFirstName;
+    private String studentLastName;
     private String className;
+    private String idNumber;
     private String gender;
     private Date birthDate;
     private String address;
@@ -29,8 +31,10 @@ public class UpdateStudentRequest {
         return UpdateStudentCommand.builder()
                 .id(id)
                 .StudentId(studentId)
-                .StudentName(studentName)
+                .StudentFirstName(studentFirstName)
+                .StudentLastName(studentLastName)
                 .ClassName(className)
+                .IdNumber(idNumber)
                 .Gender(gender)
                 .BirthDate(birthDate)
                 .Address(address)

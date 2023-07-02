@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface StudentJpaRepository extends JpaRepository<StudentJpaEntity, Long>, JpaSpecificationExecutor<StudentJpaEntity> {
-    @Query(value = "SELECT * FROM tblStudent WHERE studentName LIKE %?1%",nativeQuery = true)
+    @Query(value = "SELECT * FROM tblStudent WHERE studentLastName LIKE %?1%",nativeQuery = true)
     List<StudentJpaEntity> findByStudentName(String studentName);
 
     @Query(value = "SELECT * FROM tblStudent WHERE phoneNumber LIKE %?1%",nativeQuery = true)
@@ -17,4 +17,5 @@ public interface StudentJpaRepository extends JpaRepository<StudentJpaEntity, Lo
 
     @Query(value = "SELECT * FROM tblStudent WHERE idNumber LIKE %?1%",nativeQuery = true)
     List<StudentJpaEntity> findByIdNumber(String idNumber);
+
 }

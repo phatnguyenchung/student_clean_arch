@@ -11,7 +11,8 @@ import java.util.Date;
 public class CreateStudentCommand {
     @NotBlank
     private Long StudentId;
-    private String StudentName;
+    private String StudentFirstName;
+    private String StudentLastName;
     private String ClassName;
     private String Gender;
     private String IdNumber;

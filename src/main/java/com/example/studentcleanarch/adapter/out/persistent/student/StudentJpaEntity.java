@@ -22,8 +22,11 @@ public class StudentJpaEntity{
     @Column(name = "StudentId")
     private Long studentId;
 
-    @Column(name = "StudentName")
-    private String studentName;
+    @Column(name = "StudentFirstName")
+    private String studentFirstName;
+
+    @Column(name = "StudentLastName")
+    private String studentLastName;
 
     @Column(name = "ClassName")
     private String className;

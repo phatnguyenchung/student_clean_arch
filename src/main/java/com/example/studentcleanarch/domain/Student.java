@@ -12,7 +12,8 @@ import java.util.Date;
 public class Student {
     private Long id;
     private Long studentId;
-    private String studentName;
+    private String studentFirstName;
+    private String studentLastName;
     private String className;
     private String gender;
     private String idNumber;

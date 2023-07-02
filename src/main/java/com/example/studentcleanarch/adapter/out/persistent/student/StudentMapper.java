@@ -8,8 +8,10 @@ public class StudentMapper {
         return StudentJpaEntity.builder()
                 .id(student.getId())
                 .studentId(student.getStudentId())
-                .studentName(student.getStudentName())
+                .studentFirstName(student.getStudentFirstName())
+                .studentLastName(student.getStudentLastName())
                 .className(student.getClassName())
+                .idNumber(student.getIdNumber())
                 .gender(student.getGender())
                 .idNumber(student.getIdNumber())
                 .birthDate(student.getBirthDate())
@@ -27,10 +29,11 @@ public class StudentMapper {
         return Student.builder()
                 .id(entity.getId())
                 .studentId(entity.getStudentId())
-                .studentName(entity.getStudentName())
+                .studentFirstName(entity.getStudentFirstName())
+                .studentLastName(entity.getStudentLastName())
                 .className(entity.getClassName())
-                .gender(entity.getGender())
                 .idNumber(entity.getIdNumber())
+                .gender(entity.getGender())
                 .birthDate(entity.getBirthDate())
                 .address(entity.getAddress())
                 .phoneNumber(entity.getPhoneNumber())
@@ -45,8 +48,10 @@ public class StudentMapper {
     public static StudentJpaEntity mapToExistedJpaEntity(Student student, StudentJpaEntity entity){
         entity.setId(student.getId());
         entity.setStudentId(student.getStudentId());
-        entity.setStudentName(student.getStudentName());
+        entity.setStudentFirstName(student.getStudentFirstName());
+        entity.setStudentLastName(student.getStudentLastName());
         entity.setClassName(student.getClassName());
+        entity.setIdNumber(student.getIdNumber());
         entity.setGender(student.getGender());
         entity.setIdNumber(student.getIdNumber());
         entity.setBirthDate(student.getBirthDate());

@@ -12,8 +12,10 @@ import java.util.Date;
 @NoArgsConstructor
 public class CreateStudentRequest {
     private Long studentId;
-    private String studentName;
+    private String studentFirstName;
+    private String studentLastName;
     private String className;
+    private String idNumber;
     private String gender;
     private Date birthDate;
     private String address;
@@ -27,8 +29,10 @@ public class CreateStudentRequest {
     public CreateStudentCommand toCommand(){
         return CreateStudentCommand.builder()
                 .StudentId(studentId)
-                .StudentName(studentName)
+                .StudentFirstName(studentFirstName)
+                .StudentLastName(studentLastName)
                 .ClassName(className)
+                .IdNumber(idNumber)
                 .Gender(gender)
                 .BirthDate(birthDate)
                 .Address(address)
