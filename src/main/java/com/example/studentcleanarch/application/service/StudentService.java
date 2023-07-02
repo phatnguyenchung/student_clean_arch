@@ -1,5 +1,6 @@
 package com.example.studentcleanarch.application.service;
 
+import com.example.studentcleanarch.adapter.out.persistent.student.StudentJpaEntity;
 import com.example.studentcleanarch.application.port.in.*;
 import com.example.studentcleanarch.application.port.out.*;
 import com.example.studentcleanarch.common.UseCase;
@@ -14,12 +15,13 @@ import java.util.List;
 
 @UseCase
 @RequiredArgsConstructor
-public class StudentService implements CreateStudentUseCase, UpdateStudentUseCase, GetStudentUseCase, DeleteStudentUseCase, SearchStudentUseCase {
+public class StudentService implements CreateStudentUseCase, UpdateStudentUseCase, GetStudentUseCase, DeleteStudentUseCase, SearchStudentUseCase, SortStudentUseCase {
     private final CreateStudent createStudent;
     private final UpdateStudent updateStudent;
     private final GetStudent getStudent;
     private final DeleteStudent deleteStudent;
     private final SearchStudent searchStudent;
+    private final SortStudent sortStudent;
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public CreateStudentCommandResult createStudent(CreateStudentCommand createStudentCommand) {
@@ -94,5 +96,10 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     @Override
     public List<Student> searchStudentByIdNumber(String idNumber) {
         return searchStudent.searchStudentByIdNumber(idNumber);
+    }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentOrderByDesc() {
+        return sortStudent.sortStudentDesc();
     }
 }

@@ -21,6 +21,7 @@ public class StudentController {
     private final GetStudentUseCase getStudentUseCase;
     private final DeleteStudentUseCase deleteStudentUseCase;
     private final SearchStudentUseCase searchStudentUseCase;
+    private final SortStudentUseCase sortStudentUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateStudentRequest createStudentRequest) {
@@ -60,5 +61,10 @@ public class StudentController {
     @GetMapping("/searchstudentbyidnumber")
     public ResponseEntity<Object> searchstudentphonenumber(@RequestParam String idNumber){
         return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByIdNumber(idNumber), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortstudentbynamedesc")
+    public ResponseEntity<Object> sortstudentbynamedesc(){
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentOrderByDesc(), HttpStatus.OK);
     }
 }

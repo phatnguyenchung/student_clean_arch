@@ -4,6 +4,7 @@ import com.example.studentcleanarch.application.port.out.*;
 import com.example.studentcleanarch.common.PersistenceAdapter;
 import com.example.studentcleanarch.domain.Student;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent, DeleteStudent, SearchStudent {
+public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent, DeleteStudent, SearchStudent, SortStudent{
 
     private final StudentJpaRepository studentJpaRepository;
 
@@ -107,5 +108,10 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
         }catch (Exception e){
             throw new RuntimeException(new Exception());
         }
+    }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentDesc() {
+        return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC,"studentName"));
     }
 }
