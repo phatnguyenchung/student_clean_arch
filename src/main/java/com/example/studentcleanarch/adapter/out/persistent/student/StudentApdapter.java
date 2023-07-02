@@ -80,9 +80,17 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
-    public Student searchStudentByPhoneNumber(Long phoneNumber) {
-        return studentJpaRepository.findByPhoneNumber(phoneNumber)
-                .map(StudentMapper::mapToDomainEntity)
-                .orElseThrow();
+    public List<Student> searchStudentByPhoneNumber(Long phoneNumber) {
+        try{
+            List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByPhoneNumber(phoneNumber);
+            for(StudentJpaEntity entity : studentJpaEntityList){
+                System.out.println(entity.getStudentId());
+            }
+            return studentJpaRepository.findByPhoneNumber(phoneNumber).stream()
+                    .map(StudentMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        }catch (Exception e){
+            throw new RuntimeException(new Exception());
+        }
     }
 }

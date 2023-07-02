@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface StudentJpaRepository extends JpaRepository<StudentJpaEntity, Long>, JpaSpecificationExecutor<StudentJpaEntity> {
@@ -14,5 +13,5 @@ public interface StudentJpaRepository extends JpaRepository<StudentJpaEntity, Lo
     List<StudentJpaEntity> findByStudentName(String studentName);
 
     @Query(value = "SELECT * FROM tblStudent WHERE phoneNumber LIKE %?1%",nativeQuery = true)
-    Optional<StudentJpaEntity> findByPhoneNumber(Long phoneNumber);
+    List<StudentJpaEntity> findByPhoneNumber(Long phoneNumber);
 }

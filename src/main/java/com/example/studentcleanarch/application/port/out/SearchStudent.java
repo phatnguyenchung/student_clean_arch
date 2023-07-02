@@ -9,5 +9,5 @@ import java.util.List;
 public interface SearchStudent {
     List<Student> searchStudentByName(String studentName);
 
-    Student searchStudentByPhoneNumber(Long phoneNumber);
+    List<Student> searchStudentByPhoneNumber(Long phoneNumber);
 }

@@ -8,5 +8,5 @@ public interface SearchStudentUseCase {
 
     List<Student> searchStudentByStudentName(String studentName);
 
-    Student searchStudentByPhoneNumber(Long phoneNumber);
+    List<Student> searchStudentByPhoneNumber(Long phoneNumber);
 }

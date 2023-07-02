@@ -85,7 +85,7 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
 
 
     @Override
-    public Student searchStudentByPhoneNumber(Long phoneNumber) {
+    public List<Student> searchStudentByPhoneNumber(Long phoneNumber) {
         return searchStudent.searchStudentByPhoneNumber(phoneNumber);
     }
 }
