@@ -43,8 +43,8 @@ public class StudentController {
     }
 
     @GetMapping("/searchstudentbyname")
-    public ResponseEntity<Object> searchstudentname(@RequestParam String studentName){
-        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByStudentName(studentName), HttpStatus.OK);
+    public ApiResponse<?> searchstudentname(@RequestParam String studentName){
+        return ApiResponse.success(searchStudentUseCase.searchStudentByStudentName(studentName));
     }
 
     @GetMapping("/searchstudentbyphonenumber")

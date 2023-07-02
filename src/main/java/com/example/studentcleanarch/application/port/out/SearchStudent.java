@@ -3,9 +3,11 @@ package com.example.studentcleanarch.application.port.out;
 import com.example.studentcleanarch.domain.Student;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface SearchStudent {
-    Student searchStudentByName(String studentName);
+    List<Student> searchStudentByName(String studentName);
 
     Student searchStudentByPhoneNumber(Long phoneNumber);
 }

@@ -65,10 +65,18 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
-    public Student searchStudentByName(String studentName) {
-        return studentJpaRepository.findByStudentName(studentName)
-                .map(StudentMapper::mapToDomainEntity)
-                .orElseThrow();
+    public List<Student> searchStudentByName(String studentName) {
+        try{
+            List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByStudentName(studentName);
+            for(StudentJpaEntity entity : studentJpaEntityList){
+                System.out.println(entity.getStudentId());
+            }
+            return studentJpaRepository.findByStudentName(studentName).stream()
+                    .map(StudentMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        }catch (Exception e){
+            throw new RuntimeException(new Exception());
+        }
     }
 
     @Override
