@@ -11,6 +11,7 @@ public class StudentMapper {
                 .studentName(student.getStudentName())
                 .className(student.getClassName())
                 .gender(student.getGender())
+                .idNumber(student.getIdNumber())
                 .birthDate(student.getBirthDate())
                 .address(student.getAddress())
                 .phoneNumber(student.getPhoneNumber())
@@ -29,6 +30,7 @@ public class StudentMapper {
                 .studentName(entity.getStudentName())
                 .className(entity.getClassName())
                 .gender(entity.getGender())
+                .idNumber(entity.getIdNumber())
                 .birthDate(entity.getBirthDate())
                 .address(entity.getAddress())
                 .phoneNumber(entity.getPhoneNumber())
@@ -46,6 +48,7 @@ public class StudentMapper {
         entity.setStudentName(student.getStudentName());
         entity.setClassName(student.getClassName());
         entity.setGender(student.getGender());
+        entity.setIdNumber(student.getIdNumber());
         entity.setBirthDate(student.getBirthDate());
         entity.setAddress(student.getAddress());
         entity.setPhoneNumber(student.getPhoneNumber());

@@ -56,4 +56,9 @@ public class StudentController {
     public ResponseEntity<Object> getstudentbyid(@RequestParam Long id){
         return new ResponseEntity<Object>(getStudentUseCase.getStudentById(id), HttpStatus.OK);
     }
+
+    @GetMapping("/searchstudentbyidnumber")
+    public ResponseEntity<Object> searchstudentphonenumber(@RequestParam String idNumber){
+        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByIdNumber(idNumber), HttpStatus.OK);
+    }
 }

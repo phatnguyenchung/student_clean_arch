@@ -28,6 +28,7 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .studentName(createStudentCommand.getStudentName())
                 .className(createStudentCommand.getClassName())
                 .gender(createStudentCommand.getGender())
+                .idNumber(createStudentCommand.getIdNumber())
                 .birthDate(createStudentCommand.getBirthDate())
                 .address(createStudentCommand.getAddress())
                 .phoneNumber(createStudentCommand.getPhoneNumber())
@@ -50,6 +51,7 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .studentName(updateStudentCommand.getStudentName())
                 .className(updateStudentCommand.getClassName())
                 .gender(updateStudentCommand.getGender())
+                .idNumber(updateStudentCommand.getIdNumber())
                 .birthDate(updateStudentCommand.getBirthDate())
                 .address(updateStudentCommand.getAddress())
                 .phoneNumber(updateStudentCommand.getPhoneNumber())
@@ -87,5 +89,10 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     @Override
     public List<Student> searchStudentByPhoneNumber(Long phoneNumber) {
         return searchStudent.searchStudentByPhoneNumber(phoneNumber);
+    }
+
+    @Override
+    public List<Student> searchStudentByIdNumber(String idNumber) {
+        return searchStudent.searchStudentByIdNumber(idNumber);
     }
 }

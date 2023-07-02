@@ -93,4 +93,19 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
             throw new RuntimeException(new Exception());
         }
     }
+
+    @Override
+    public List<Student> searchStudentByIdNumber(String idNumber) {
+        try {
+            List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByIdNumber(idNumber);
+            for(StudentJpaEntity entity : studentJpaEntityList){
+                System.out.println(entity.getStudentId());
+            }
+            return studentJpaRepository.findByIdNumber(idNumber).stream()
+                    .map(StudentMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        }catch (Exception e){
+            throw new RuntimeException(new Exception());
+        }
+    }
 }

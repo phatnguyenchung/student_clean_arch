@@ -9,4 +9,6 @@ public interface SearchStudentUseCase {
     List<Student> searchStudentByStudentName(String studentName);
 
     List<Student> searchStudentByPhoneNumber(Long phoneNumber);
+
+    List<Student> searchStudentByIdNumber(String idNumber);
 }

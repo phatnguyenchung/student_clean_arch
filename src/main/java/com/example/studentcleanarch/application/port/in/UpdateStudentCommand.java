@@ -15,6 +15,7 @@ public class UpdateStudentCommand {
     private String StudentName;
     private String ClassName;
     private String Gender;
+    private String IdNumber;
     private Date BirthDate;
     private String Address;
     private Long PhoneNumber;

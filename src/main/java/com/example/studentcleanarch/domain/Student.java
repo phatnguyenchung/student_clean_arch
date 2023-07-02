@@ -15,6 +15,7 @@ public class Student {
     private String studentName;
     private String className;
     private String gender;
+    private String idNumber;
     private Date birthDate;
     private String address;
     private Long phoneNumber;
