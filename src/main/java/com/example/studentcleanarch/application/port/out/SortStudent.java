@@ -8,4 +8,6 @@ import java.util.List;
 public interface SortStudent {
 
     List<StudentJpaEntity> sortStudentDesc();
+
+    List<StudentJpaEntity> sortStudentAsc();
 }

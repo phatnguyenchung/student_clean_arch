@@ -67,4 +67,9 @@ public class StudentController {
     public ResponseEntity<Object> sortstudentbynamedesc(){
         return new ResponseEntity<Object>(sortStudentUseCase.sortStudentOrderByDesc(), HttpStatus.OK);
     }
+
+    @GetMapping("/sortstudentbynameasc")
+    public ResponseEntity<Object> sortstudentbynameasc(){
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentOrderByAsc(), HttpStatus.OK);
+    }
 }
