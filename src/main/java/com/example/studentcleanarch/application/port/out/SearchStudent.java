@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 public interface SearchStudent {
-    List<Student> searchStudentByName(String studentName);
+    List<Student> searchStudentByLastName(String studentLastName);
 
     List<Student> searchStudentByPhoneNumber(Long phoneNumber);
 

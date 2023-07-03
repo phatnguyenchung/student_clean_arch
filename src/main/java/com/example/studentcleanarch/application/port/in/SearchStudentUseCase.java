@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface SearchStudentUseCase {
 
-    List<Student> searchStudentByStudentName(String studentName);
+    List<Student> searchStudentByStudentLastName(String studentLastName);
 
     List<Student> searchStudentByPhoneNumber(Long phoneNumber);
 

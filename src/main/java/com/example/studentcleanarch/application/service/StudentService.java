@@ -86,8 +86,8 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     }
 
     @Override
-    public List<Student> searchStudentByStudentName(String studentName) {
-        return searchStudent.searchStudentByName(studentName);
+    public List<Student> searchStudentByStudentLastName(String studentLastName) {
+        return searchStudent.searchStudentByLastName(studentLastName);
     }
 
 
