@@ -63,13 +63,13 @@ public class StudentController {
         return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByIdNumber(idNumber), HttpStatus.OK);
     }
 
-    @GetMapping("/sortstudentbynamedesc")
+    @GetMapping("/sortstudentbylastnamedesc")
     public ResponseEntity<Object> sortstudentbynamedesc(){
-        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentOrderByDesc(), HttpStatus.OK);
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentLastNameOrderByDesc(), HttpStatus.OK);
     }
 
-    @GetMapping("/sortstudentbynameasc")
+    @GetMapping("/sortstudentbylastnameasc")
     public ResponseEntity<Object> sortstudentbynameasc(){
-        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentOrderByAsc(), HttpStatus.OK);
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentLastNameOrderByAsc(), HttpStatus.OK);
     }
 }

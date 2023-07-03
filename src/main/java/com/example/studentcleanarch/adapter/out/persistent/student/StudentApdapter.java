@@ -67,6 +67,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
 
     @Override
     public List<Student> searchStudentByName(String studentName) {
+
         try{
             List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByStudentName(studentName);
             for(StudentJpaEntity entity : studentJpaEntityList){
@@ -111,12 +112,12 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
-    public List<StudentJpaEntity> sortStudentDesc() {
+    public List<StudentJpaEntity> sortStudentLastNameDesc() {
         return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC,"studentLastName"));
     }
 
     @Override
-    public List<StudentJpaEntity> sortStudentAsc() {
+    public List<StudentJpaEntity> sortStudentLastNameAsc() {
         return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION,"studentLastName"));
     }
 }
