@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent, DeleteStudent, SearchStudent, SortStudent{
+public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent, DeleteStudent, SearchStudent, SortStudent {
 
     private final StudentJpaRepository studentJpaRepository;
 
@@ -35,15 +35,15 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
 
     @Override
     public List<Student> getAllStudent() {
-        try{
+        try {
             List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findAll();
-            for(StudentJpaEntity entity : studentJpaEntityList){
+            for (StudentJpaEntity entity : studentJpaEntityList) {
                 System.out.println(entity.getStudentId());
             }
             return studentJpaRepository.findAll().stream()
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(new Exception());
         }
     }
@@ -58,9 +58,9 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     @Override
     public void deleteStudent(Long id) {
         boolean existById = studentJpaRepository.existsById(id);
-        if(!existById){
+        if (!existById) {
             System.out.println("Student is not exist for given id");
-        }else{
+        } else {
             studentJpaRepository.deleteById(id);
         }
     }
@@ -68,30 +68,30 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     @Override
     public List<Student> searchStudentByLastName(String studentLastName) {
 
-        try{
+        try {
             List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByStudentLastName(studentLastName);
-            for(StudentJpaEntity entity : studentJpaEntityList){
+            for (StudentJpaEntity entity : studentJpaEntityList) {
                 System.out.println(entity.getStudentId());
             }
             return studentJpaRepository.findByStudentLastName(studentLastName).stream()
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(new Exception());
         }
     }
 
     @Override
     public List<Student> searchStudentByPhoneNumber(Long phoneNumber) {
-        try{
+        try {
             List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByPhoneNumber(phoneNumber);
-            for(StudentJpaEntity entity : studentJpaEntityList){
+            for (StudentJpaEntity entity : studentJpaEntityList) {
                 System.out.println(entity.getStudentId());
             }
             return studentJpaRepository.findByPhoneNumber(phoneNumber).stream()
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(new Exception());
         }
     }
@@ -100,24 +100,39 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     public List<Student> searchStudentByIdNumber(String idNumber) {
         try {
             List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByIdNumber(idNumber);
-            for(StudentJpaEntity entity : studentJpaEntityList){
+            for (StudentJpaEntity entity : studentJpaEntityList) {
                 System.out.println(entity.getStudentId());
             }
             return studentJpaRepository.findByIdNumber(idNumber).stream()
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
-        }catch (Exception e){
+        } catch (Exception e) {
+            throw new RuntimeException(new Exception());
+        }
+    }
+
+    @Override
+    public List<Student> searchStudentByClassName(String className) {
+        try {
+            List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByClassName(className);
+            for (StudentJpaEntity entity : studentJpaEntityList) {
+                System.out.println(entity.getStudentId());
+            }
+            return studentJpaRepository.findByClassName(className).stream()
+                    .map(StudentMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
             throw new RuntimeException(new Exception());
         }
     }
 
     @Override
     public List<StudentJpaEntity> sortStudentLastNameDesc() {
-        return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC,"studentLastName"));
+        return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "studentLastName"));
     }
 
     @Override
     public List<StudentJpaEntity> sortStudentLastNameAsc() {
-        return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION,"studentLastName"));
+        return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "studentLastName"));
     }
 }

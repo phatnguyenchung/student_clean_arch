@@ -7,10 +7,8 @@ import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Student;
 import lombok.RequiredArgsConstructor;
 
-
 import javax.transaction.Transactional;
 import java.util.List;
-
 
 
 @UseCase
@@ -22,6 +20,7 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     private final DeleteStudent deleteStudent;
     private final SearchStudent searchStudent;
     private final SortStudent sortStudent;
+
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public CreateStudentCommandResult createStudent(CreateStudentCommand createStudentCommand) {
@@ -99,6 +98,11 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     @Override
     public List<Student> searchStudentByIdNumber(String idNumber) {
         return searchStudent.searchStudentByIdNumber(idNumber);
+    }
+
+    @Override
+    public List<Student> searchStudentByClassName(String className) {
+        return searchStudent.searchStudentByClassName(className);
     }
 
     @Override

@@ -29,47 +29,52 @@ public class StudentController {
     }
 
     @PutMapping
-    public ApiResponse<?> update(@RequestBody UpdateStudentRequest updateStudentRequest){
-        return  ApiResponse.success(updateStudentUseCase.updateStudent(updateStudentRequest.toCommand()));
+    public ApiResponse<?> update(@RequestBody UpdateStudentRequest updateStudentRequest) {
+        return ApiResponse.success(updateStudentUseCase.updateStudent(updateStudentRequest.toCommand()));
     }
 
     @GetMapping
-    public ApiResponse<?> get(){
-        return  ApiResponse.success(getStudentUseCase.getAllStudent());
+    public ApiResponse<?> get() {
+        return ApiResponse.success(getStudentUseCase.getAllStudent());
     }
 
     @DeleteMapping
-    public ApiResponse<?> delete(@RequestBody DeleteStudentRequest deleteStudentRequest){
-        return  ApiResponse.success(deleteStudentUseCase.deleteStudent(deleteStudentRequest.getId()));
+    public ApiResponse<?> delete(@RequestBody DeleteStudentRequest deleteStudentRequest) {
+        return ApiResponse.success(deleteStudentUseCase.deleteStudent(deleteStudentRequest.getId()));
     }
 
     @GetMapping("/searchstudentbylastname")
-    public ResponseEntity<Object> searchstudentbylastname(@RequestParam String studentLastName){
-        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByStudentLastName(studentLastName),HttpStatus.OK);
+    public ResponseEntity<Object> searchstudentbylastname(@RequestParam String studentLastName) {
+        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByStudentLastName(studentLastName), HttpStatus.OK);
     }
 
     @GetMapping("/searchstudentbyphonenumber")
-    public ResponseEntity<Object> searchstudentphonenumber(@RequestParam Long phoneNumber){
+    public ResponseEntity<Object> searchstudentphonenumber(@RequestParam Long phoneNumber) {
         return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByPhoneNumber(phoneNumber), HttpStatus.OK);
     }
 
     @GetMapping("/getstudentbyid")
-    public ResponseEntity<Object> getstudentbyid(@RequestParam Long id){
+    public ResponseEntity<Object> getstudentbyid(@RequestParam Long id) {
         return new ResponseEntity<Object>(getStudentUseCase.getStudentById(id), HttpStatus.OK);
     }
 
     @GetMapping("/searchstudentbyidnumber")
-    public ResponseEntity<Object> searchstudentphonenumber(@RequestParam String idNumber){
+    public ResponseEntity<Object> searchstudentbyidnumber(@RequestParam String idNumber) {
         return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByIdNumber(idNumber), HttpStatus.OK);
     }
 
+    @GetMapping("/searchstudentbyclassname")
+    public ResponseEntity<Object> searchstudentbyclassname(@RequestParam String className) {
+        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByClassName(className), HttpStatus.OK);
+    }
+
     @GetMapping("/sortstudentbylastnamedesc")
-    public ResponseEntity<Object> sortstudentbynamedesc(){
+    public ResponseEntity<Object> sortstudentbynamedesc() {
         return new ResponseEntity<Object>(sortStudentUseCase.sortStudentLastNameOrderByDesc(), HttpStatus.OK);
     }
 
     @GetMapping("/sortstudentbylastnameasc")
-    public ResponseEntity<Object> sortstudentbynameasc(){
+    public ResponseEntity<Object> sortstudentbynameasc() {
         return new ResponseEntity<Object>(sortStudentUseCase.sortStudentLastNameOrderByAsc(), HttpStatus.OK);
     }
 }
