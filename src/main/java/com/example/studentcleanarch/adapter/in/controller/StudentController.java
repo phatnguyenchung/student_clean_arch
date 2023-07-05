@@ -68,6 +68,11 @@ public class StudentController {
         return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByClassName(className), HttpStatus.OK);
     }
 
+    @GetMapping("/searchstudentbyparentphonenumber")
+    public ResponseEntity<Object> searchstudentbyparentphonenumber(@RequestParam Long parentPhoneNumber) {
+        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByParentPhoneNumber(parentPhoneNumber), HttpStatus.OK);
+    }
+
     @GetMapping("/sortstudentbylastnamedesc")
     public ResponseEntity<Object> sortstudentbynamedesc() {
         return new ResponseEntity<Object>(sortStudentUseCase.sortStudentLastNameOrderByDesc(), HttpStatus.OK);

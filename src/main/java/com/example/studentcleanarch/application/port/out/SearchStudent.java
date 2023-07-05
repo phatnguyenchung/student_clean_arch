@@ -14,4 +14,6 @@ public interface SearchStudent {
     List<Student> searchStudentByIdNumber(String idNumber);
 
     List<Student> searchStudentByClassName(String className);
+
+    List<Student> searchStudentByParentPhoneNumber(Long parentPhoneNumber);
 }
