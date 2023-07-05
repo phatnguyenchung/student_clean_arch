@@ -9,4 +9,8 @@ public interface SortStudent {
     List<StudentJpaEntity> sortStudentLastNameDesc();
 
     List<StudentJpaEntity> sortStudentLastNameAsc();
+
+    List<StudentJpaEntity> sortStudentByIdDesc();
+
+    List<StudentJpaEntity> sortStudentByIdAsc();
 }
