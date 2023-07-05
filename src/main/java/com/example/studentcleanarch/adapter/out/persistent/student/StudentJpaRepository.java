@@ -23,4 +23,7 @@ public interface StudentJpaRepository extends JpaRepository<StudentJpaEntity, Lo
 
     @Query(value = "SELECT * FROM tblStudent WHERE phoneNumberParent LIKE %?1%", nativeQuery = true)
     List<StudentJpaEntity> findByParentPhoneNumber(Long parentPhoneNumber);
+
+    @Query(value = "SELECT * FROM tblStudent WHERE studentParent LIKE %?1%", nativeQuery = true)
+    List<StudentJpaEntity> findByStudentParent(String studentParent);
 }

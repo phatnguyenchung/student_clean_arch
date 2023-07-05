@@ -142,6 +142,21 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
+    public List<Student> searchStudentByStudentParent(String studentParent) {
+        try {
+            List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByStudentParent(studentParent);
+            for (StudentJpaEntity entity : studentJpaEntityList) {
+                System.out.println(entity.getStudentId());
+            }
+            return studentJpaRepository.findByStudentParent(studentParent).stream()
+                    .map(StudentMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new RuntimeException(new Exception());
+        }
+    }
+
+    @Override
     public List<StudentJpaEntity> sortStudentLastNameDesc() {
         return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "studentLastName"));
     }
