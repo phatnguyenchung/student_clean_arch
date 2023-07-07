@@ -97,4 +97,14 @@ public class StudentController {
     public ResponseEntity<Object> sortstudentbyidasc() {
         return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByIdAsc(), HttpStatus.OK);
     }
+
+    @GetMapping("/sortstudentbyidnumberdesc")
+    public ResponseEntity<Object> sortstudentbyidnumberdesc() {
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByIdNumberDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortstudentbyidnumberasc")
+    public ResponseEntity<Object> sortstudentbyidnumberasc() {
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByIdNumberAsc(), HttpStatus.OK);
+    }
 }

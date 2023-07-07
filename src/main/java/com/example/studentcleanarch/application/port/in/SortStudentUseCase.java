@@ -13,4 +13,8 @@ public interface SortStudentUseCase {
     List<StudentJpaEntity> sortStudentByIdDesc();
 
     List<StudentJpaEntity> sortStudentByIdAsc();
+
+    List<StudentJpaEntity> sortStudentByIdNumberDesc();
+
+    List<StudentJpaEntity> sortStudentByIdNumberAsc();
 }

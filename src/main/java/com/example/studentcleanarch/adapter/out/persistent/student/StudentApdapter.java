@@ -173,6 +173,16 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
 
     @Override
     public List<StudentJpaEntity> sortStudentByIdAsc() {
-        return studentJpaRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "id"));
+    }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentByIdNumberDesc() {
+        return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "idNumber"));
+    }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentByIdNumberAsc() {
+        return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "idNumber"));
     }
 }
