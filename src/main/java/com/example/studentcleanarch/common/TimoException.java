@@ -7,10 +7,16 @@ public class TimoException extends RuntimeException {
     private int code;
     private Object data;
 
-    public TimoException() {}
+    public TimoException() {
+    }
 
     public TimoException(String message) {
         super(message);
+    }
+
+    public TimoException(int code, String message) {
+        super(message);
+        this.code = code;
     }
 
     public TimoException(String message, Throwable cause) {

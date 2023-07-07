@@ -2,6 +2,7 @@ package com.example.studentcleanarch.adapter.out.persistent.student;
 
 import com.example.studentcleanarch.application.port.out.*;
 import com.example.studentcleanarch.common.PersistenceAdapter;
+import com.example.studentcleanarch.common.TimoException;
 import com.example.studentcleanarch.domain.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -49,17 +50,23 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
-    public Student getStudentById(long id) {
+    public Student getStudentById(Long id) {
+        boolean existById = studentJpaRepository.existsById(id);
+        if (!existById) {
+            System.out.println("Student is not exist for given id");
+        }
         return studentJpaRepository.findById(id)
                 .map(StudentMapper::mapToDomainEntity)
-                .orElseThrow();
+                .orElseThrow(() -> new TimoException(500, "Student not found id:" + id));
     }
 
     @Override
     public void deleteStudent(Long id) {
         boolean existById = studentJpaRepository.existsById(id);
         if (!existById) {
-            System.out.println("Student is not exist for given id");
+            studentJpaRepository.findById(id)
+                    .map(StudentMapper::mapToDomainEntity)
+                    .orElseThrow(() -> new TimoException(500, "Student not found id:" + id));
         } else {
             studentJpaRepository.deleteById(id);
         }
