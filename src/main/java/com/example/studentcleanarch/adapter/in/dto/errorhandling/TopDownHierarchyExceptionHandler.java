@@ -21,7 +21,7 @@ public class TopDownHierarchyExceptionHandler {
     @ExceptionHandler(Exception.class)
     protected ApiResponse<?> onUnknownException(Exception ex) {
         log.error("onUnknownException - {}", ex.getMessage(), ex);
-        return ApiResponse.failure(ErrorCode.INTERNAL_ERROR);
+        return ApiResponse.failure(ErrorCode.BAD_REQUEST);
     }
 
     // application layer
@@ -29,7 +29,7 @@ public class TopDownHierarchyExceptionHandler {
     @ExceptionHandler(ApplicationException.class)
     public ApiResponse<?> onApplicationException(ApplicationException ex) {
         log.error("onApplicationException - {}", ex.getMessage(), ex);
-        return ApiResponse.failure(ErrorCode.INTERNAL_ERROR);
+        return ApiResponse.failure(ErrorCode.BAD_REQUEST);
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -39,6 +39,6 @@ public class TopDownHierarchyExceptionHandler {
         if (Objects.isNull(ex.getData())) {
             return ApiResponse.failure(ex.getCode(), ex.getMessage());
         }
-        return ApiResponse.failure(ex.getCode(), ex.getMessage(), ex.getData());
+        return ApiResponse.failure(ErrorCode.INTERNAL_ERROR, ex.getMessage(), ex.getData());
     }
 }
