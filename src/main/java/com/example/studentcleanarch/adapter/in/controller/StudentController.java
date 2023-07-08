@@ -132,4 +132,14 @@ public class StudentController {
     public ResponseEntity<Object> sortstudentbystudentidasc() {
         return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByStudentIdAsc(), HttpStatus.OK);
     }
+
+    @GetMapping("/sortstudentbyadmissiondatedesc")
+    public ResponseEntity<Object> sortstudentbyadmissiondatedesc() {
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByAdmissionDateDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortstudentbyadmissiondateasc")
+    public ResponseEntity<Object> sortstudentbyadmissiondateasc() {
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByAdmissionDateAsc(), HttpStatus.OK);
+    }
 }
