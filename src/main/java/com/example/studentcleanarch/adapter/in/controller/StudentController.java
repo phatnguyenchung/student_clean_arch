@@ -58,9 +58,9 @@ public class StudentController {
         return new ResponseEntity<Object>(getStudentUseCase.getStudentById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/searchstudentbyidnumber")
-    public ResponseEntity<Object> searchstudentbyidnumber(@RequestParam String idNumber) {
-        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByIdNumber(idNumber), HttpStatus.OK);
+    @GetMapping("/searchstudentbycic")
+    public ResponseEntity<Object> searchstudentbycic(@RequestParam String CIC) {
+        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByCIC(CIC), HttpStatus.OK);
     }
 
     @GetMapping("/searchstudentbyclassname")
@@ -103,14 +103,14 @@ public class StudentController {
         return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByIdAsc(), HttpStatus.OK);
     }
 
-    @GetMapping("/sortstudentbyidnumberdesc")
-    public ResponseEntity<Object> sortstudentbyidnumberdesc() {
-        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByIdNumberDesc(), HttpStatus.OK);
+    @GetMapping("/sortstudentbycicdesc")
+    public ResponseEntity<Object> sortstudentbycicdesc() {
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByCICDesc(), HttpStatus.OK);
     }
 
-    @GetMapping("/sortstudentbyidnumberasc")
-    public ResponseEntity<Object> sortstudentbyidnumberasc() {
-        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByIdNumberAsc(), HttpStatus.OK);
+    @GetMapping("/sortstudentbycicasc")
+    public ResponseEntity<Object> sortstudentbycicasc() {
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByCICAsc(), HttpStatus.OK);
     }
 
     @GetMapping("/sortstudentbyclassnamedesc")

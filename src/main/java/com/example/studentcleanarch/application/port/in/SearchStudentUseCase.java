@@ -10,7 +10,7 @@ public interface SearchStudentUseCase {
 
     List<Student> searchStudentByPhoneNumber(Long phoneNumber);
 
-    List<Student> searchStudentByIdNumber(String idNumber);
+    List<Student> searchStudentByCIC(String cic);
 
     List<Student> searchStudentByClassName(String className);
 

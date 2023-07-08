@@ -16,7 +16,7 @@ public class Student {
     private String studentLastName;
     private String className;
     private String gender;
-    private String idNumber;
+    private String cic;
     private Date birthDate;
     private String address;
     private Long phoneNumber;

@@ -30,7 +30,7 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .studentLastName(createStudentCommand.getStudentLastName())
                 .className(createStudentCommand.getClassName())
                 .gender(createStudentCommand.getGender())
-                .idNumber(createStudentCommand.getIdNumber())
+                .cic(createStudentCommand.getCIC())
                 .birthDate(createStudentCommand.getBirthDate())
                 .address(createStudentCommand.getAddress())
                 .phoneNumber(createStudentCommand.getPhoneNumber())
@@ -53,10 +53,9 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .studentId(updateStudentCommand.getStudentId())
                 .studentFirstName(updateStudentCommand.getStudentFirstName())
                 .studentLastName(updateStudentCommand.getStudentLastName())
-                .idNumber(updateStudentCommand.getIdNumber())
                 .className(updateStudentCommand.getClassName())
                 .gender(updateStudentCommand.getGender())
-                .idNumber(updateStudentCommand.getIdNumber())
+                .cic(updateStudentCommand.getCIC())
                 .birthDate(updateStudentCommand.getBirthDate())
                 .address(updateStudentCommand.getAddress())
                 .phoneNumber(updateStudentCommand.getPhoneNumber())
@@ -99,8 +98,8 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     }
 
     @Override
-    public List<Student> searchStudentByIdNumber(String idNumber) {
-        return searchStudent.searchStudentByIdNumber(idNumber);
+    public List<Student> searchStudentByCIC(String CIC) {
+        return searchStudent.searchStudentByCIC(CIC);
     }
 
     @Override
@@ -144,13 +143,13 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     }
 
     @Override
-    public List<StudentJpaEntity> sortStudentByIdNumberDesc() {
-        return sortStudent.sortStudentByIdNumberDesc();
+    public List<StudentJpaEntity> sortStudentByCICDesc() {
+        return sortStudent.sortStudentByCICDesc();
     }
 
     @Override
-    public List<StudentJpaEntity> sortStudentByIdNumberAsc() {
-        return sortStudent.sortStudentByIdNumberAsc();
+    public List<StudentJpaEntity> sortStudentByCICAsc() {
+        return sortStudent.sortStudentByCICAsc();
     }
 
     @Override

@@ -104,17 +104,17 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
-    public List<Student> searchStudentByIdNumber(String idNumber) {
+    public List<Student> searchStudentByCIC(String CIC) {
         try {
-            List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByIdNumber(idNumber);
+            List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByCIC(CIC);
             for (StudentJpaEntity entity : studentJpaEntityList) {
                 System.out.println(entity.getStudentId());
             }
-            return studentJpaRepository.findByIdNumber(idNumber).stream()
+            return studentJpaRepository.findByCIC(CIC).stream()
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new TimoException(500, "Student could not found id number:" + idNumber);
+            throw new TimoException(500, "Student could not found CIC:" + CIC);
         }
     }
 
@@ -199,13 +199,13 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
-    public List<StudentJpaEntity> sortStudentByIdNumberDesc() {
-        return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "idNumber"));
+    public List<StudentJpaEntity> sortStudentByCICDesc() {
+        return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "cic"));
     }
 
     @Override
-    public List<StudentJpaEntity> sortStudentByIdNumberAsc() {
-        return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "idNumber"));
+    public List<StudentJpaEntity> sortStudentByCICAsc() {
+        return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "cic"));
     }
 
     @Override

@@ -35,8 +35,8 @@ public class StudentJpaEntity {
     @Column(name = "Gender")
     private String gender;
 
-    @Column(name = "IdNumber")
-    private String idNumber;
+    @Column(name = "CIC")
+    private String cic;
 
     @Column(name = "BirthDate")
     private Date birthDate;

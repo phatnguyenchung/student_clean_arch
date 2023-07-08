@@ -16,7 +16,7 @@ public class UpdateStudentRequest {
     private String studentFirstName;
     private String studentLastName;
     private String className;
-    private String idNumber;
+    private String cic;
     private String gender;
     private Date birthDate;
     private String address;
@@ -35,7 +35,7 @@ public class UpdateStudentRequest {
                 .StudentFirstName(studentFirstName)
                 .StudentLastName(studentLastName)
                 .ClassName(className)
-                .IdNumber(idNumber)
+                .CIC(cic)
                 .Gender(gender)
                 .BirthDate(birthDate)
                 .Address(address)
