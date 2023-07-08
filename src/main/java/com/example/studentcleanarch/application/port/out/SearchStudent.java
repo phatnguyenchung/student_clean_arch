@@ -18,4 +18,6 @@ public interface SearchStudent {
     List<Student> searchStudentByParentPhoneNumber(Long parentPhoneNumber);
 
     List<Student> searchStudentByStudentParent(String studentParent);
+
+    List<Student> searchStudentByJobTitle(String jobTitle);
 }

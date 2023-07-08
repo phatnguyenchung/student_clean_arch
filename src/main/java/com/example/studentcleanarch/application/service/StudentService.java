@@ -116,6 +116,11 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     }
 
     @Override
+    public List<Student> searchStudentByJobTitle(String jobTitle) {
+        return searchStudent.searchStudentByJobTitle(jobTitle);
+    }
+
+    @Override
     public List<StudentJpaEntity> sortStudentLastNameOrderByDesc() {
         return sortStudent.sortStudentLastNameDesc();
     }
