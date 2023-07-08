@@ -1,4 +1,5 @@
 package com.example.studentcleanarch.adapter.out.persistent.student;
+
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -12,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-public class StudentJpaEntity{
+public class StudentJpaEntity {
 
     @Id
     @Column(name = "Id")
@@ -62,6 +63,9 @@ public class StudentJpaEntity{
     private Long phoneNumberParent;
 
     @CreationTimestamp
-    @Column(nullable = false, updatable = false, columnDefinition="TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
+    @Column(nullable = false, updatable = false, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
     private Date createdDate;
+
+    @Column(name = "AdmissionDate")
+    private Date admissionDate;
 }

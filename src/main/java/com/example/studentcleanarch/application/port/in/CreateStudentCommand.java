@@ -24,4 +24,5 @@ public class CreateStudentCommand {
     private String JobTitle;
     private Date BirthParent;
     private Long PhoneNumberParent;
+    private Date AdmissionDate;
 }

@@ -25,4 +25,5 @@ public class Student {
     private String jobTitle;
     private Date birthParent;
     private Long phoneNumberParent;
+    private Date admissionDate;
 }

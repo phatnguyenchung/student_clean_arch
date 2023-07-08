@@ -4,7 +4,7 @@ import com.example.studentcleanarch.domain.Student;
 
 public class StudentMapper {
 
-    public static StudentJpaEntity mapToJpaEntity(Student student){
+    public static StudentJpaEntity mapToJpaEntity(Student student) {
         return StudentJpaEntity.builder()
                 .id(student.getId())
                 .studentId(student.getStudentId())
@@ -22,10 +22,11 @@ public class StudentMapper {
                 .jobTitle(student.getJobTitle())
                 .birthParent(student.getBirthParent())
                 .phoneNumberParent(student.getPhoneNumberParent())
+                .admissionDate(student.getAdmissionDate())
                 .build();
     }
 
-    public static Student mapToDomainEntity(StudentJpaEntity entity){
+    public static Student mapToDomainEntity(StudentJpaEntity entity) {
         return Student.builder()
                 .id(entity.getId())
                 .studentId(entity.getStudentId())
@@ -42,10 +43,11 @@ public class StudentMapper {
                 .jobTitle(entity.getJobTitle())
                 .birthParent(entity.getBirthParent())
                 .phoneNumberParent(entity.getPhoneNumberParent())
+                .admissionDate(entity.getAdmissionDate())
                 .build();
     }
 
-    public static StudentJpaEntity mapToExistedJpaEntity(Student student, StudentJpaEntity entity){
+    public static StudentJpaEntity mapToExistedJpaEntity(Student student, StudentJpaEntity entity) {
         entity.setId(student.getId());
         entity.setStudentId(student.getStudentId());
         entity.setStudentFirstName(student.getStudentFirstName());
@@ -62,6 +64,7 @@ public class StudentMapper {
         entity.setJobTitle(student.getJobTitle());
         entity.setBirthParent(student.getBirthParent());
         entity.setPhoneNumberParent(student.getPhoneNumberParent());
+        entity.setAdmissionDate(student.getAdmissionDate());
         return entity;
     }
 }

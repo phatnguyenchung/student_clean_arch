@@ -39,6 +39,7 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .jobTitle(createStudentCommand.getJobTitle())
                 .birthParent(createStudentCommand.getBirthParent())
                 .phoneNumberParent(createStudentCommand.getPhoneNumberParent())
+                .admissionDate(createStudentCommand.getAdmissionDate())
                 .build();
         createStudent.saveStudent(student);
         return CreateStudentCommandResult.builder().result(true).build();
@@ -60,9 +61,11 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .address(updateStudentCommand.getAddress())
                 .phoneNumber(updateStudentCommand.getPhoneNumber())
                 .studentParent(updateStudentCommand.getStudentParent())
+                .studentRelation(updateStudentCommand.getStudentRelation())
                 .jobTitle(updateStudentCommand.getJobTitle())
                 .birthParent(updateStudentCommand.getBirthParent())
                 .phoneNumberParent(updateStudentCommand.getPhoneNumberParent())
+                .admissionDate(updateStudentCommand.getAdmissionDate())
                 .build();
         updateStudent.updateStudent(student);
         return UpdateStudentCommandResult.builder().status(true).build();
