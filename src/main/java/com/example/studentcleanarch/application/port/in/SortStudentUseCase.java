@@ -29,4 +29,8 @@ public interface SortStudentUseCase {
     List<StudentJpaEntity> sortStudentByAdmissionDateDesc();
 
     List<StudentJpaEntity> sortStudentByAdmissionDateAsc();
+
+    List<StudentJpaEntity> sortStudentByCreatedDateDesc();
+
+    List<StudentJpaEntity> sortStudentByCreatedDateAsc();
 }

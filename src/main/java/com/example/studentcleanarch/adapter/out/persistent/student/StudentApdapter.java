@@ -237,4 +237,14 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     public List<StudentJpaEntity> sortStudentByAdmissionDateAsc() {
         return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "admissionDate"));
     }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentByCreatedDateDesc() {
+        return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "createdDate"));
+    }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentByCreatedDateAsc() {
+        return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "createdDate"));
+    }
 }
