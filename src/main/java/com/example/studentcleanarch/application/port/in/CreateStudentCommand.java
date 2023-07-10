@@ -25,4 +25,5 @@ public class CreateStudentCommand {
     private Date BirthParent;
     private Long PhoneNumberParent;
     private Date AdmissionDate;
+    private Boolean Active;
 }

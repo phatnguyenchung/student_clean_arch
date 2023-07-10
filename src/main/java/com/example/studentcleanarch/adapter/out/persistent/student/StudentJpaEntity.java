@@ -68,4 +68,7 @@ public class StudentJpaEntity {
 
     @Column(name = "AdmissionDate")
     private Date admissionDate;
+
+    @Column(name = "Active")
+    private Boolean active;
 }

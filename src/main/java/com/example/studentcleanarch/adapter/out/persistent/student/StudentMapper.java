@@ -22,6 +22,7 @@ public class StudentMapper {
                 .birthParent(student.getBirthParent())
                 .phoneNumberParent(student.getPhoneNumberParent())
                 .admissionDate(student.getAdmissionDate())
+                .active(student.getActive())
                 .build();
     }
 
@@ -43,6 +44,7 @@ public class StudentMapper {
                 .birthParent(entity.getBirthParent())
                 .phoneNumberParent(entity.getPhoneNumberParent())
                 .admissionDate(entity.getAdmissionDate())
+                .active(entity.getActive())
                 .build();
     }
 
@@ -63,6 +65,7 @@ public class StudentMapper {
         entity.setBirthParent(student.getBirthParent());
         entity.setPhoneNumberParent(student.getPhoneNumberParent());
         entity.setAdmissionDate(student.getAdmissionDate());
+        entity.setActive(student.getActive());
         return entity;
     }
 }

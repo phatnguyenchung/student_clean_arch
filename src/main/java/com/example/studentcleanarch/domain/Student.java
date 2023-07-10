@@ -26,4 +26,5 @@ public class Student {
     private Date birthParent;
     private Long phoneNumberParent;
     private Date admissionDate;
+    private Boolean active;
 }

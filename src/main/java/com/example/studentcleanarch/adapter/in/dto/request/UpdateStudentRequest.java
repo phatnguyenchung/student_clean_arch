@@ -27,6 +27,7 @@ public class UpdateStudentRequest {
     private Date birthParent;
     private Long phoneNumberParent;
     private Date admissionDate;
+    private boolean active;
 
     public UpdateStudentCommand toCommand() {
         return UpdateStudentCommand.builder()
@@ -46,6 +47,7 @@ public class UpdateStudentRequest {
                 .BirthParent(birthParent)
                 .PhoneNumberParent(phoneNumberParent)
                 .AdmissionDate(admissionDate)
+                .Active(active)
                 .build();
     }
 }

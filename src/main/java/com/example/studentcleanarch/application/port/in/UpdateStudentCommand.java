@@ -26,4 +26,5 @@ public class UpdateStudentCommand {
     private Date BirthParent;
     private Long PhoneNumberParent;
     private Date AdmissionDate;
+    private Boolean Active;
 }

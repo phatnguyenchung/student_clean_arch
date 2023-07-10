@@ -26,6 +26,7 @@ public class CreateStudentRequest {
     private Date birthParent;
     private Long phoneNumberParent;
     private Date admissionDate;
+    private boolean active;
 
     public CreateStudentCommand toCommand() {
         return CreateStudentCommand.builder()
@@ -44,6 +45,7 @@ public class CreateStudentRequest {
                 .BirthParent(birthParent)
                 .PhoneNumberParent(phoneNumberParent)
                 .AdmissionDate(admissionDate)
+                .Active(active)
                 .build();
     }
 }
