@@ -33,4 +33,8 @@ public interface SortStudent {
     List<StudentJpaEntity> sortStudentByCreatedDateDesc();
 
     List<StudentJpaEntity> sortStudentByCreatedDateAsc();
+
+    List<StudentJpaEntity> sortStudentByJobTitleDesc();
+
+    List<StudentJpaEntity> sortStudentByJobTitleAsc();
 }

@@ -193,4 +193,14 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     public List<StudentJpaEntity> sortStudentByCreatedDateAsc() {
         return sortStudent.sortStudentByCreatedDateAsc();
     }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentByJobTitleDesc() {
+        return sortStudent.sortStudentByJobTitleDesc();
+    }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentByJobTitleAsc() {
+        return sortStudent.sortStudentByJobTitleAsc();
+    }
 }
