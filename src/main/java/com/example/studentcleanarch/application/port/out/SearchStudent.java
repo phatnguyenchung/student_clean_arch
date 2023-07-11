@@ -20,4 +20,6 @@ public interface SearchStudent {
     List<Student> searchStudentByStudentParent(String studentParent);
 
     List<Student> searchStudentByJobTitle(String jobTitle);
+
+    List<Student> searchStudentByStudentId(Long studentId);
 }
