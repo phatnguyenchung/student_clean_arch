@@ -38,6 +38,12 @@ public class StudentJpaEntity {
     @Column(name = "CIC")
     private String cic;
 
+    @Column(name = "IssueDate")
+    private Date issueDate;
+
+    @Column(name = "ExpiredDate")
+    private Date expiredDate;
+
     @Column(name = "BirthDate")
     private Date birthDate;
 

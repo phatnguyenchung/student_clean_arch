@@ -16,6 +16,8 @@ public class CreateStudentRequest {
     private String studentLastName;
     private String className;
     private String cic;
+    private Date issueDate;
+    private Date expiredDate;
     private String gender;
     private Date birthDate;
     private String nationality;
@@ -36,6 +38,8 @@ public class CreateStudentRequest {
                 .StudentLastName(studentLastName)
                 .ClassName(className)
                 .CIC(cic)
+                .IssueDate(issueDate)
+                .ExpiredDate(expiredDate)
                 .Gender(gender)
                 .BirthDate(birthDate)
                 .Nationality(nationality)

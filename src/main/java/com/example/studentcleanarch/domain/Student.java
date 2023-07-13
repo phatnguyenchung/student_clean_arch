@@ -17,6 +17,8 @@ public class Student {
     private String className;
     private String gender;
     private String cic;
+    private Date issueDate;
+    private Date expiredDate;
     private Date birthDate;
     private String nationality;
     private String address;
