@@ -51,10 +51,6 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
 
     @Override
     public Student getStudentById(Long id) {
-        boolean existById = studentJpaRepository.existsById(id);
-        if (!existById) {
-            System.out.println("Student is not exist for given id");
-        }
         return studentJpaRepository.findById(id)
                 .map(StudentMapper::mapToDomainEntity)
                 .orElseThrow(() -> new TimoException(500, "Student not found id:" + id));
