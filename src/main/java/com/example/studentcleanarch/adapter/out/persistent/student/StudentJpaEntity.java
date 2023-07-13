@@ -32,6 +32,10 @@ public class StudentJpaEntity {
     @Column(name = "ClassName")
     private String className;
 
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
+    private Date joinDate;
+
     @Column(name = "Gender")
     private String gender;
 
