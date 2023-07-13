@@ -41,6 +41,9 @@ public class StudentJpaEntity {
     @Column(name = "BirthDate")
     private Date birthDate;
 
+    @Column(name = "Nationality")
+    private String nationality;
+
     @Column(name = "Address")
     private String address;
 

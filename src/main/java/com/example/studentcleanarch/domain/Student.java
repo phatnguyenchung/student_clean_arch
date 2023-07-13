@@ -18,6 +18,7 @@ public class Student {
     private String gender;
     private String cic;
     private Date birthDate;
+    private String nationality;
     private String address;
     private Long phoneNumber;
     private String studentParent;

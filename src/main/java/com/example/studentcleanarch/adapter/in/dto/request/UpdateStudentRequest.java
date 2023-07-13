@@ -19,6 +19,7 @@ public class UpdateStudentRequest {
     private String cic;
     private String gender;
     private Date birthDate;
+    private String nationality;
     private String address;
     private Long phoneNumber;
     private String studentParent;
@@ -39,6 +40,7 @@ public class UpdateStudentRequest {
                 .CIC(cic)
                 .Gender(gender)
                 .BirthDate(birthDate)
+                .Nationality(nationality)
                 .Address(address)
                 .PhoneNumber(phoneNumber)
                 .StudentParent(studentParent)

@@ -14,6 +14,7 @@ public class StudentMapper {
                 .cic(student.getCic())
                 .gender(student.getGender())
                 .birthDate(student.getBirthDate())
+                .nationality(student.getNationality())
                 .address(student.getAddress())
                 .phoneNumber(student.getPhoneNumber())
                 .studentParent(student.getStudentParent())
@@ -36,6 +37,7 @@ public class StudentMapper {
                 .cic(entity.getCic())
                 .gender(entity.getGender())
                 .birthDate(entity.getBirthDate())
+                .nationality(entity.getNationality())
                 .address(entity.getAddress())
                 .phoneNumber(entity.getPhoneNumber())
                 .studentParent(entity.getStudentParent())
@@ -57,6 +59,7 @@ public class StudentMapper {
         entity.setCic(student.getCic());
         entity.setGender(student.getGender());
         entity.setBirthDate(student.getBirthDate());
+        entity.setNationality(student.getNationality());
         entity.setAddress(student.getAddress());
         entity.setPhoneNumber(student.getPhoneNumber());
         entity.setStudentParent(student.getStudentParent());
