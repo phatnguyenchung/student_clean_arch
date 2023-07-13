@@ -6,5 +6,5 @@ import lombok.Getter;
 @Getter
 @Builder
 public class CreateStudentCommandResult {
-    private boolean result;
+    private boolean status;
 }
