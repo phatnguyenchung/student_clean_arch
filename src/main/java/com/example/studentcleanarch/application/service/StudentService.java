@@ -45,7 +45,11 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .admissionDate(createStudentCommand.getAdmissionDate())
                 .active(createStudentCommand.getActive())
                 .build();
-        createStudent.saveStudent(student);
+        if (createStudentCommand.getExpiredDate().before(createStudentCommand.getIssueDate())) {
+            return CreateStudentCommandResult.builder().result(false).build();
+        } else {
+            createStudent.saveStudent(student);
+        }
         return CreateStudentCommandResult.builder().result(true).build();
     }
 
@@ -74,7 +78,11 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .admissionDate(updateStudentCommand.getAdmissionDate())
                 .active(updateStudentCommand.getActive())
                 .build();
-        updateStudent.updateStudent(student);
+        if (updateStudentCommand.getExpiredDate().before(updateStudentCommand.getIssueDate())) {
+            return UpdateStudentCommandResult.builder().status(false).build();
+        } else {
+            updateStudent.updateStudent(student);
+        }
         return UpdateStudentCommandResult.builder().status(true).build();
     }
 
