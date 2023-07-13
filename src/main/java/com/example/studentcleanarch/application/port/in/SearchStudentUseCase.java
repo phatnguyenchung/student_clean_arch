@@ -21,4 +21,6 @@ public interface SearchStudentUseCase {
     List<Student> searchStudentByJobTitle(String jobTitle);
 
     List<Student> searchStudentByStudentId(Long studentId);
+
+    List<Student> searchStudentByNationality(String nationality);
 }

@@ -88,6 +88,11 @@ public class StudentController {
         return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByStudentId(studentId), HttpStatus.OK);
     }
 
+    @GetMapping("/searchstudentbynationality")
+    public ResponseEntity<Object> searchstudentbynationality(@RequestParam String nationality) {
+        return new ResponseEntity<Object>(searchStudentUseCase.searchStudentByNationality(nationality), HttpStatus.OK);
+    }
+
     @GetMapping("/sortstudentbylastnamedesc")
     public ResponseEntity<Object> sortstudentbynamedesc() {
         return new ResponseEntity<Object>(sortStudentUseCase.sortStudentLastNameOrderByDesc(), HttpStatus.OK);
@@ -176,5 +181,15 @@ public class StudentController {
     @GetMapping("/sortstudentbyfirstnameasc")
     public ResponseEntity<Object> sortstudentbyfirstnameasc() {
         return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByFirstNameAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortstudentbynationalitydesc")
+    public ResponseEntity<Object> sortstudentbynationalitydesc() {
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByNationalityDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortstudentbynationalityasc")
+    public ResponseEntity<Object> sortstudentbynationalityasc() {
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByNationalityAsc(), HttpStatus.OK);
     }
 }

@@ -132,6 +132,11 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     }
 
     @Override
+    public List<Student> searchStudentByNationality(String nationality) {
+        return searchStudent.searchStudentByNationality(nationality);
+    }
+
+    @Override
     public List<StudentJpaEntity> sortStudentLastNameOrderByDesc() {
         return sortStudent.sortStudentLastNameDesc();
     }
@@ -219,5 +224,15 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     @Override
     public List<StudentJpaEntity> sortStudentByFirstNameAsc() {
         return sortStudent.sortStudentFirstNameAsc();
+    }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentByNationalityDesc() {
+        return sortStudent.sortStudentByNationalityDesc();
+    }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentByNationalityAsc() {
+        return sortStudent.sortStudentByNationalityAsc();
     }
 }

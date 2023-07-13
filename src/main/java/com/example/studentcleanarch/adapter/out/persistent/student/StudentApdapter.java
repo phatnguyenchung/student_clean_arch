@@ -189,6 +189,21 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
+    public List<Student> searchStudentByNationality(String nationality) {
+        try {
+            List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByNationality(nationality);
+            for (StudentJpaEntity entity : studentJpaEntityList) {
+                System.out.println(entity.getStudentId());
+            }
+            return studentJpaRepository.findByNationality(nationality).stream()
+                    .map(StudentMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Student could not found nationality:" + nationality);
+        }
+    }
+
+    @Override
     public List<StudentJpaEntity> sortStudentLastNameDesc() {
         return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "studentLastName"));
     }
@@ -276,5 +291,15 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     @Override
     public List<StudentJpaEntity> sortStudentFirstNameAsc() {
         return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "studentFirstName"));
+    }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentByNationalityDesc() {
+        return studentJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "nationality"));
+    }
+
+    @Override
+    public List<StudentJpaEntity> sortStudentByNationalityAsc() {
+        return studentJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "nationality"));
     }
 }
