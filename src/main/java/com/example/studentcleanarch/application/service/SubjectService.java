@@ -2,6 +2,7 @@ package com.example.studentcleanarch.application.service;
 
 import com.example.studentcleanarch.application.port.in.subject.*;
 import com.example.studentcleanarch.application.port.out.subject.CreateSubject;
+import com.example.studentcleanarch.application.port.out.subject.DeleteSubject;
 import com.example.studentcleanarch.application.port.out.subject.UpdateSubject;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Subject;
@@ -11,10 +12,11 @@ import javax.transaction.Transactional;
 
 @UseCase
 @RequiredArgsConstructor
-public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCase {
+public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCase, DeleteSubjectUseCase {
 
     private final CreateSubject createSubject;
     private final UpdateSubject updateSubject;
+    private final DeleteSubject deleteSubject;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -49,5 +51,11 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
             updateSubject.updateSubject(subject);
         }
         return UpdateSubjectCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public DeleteSubjectCommandResult deleteSubject(Long id) {
+        deleteSubject.deleteSubject(id);
+        return DeleteSubjectCommandResult.builder().status(true).build();
     }
 }
