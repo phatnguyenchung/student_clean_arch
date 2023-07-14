@@ -3,20 +3,23 @@ package com.example.studentcleanarch.application.service;
 import com.example.studentcleanarch.application.port.in.subject.*;
 import com.example.studentcleanarch.application.port.out.subject.CreateSubject;
 import com.example.studentcleanarch.application.port.out.subject.DeleteSubject;
+import com.example.studentcleanarch.application.port.out.subject.GetSubject;
 import com.example.studentcleanarch.application.port.out.subject.UpdateSubject;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Subject;
 import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @UseCase
 @RequiredArgsConstructor
-public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCase, DeleteSubjectUseCase {
+public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCase, DeleteSubjectUseCase, GetSubjectUseCase {
 
     private final CreateSubject createSubject;
     private final UpdateSubject updateSubject;
     private final DeleteSubject deleteSubject;
+    private final GetSubject getSubject;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -57,5 +60,15 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
     public DeleteSubjectCommandResult deleteSubject(Long id) {
         deleteSubject.deleteSubject(id);
         return DeleteSubjectCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public List<Subject> getAllSubject() {
+        return getSubject.getAllSubject();
+    }
+
+    @Override
+    public Subject getSubjectById(Long id) {
+        return getSubject.getSubjectById(id);
     }
 }
