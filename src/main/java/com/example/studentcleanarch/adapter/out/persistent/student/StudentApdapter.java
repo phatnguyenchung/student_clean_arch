@@ -1,6 +1,6 @@
 package com.example.studentcleanarch.adapter.out.persistent.student;
 
-import com.example.studentcleanarch.application.port.out.*;
+import com.example.studentcleanarch.application.port.out.student.*;
 import com.example.studentcleanarch.common.PersistenceAdapter;
 import com.example.studentcleanarch.common.TimoException;
 import com.example.studentcleanarch.domain.Student;

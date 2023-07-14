@@ -1,6 +1,6 @@
-package com.example.studentcleanarch.adapter.in.dto.request;
+package com.example.studentcleanarch.adapter.in.dto.request.student;
 
-import com.example.studentcleanarch.application.port.in.UpdateStudentCommand;
+import com.example.studentcleanarch.application.port.in.student.UpdateStudentCommand;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

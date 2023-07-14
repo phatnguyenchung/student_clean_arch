@@ -1,4 +1,4 @@
-package com.example.studentcleanarch.adapter.in.dto.request;
+package com.example.studentcleanarch.adapter.in.dto.request.student;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

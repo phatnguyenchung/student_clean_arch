@@ -1,4 +1,4 @@
-package com.example.studentcleanarch.application.port.in;
+package com.example.studentcleanarch.application.port.in.student;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.studentcleanarch.application.port.out;
+package com.example.studentcleanarch.application.port.out.student;
 
 import com.example.studentcleanarch.adapter.out.persistent.student.StudentJpaEntity;
 

@@ -1,4 +1,4 @@
-package com.example.studentcleanarch.application.port.in;
+package com.example.studentcleanarch.application.port.in.student;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +8,8 @@ import java.util.Date;
 
 @Getter
 @Builder
-public class CreateStudentCommand {
+public class UpdateStudentCommand {
+    private Long id;
     @NotBlank
     private Long StudentId;
     private String StudentFirstName;

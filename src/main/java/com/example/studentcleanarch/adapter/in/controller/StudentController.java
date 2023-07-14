@@ -1,10 +1,10 @@
 package com.example.studentcleanarch.adapter.in.controller;
 
-import com.example.studentcleanarch.adapter.in.dto.request.CreateStudentRequest;
-import com.example.studentcleanarch.adapter.in.dto.request.DeleteStudentRequest;
-import com.example.studentcleanarch.adapter.in.dto.request.UpdateStudentRequest;
+import com.example.studentcleanarch.adapter.in.dto.request.student.CreateStudentRequest;
+import com.example.studentcleanarch.adapter.in.dto.request.student.DeleteStudentRequest;
+import com.example.studentcleanarch.adapter.in.dto.request.student.UpdateStudentRequest;
 import com.example.studentcleanarch.adapter.in.dto.response.ApiResponse;
-import com.example.studentcleanarch.application.port.in.*;
+import com.example.studentcleanarch.application.port.in.student.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

@@ -1,16 +1,17 @@
-package com.example.studentcleanarch.application.port.in;
+package com.example.studentcleanarch.application.port.out.student;
 
 import com.example.studentcleanarch.domain.Student;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface SearchStudentUseCase {
-
-    List<Student> searchStudentByStudentLastName(String studentLastName);
+@Repository
+public interface SearchStudent {
+    List<Student> searchStudentByLastName(String studentLastName);
 
     List<Student> searchStudentByPhoneNumber(Long phoneNumber);
 
-    List<Student> searchStudentByCIC(String cic);
+    List<Student> searchStudentByCIC(String CIC);
 
     List<Student> searchStudentByClassName(String className);
 
