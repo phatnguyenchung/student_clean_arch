@@ -1,5 +1,6 @@
 package com.example.studentcleanarch.adapter.in.dto.request.exam;
 
+import com.example.studentcleanarch.application.port.in.exam.CreateExamCommand;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,4 +15,13 @@ public class CreateExamRequest {
     private Long subjectId;
     private Date examDate;
     private int score;
+
+    public CreateExamCommand toCommand() {
+        return CreateExamCommand.builder()
+                .StudentId(studentId)
+                .SubjectId(subjectId)
+                .ExamDate(examDate)
+                .Score(score)
+                .build();
+    }
 }
