@@ -12,6 +12,7 @@ public class StudentMapper {
                 .studentLastName(student.getStudentLastName())
                 .className(student.getClassName())
                 .cic(student.getCic())
+                .issuePlace(student.getIssuePlace())
                 .issueDate(student.getIssueDate())
                 .expiredDate(student.getExpiredDate())
                 .gender(student.getGender())
@@ -37,6 +38,7 @@ public class StudentMapper {
                 .studentLastName(entity.getStudentLastName())
                 .className(entity.getClassName())
                 .cic(entity.getCic())
+                .issuePlace(entity.getIssuePlace())
                 .issueDate(entity.getIssueDate())
                 .expiredDate(entity.getExpiredDate())
                 .gender(entity.getGender())
@@ -61,6 +63,7 @@ public class StudentMapper {
         entity.setStudentLastName(student.getStudentLastName());
         entity.setClassName(student.getClassName());
         entity.setCic(student.getCic());
+        entity.setIssuePlace(student.getIssuePlace());
         entity.setIssueDate(student.getIssueDate());
         entity.setExpiredDate(student.getExpiredDate());
         entity.setGender(student.getGender());

@@ -17,6 +17,7 @@ public class UpdateStudentCommand {
     private String ClassName;
     private String Gender;
     private String CIC;
+    private String IssuePlace;
     private Date IssueDate;
     private Date ExpiredDate;
     private Date BirthDate;

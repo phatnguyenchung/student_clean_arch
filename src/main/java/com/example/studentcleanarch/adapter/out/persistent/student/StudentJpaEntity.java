@@ -42,6 +42,9 @@ public class StudentJpaEntity {
     @Column(name = "CIC")
     private String cic;
 
+    @Column(name = "IssuePlace")
+    private String issuePlace;
+
     @Column(name = "IssueDate")
     private Date issueDate;
 

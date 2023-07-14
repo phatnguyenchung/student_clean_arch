@@ -53,7 +53,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     public Student getStudentById(Long id) {
         return studentJpaRepository.findById(id)
                 .map(StudentMapper::mapToDomainEntity)
-                .orElseThrow(() -> new TimoException(500, "Student not found id:" + id));
+                .orElseThrow(() -> new TimoException(404, "Student not found id:" + id));
     }
 
     @Override
@@ -62,7 +62,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
         if (!existById) {
             studentJpaRepository.findById(id)
                     .map(StudentMapper::mapToDomainEntity)
-                    .orElseThrow(() -> new TimoException(500, "Student not found id:" + id));
+                    .orElseThrow(() -> new TimoException(404, "Student not found id:" + id));
         } else {
             studentJpaRepository.deleteById(id);
         }
@@ -94,7 +94,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new TimoException(500, "Student could not found phone number:" + phoneNumber);
+            throw new TimoException(404, "Student could not found phone number:" + phoneNumber);
         }
     }
 
@@ -109,7 +109,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new TimoException(500, "Student could not found CIC:" + CIC);
+            throw new TimoException(404, "Student could not found CIC:" + CIC);
         }
     }
 
@@ -124,7 +124,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new TimoException(500, "Student could not found class name:" + className);
+            throw new TimoException(404, "Student could not found class name:" + className);
         }
     }
 
@@ -139,7 +139,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new TimoException(500, "Student could not found parent phone number:" + parentPhoneNumber);
+            throw new TimoException(404, "Student could not found parent phone number:" + parentPhoneNumber);
         }
     }
 
@@ -154,7 +154,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new TimoException(500, "Student could not found student parent:" + studentParent);
+            throw new TimoException(404, "Student could not found student parent:" + studentParent);
         }
     }
 
@@ -169,7 +169,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new TimoException(500, "Student could not found job title:" + jobTitle);
+            throw new TimoException(404, "Student could not found job title:" + jobTitle);
         }
     }
 
@@ -184,7 +184,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new TimoException(500, "Student could not found student id:" + studentId);
+            throw new TimoException(404, "Student could not found student id:" + studentId);
         }
     }
 
@@ -199,7 +199,7 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
                     .map(StudentMapper::mapToDomainEntity)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new TimoException(500, "Student could not found nationality:" + nationality);
+            throw new TimoException(404, "Student could not found nationality:" + nationality);
         }
     }
 
