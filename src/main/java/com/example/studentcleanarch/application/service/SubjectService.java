@@ -1,5 +1,6 @@
 package com.example.studentcleanarch.application.service;
 
+import com.example.studentcleanarch.adapter.out.persistent.subject.SubjectJpaEntity;
 import com.example.studentcleanarch.application.port.in.subject.*;
 import com.example.studentcleanarch.application.port.out.subject.*;
 import com.example.studentcleanarch.common.UseCase;
@@ -11,13 +12,14 @@ import java.util.List;
 
 @UseCase
 @RequiredArgsConstructor
-public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCase, DeleteSubjectUseCase, GetSubjectUseCase, SearchSubjectUseCase {
+public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCase, DeleteSubjectUseCase, GetSubjectUseCase, SearchSubjectUseCase, SortSubjectUseCase {
 
     private final CreateSubject createSubject;
     private final UpdateSubject updateSubject;
     private final DeleteSubject deleteSubject;
     private final GetSubject getSubject;
     private final SearchSubject searchSubject;
+    private final SortSubject sortSubject;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -73,5 +75,15 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
     @Override
     public List<Subject> searchSubject(String subject) {
         return searchSubject.searchSubject(subject);
+    }
+
+    @Override
+    public List<SubjectJpaEntity> sortSubjectNameOrderByDesc() {
+        return sortSubject.sortSubjectNameDesc();
+    }
+
+    @Override
+    public List<SubjectJpaEntity> sortSubjectNameOrderByAsc() {
+        return sortSubject.sortSubjectNameAsc();
     }
 }

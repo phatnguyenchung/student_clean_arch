@@ -5,6 +5,7 @@ import com.example.studentcleanarch.common.PersistenceAdapter;
 import com.example.studentcleanarch.common.TimoException;
 import com.example.studentcleanarch.domain.Subject;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubject, GetSubject, SearchSubject {
+public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubject, GetSubject, SearchSubject, SortSubject {
 
     private final SubjectJpaRepository subjectJpaRepository;
 
@@ -80,5 +81,15 @@ public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubje
         } catch (Exception e) {
             throw new TimoException(500, "Student could not found subject name:" + subjectName);
         }
+    }
+
+    @Override
+    public List<SubjectJpaEntity> sortSubjectNameDesc() {
+        return subjectJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "subjectName"));
+    }
+
+    @Override
+    public List<SubjectJpaEntity> sortSubjectNameAsc() {
+        return subjectJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "subjectName"));
     }
 }

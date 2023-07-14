@@ -21,6 +21,7 @@ public class SubjectController {
     private final DeleteSubjectUseCase deleteSubjectUseCase;
     private final GetSubjectUseCase getSubjectUseCase;
     private final SearchSubjectUseCase searchSubjectUseCase;
+    private final SortSubjectUseCase sortSubjectUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateSubjectRequest createSubjectRequest) {
@@ -50,5 +51,15 @@ public class SubjectController {
     @GetMapping("/searchbysubjectname")
     public ResponseEntity<Object> searchbysubjectname(@RequestParam String subjectName) {
         return new ResponseEntity<Object>(searchSubjectUseCase.searchSubject(subjectName), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortsubjectnamedesc")
+    public ResponseEntity<Object> sortsubjectnamedesc() {
+        return new ResponseEntity<Object>(sortSubjectUseCase.sortSubjectNameOrderByDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortsubjectnameasc")
+    public ResponseEntity<Object> sortsubjectnameasc() {
+        return new ResponseEntity<Object>(sortSubjectUseCase.sortSubjectNameOrderByAsc(), HttpStatus.OK);
     }
 }
