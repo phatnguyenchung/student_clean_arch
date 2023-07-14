@@ -1,9 +1,6 @@
 package com.example.studentcleanarch.adapter.out.persistent.subject;
 
-import com.example.studentcleanarch.application.port.out.subject.CreateSubject;
-import com.example.studentcleanarch.application.port.out.subject.DeleteSubject;
-import com.example.studentcleanarch.application.port.out.subject.GetSubject;
-import com.example.studentcleanarch.application.port.out.subject.UpdateSubject;
+import com.example.studentcleanarch.application.port.out.subject.*;
 import com.example.studentcleanarch.common.PersistenceAdapter;
 import com.example.studentcleanarch.common.TimoException;
 import com.example.studentcleanarch.domain.Subject;
@@ -17,7 +14,7 @@ import java.util.stream.Collectors;
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubject, GetSubject {
+public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubject, GetSubject, SearchSubject {
 
     private final SubjectJpaRepository subjectJpaRepository;
 
@@ -68,5 +65,20 @@ public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubje
         return subjectJpaRepository.findById(id)
                 .map(SubjectMapper::mapToDomainEntity)
                 .orElseThrow(() -> new TimoException(404, "Subject not found id:" + id));
+    }
+
+    @Override
+    public List<Subject> searchSubject(String subjectName) {
+        try {
+            List<SubjectJpaEntity> subjectJpaEntityList = subjectJpaRepository.findBySubjectName(subjectName);
+            for (SubjectJpaEntity entity : subjectJpaEntityList) {
+                System.out.println(entity.getSubjectId());
+            }
+            return subjectJpaRepository.findBySubjectName(subjectName).stream()
+                    .map(SubjectMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Student could not found subject name:" + subjectName);
+        }
     }
 }

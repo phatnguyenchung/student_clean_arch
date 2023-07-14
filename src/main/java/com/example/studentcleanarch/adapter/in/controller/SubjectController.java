@@ -4,10 +4,7 @@ import com.example.studentcleanarch.adapter.in.dto.request.subject.CreateSubject
 import com.example.studentcleanarch.adapter.in.dto.request.subject.DeleteSubjectRequest;
 import com.example.studentcleanarch.adapter.in.dto.request.subject.UpdateSubjectRequest;
 import com.example.studentcleanarch.adapter.in.dto.response.ApiResponse;
-import com.example.studentcleanarch.application.port.in.subject.CreateSubjectUseCase;
-import com.example.studentcleanarch.application.port.in.subject.DeleteSubjectUseCase;
-import com.example.studentcleanarch.application.port.in.subject.GetSubjectUseCase;
-import com.example.studentcleanarch.application.port.in.subject.UpdateSubjectUseCase;
+import com.example.studentcleanarch.application.port.in.subject.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,6 +20,7 @@ public class SubjectController {
     private final UpdateSubjectUseCase updateSubjectUseCase;
     private final DeleteSubjectUseCase deleteSubjectUseCase;
     private final GetSubjectUseCase getSubjectUseCase;
+    private final SearchSubjectUseCase searchSubjectUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateSubjectRequest createSubjectRequest) {
@@ -47,5 +45,10 @@ public class SubjectController {
     @GetMapping("/getsubjectbyid")
     public ResponseEntity<Object> getsubjectbyid(@RequestParam Long id) {
         return new ResponseEntity<Object>(getSubjectUseCase.getSubjectById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchbysubjectname")
+    public ResponseEntity<Object> searchbysubjectname(@RequestParam String subjectName) {
+        return new ResponseEntity<Object>(searchSubjectUseCase.searchSubject(subjectName), HttpStatus.OK);
     }
 }
