@@ -1,7 +1,7 @@
 package com.example.studentcleanarch.application.holder;
 
 public class UserIdHolder {
-    private static ThreadLocal<Long> refId = new ThreadLocal<>();
+    private static final ThreadLocal<Long> refId = new ThreadLocal<>();
 
     public static Long get() {
         return refId.get();
