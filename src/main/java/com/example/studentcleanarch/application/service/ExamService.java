@@ -1,19 +1,21 @@
 package com.example.studentcleanarch.application.service;
 
-import com.example.studentcleanarch.application.port.in.exam.CreateExamCommand;
-import com.example.studentcleanarch.application.port.in.exam.CreateExamCommandResult;
-import com.example.studentcleanarch.application.port.in.exam.CreateExamUseCase;
+import com.example.studentcleanarch.application.port.in.exam.*;
 import com.example.studentcleanarch.application.port.out.exam.CreateExam;
+import com.example.studentcleanarch.application.port.out.exam.UpdateExam;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Exam;
 import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
+import java.time.Instant;
+import java.util.Date;
 
 @UseCase
 @RequiredArgsConstructor
-public class ExamService implements CreateExamUseCase {
+public class ExamService implements CreateExamUseCase, UpdateExamUseCase {
     private final CreateExam createExam;
+    private final UpdateExam updateExam;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -24,7 +26,33 @@ public class ExamService implements CreateExamUseCase {
                 .examDate(createExamCommand.getExamDate())
                 .score(createExamCommand.getScore())
                 .build();
-        createExam.saveExam(exam);
+        if (createExamCommand.getScore() > 10 || createExamCommand.getScore() < 0) {
+            return CreateExamCommandResult.builder().status(false).build();
+        } else if (createExamCommand.getExamDate().after(Date.from(Instant.now()))) {
+            return CreateExamCommandResult.builder().status(false).build();
+        } else {
+            createExam.saveExam(exam);
+        }
         return CreateExamCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
+    public UpdateExamCommandResult updateExam(UpdateExamCommand updateExamCommand) {
+        Exam exam = Exam.builder()
+                .id(updateExamCommand.getId())
+                .studentId(updateExamCommand.getStudentId())
+                .subjectId(updateExamCommand.getSubjectId())
+                .examDate(updateExamCommand.getExamDate())
+                .score(updateExamCommand.getScore())
+                .build();
+        if (updateExamCommand.getScore() > 10 || updateExamCommand.getScore() < 0) {
+            return UpdateExamCommandResult.builder().status(false).build();
+        } else if (updateExamCommand.getExamDate().after(Date.from(Instant.now()))) {
+            return UpdateExamCommandResult.builder().status(false).build();
+        } else {
+            updateExam.updateExam(exam);
+        }
+        return UpdateExamCommandResult.builder().status(true).build();
     }
 }
