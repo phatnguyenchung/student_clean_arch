@@ -1,9 +1,11 @@
 package com.example.studentcleanarch.adapter.in.controller;
 
 import com.example.studentcleanarch.adapter.in.dto.request.exam.CreateExamRequest;
+import com.example.studentcleanarch.adapter.in.dto.request.exam.DeleteExamRequest;
 import com.example.studentcleanarch.adapter.in.dto.request.exam.UpdateExamRequest;
 import com.example.studentcleanarch.adapter.in.dto.response.ApiResponse;
 import com.example.studentcleanarch.application.port.in.exam.CreateExamUseCase;
+import com.example.studentcleanarch.application.port.in.exam.DeleteExamUseCase;
 import com.example.studentcleanarch.application.port.in.exam.UpdateExamUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class ExamController {
     private final CreateExamUseCase createExamUseCase;
     private final UpdateExamUseCase updateExamUseCase;
+    private final DeleteExamUseCase deleteExamUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateExamRequest createExamRequest) {
@@ -24,6 +27,11 @@ public class ExamController {
     @PutMapping
     public ApiResponse<?> update(@RequestBody UpdateExamRequest updateExamRequest) {
         return ApiResponse.success(updateExamUseCase.updateExam(updateExamRequest.toCommand()));
+    }
+
+    @DeleteMapping
+    public ApiResponse<?> delete(@RequestBody DeleteExamRequest deleteExamRequest) {
+        return ApiResponse.success(deleteExamUseCase.deleteExam(deleteExamRequest.getId()));
     }
 
 }

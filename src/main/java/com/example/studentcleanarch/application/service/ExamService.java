@@ -2,6 +2,7 @@ package com.example.studentcleanarch.application.service;
 
 import com.example.studentcleanarch.application.port.in.exam.*;
 import com.example.studentcleanarch.application.port.out.exam.CreateExam;
+import com.example.studentcleanarch.application.port.out.exam.DeleteExam;
 import com.example.studentcleanarch.application.port.out.exam.UpdateExam;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Exam;
@@ -13,9 +14,10 @@ import java.util.Date;
 
 @UseCase
 @RequiredArgsConstructor
-public class ExamService implements CreateExamUseCase, UpdateExamUseCase {
+public class ExamService implements CreateExamUseCase, UpdateExamUseCase, DeleteExamUseCase {
     private final CreateExam createExam;
     private final UpdateExam updateExam;
+    private final DeleteExam deleteExam;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -54,5 +56,11 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase {
             updateExam.updateExam(exam);
         }
         return UpdateExamCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public DeleteExamCommandResult deleteExam(Long id) {
+        deleteExam.deleteExam(id);
+        return DeleteExamCommandResult.builder().status(true).build();
     }
 }
