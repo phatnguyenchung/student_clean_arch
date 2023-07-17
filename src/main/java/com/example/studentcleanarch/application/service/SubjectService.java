@@ -8,6 +8,8 @@ import com.example.studentcleanarch.domain.Subject;
 import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 @UseCase
@@ -32,6 +34,8 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
                 .build();
         if (createSubjectCommand.getStartDate().after(createSubjectCommand.getEndDate())) {
             return CreateSubjectCommandResult.builder().status(false).build();
+        } else if (createSubjectCommand.getStartDate().before(Date.from(Instant.now()))) {
+            return CreateSubjectCommandResult.builder().status(false).build();
         } else {
             createSubject.saveSubject(subject);
         }
@@ -49,6 +53,8 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
                 .endDate(updateSubjectCommand.getEndDate())
                 .build();
         if (updateSubjectCommand.getStartDate().after(updateSubjectCommand.getEndDate())) {
+            return UpdateSubjectCommandResult.builder().status(false).build();
+        } else if (updateSubjectCommand.getStartDate().before(Date.from(Instant.now()))) {
             return UpdateSubjectCommandResult.builder().status(false).build();
         } else {
             updateSubject.updateSubject(subject);

@@ -57,6 +57,4 @@ public class ExamController {
     public ResponseEntity<Object> sortexambyscoredesc() {
         return new ResponseEntity<Object>(sortExamUseCase.sortExamByScoreDesc(), HttpStatus.OK);
     }
-
-
 }
