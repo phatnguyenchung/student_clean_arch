@@ -1,8 +1,10 @@
 package com.example.studentcleanarch.application.service;
 
+import com.example.studentcleanarch.adapter.out.persistent.exam.ExamJpaEntity;
 import com.example.studentcleanarch.application.port.in.exam.*;
 import com.example.studentcleanarch.application.port.out.exam.CreateExam;
 import com.example.studentcleanarch.application.port.out.exam.DeleteExam;
+import com.example.studentcleanarch.application.port.out.exam.SortExam;
 import com.example.studentcleanarch.application.port.out.exam.UpdateExam;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Exam;
@@ -11,13 +13,15 @@ import lombok.RequiredArgsConstructor;
 import javax.transaction.Transactional;
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 
 @UseCase
 @RequiredArgsConstructor
-public class ExamService implements CreateExamUseCase, UpdateExamUseCase, DeleteExamUseCase {
+public class ExamService implements CreateExamUseCase, UpdateExamUseCase, DeleteExamUseCase, SortExamUseCase {
     private final CreateExam createExam;
     private final UpdateExam updateExam;
     private final DeleteExam deleteExam;
+    private final SortExam sortExam;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -62,5 +66,25 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
     public DeleteExamCommandResult deleteExam(Long id) {
         deleteExam.deleteExam(id);
         return DeleteExamCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public List<ExamJpaEntity> sortExamByDateDesc() {
+        return sortExam.sortExamByDateDesc();
+    }
+
+    @Override
+    public List<ExamJpaEntity> sortExamByDateAsc() {
+        return sortExam.sortExamByDateAsc();
+    }
+
+    @Override
+    public List<ExamJpaEntity> sortExamByScoreDesc() {
+        return sortExam.sortExamByScoreDesc();
+    }
+
+    @Override
+    public List<ExamJpaEntity> sortExamByScoreAsc() {
+        return sortExam.sortExamByScoreAsc();
     }
 }

@@ -2,19 +2,22 @@ package com.example.studentcleanarch.adapter.out.persistent.exam;
 
 import com.example.studentcleanarch.application.port.out.exam.CreateExam;
 import com.example.studentcleanarch.application.port.out.exam.DeleteExam;
+import com.example.studentcleanarch.application.port.out.exam.SortExam;
 import com.example.studentcleanarch.application.port.out.exam.UpdateExam;
 import com.example.studentcleanarch.common.PersistenceAdapter;
 import com.example.studentcleanarch.common.TimoException;
 import com.example.studentcleanarch.domain.Exam;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam {
+public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam {
 
     private final ExamJpaRepository examJpaRepository;
 
@@ -43,5 +46,25 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam {
         } else {
             examJpaRepository.deleteById(id);
         }
+    }
+
+    @Override
+    public List<ExamJpaEntity> sortExamByDateDesc() {
+        return examJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "examDate"));
+    }
+
+    @Override
+    public List<ExamJpaEntity> sortExamByDateAsc() {
+        return examJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "examDate"));
+    }
+
+    @Override
+    public List<ExamJpaEntity> sortExamByScoreDesc() {
+        return examJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "score"));
+    }
+
+    @Override
+    public List<ExamJpaEntity> sortExamByScoreAsc() {
+        return examJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "score"));
     }
 }

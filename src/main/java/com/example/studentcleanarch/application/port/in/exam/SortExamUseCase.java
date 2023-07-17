@@ -1,10 +1,11 @@
-package com.example.studentcleanarch.application.port.out.exam;
+package com.example.studentcleanarch.application.port.in.exam;
 
 import com.example.studentcleanarch.adapter.out.persistent.exam.ExamJpaEntity;
 
 import java.util.List;
 
-public interface SortExam {
+public interface SortExamUseCase {
+
     List<ExamJpaEntity> sortExamByDateDesc();
 
     List<ExamJpaEntity> sortExamByDateAsc();
