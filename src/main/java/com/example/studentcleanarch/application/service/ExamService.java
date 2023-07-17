@@ -2,10 +2,7 @@ package com.example.studentcleanarch.application.service;
 
 import com.example.studentcleanarch.adapter.out.persistent.exam.ExamJpaEntity;
 import com.example.studentcleanarch.application.port.in.exam.*;
-import com.example.studentcleanarch.application.port.out.exam.CreateExam;
-import com.example.studentcleanarch.application.port.out.exam.DeleteExam;
-import com.example.studentcleanarch.application.port.out.exam.SortExam;
-import com.example.studentcleanarch.application.port.out.exam.UpdateExam;
+import com.example.studentcleanarch.application.port.out.exam.*;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Exam;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +14,12 @@ import java.util.List;
 
 @UseCase
 @RequiredArgsConstructor
-public class ExamService implements CreateExamUseCase, UpdateExamUseCase, DeleteExamUseCase, SortExamUseCase {
+public class ExamService implements CreateExamUseCase, UpdateExamUseCase, DeleteExamUseCase, SortExamUseCase, SearchExamUseCase {
     private final CreateExam createExam;
     private final UpdateExam updateExam;
     private final DeleteExam deleteExam;
     private final SortExam sortExam;
+    private final SearchExam searchExam;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -86,5 +84,10 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
     @Override
     public List<ExamJpaEntity> sortExamByScoreAsc() {
         return sortExam.sortExamByScoreAsc();
+    }
+
+    @Override
+    public List<Exam> searchExamByStudentId(Long studentId) {
+        return searchExam.searchExamByStudentId(studentId);
     }
 }

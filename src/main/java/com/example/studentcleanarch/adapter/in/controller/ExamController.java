@@ -4,10 +4,7 @@ import com.example.studentcleanarch.adapter.in.dto.request.exam.CreateExamReques
 import com.example.studentcleanarch.adapter.in.dto.request.exam.DeleteExamRequest;
 import com.example.studentcleanarch.adapter.in.dto.request.exam.UpdateExamRequest;
 import com.example.studentcleanarch.adapter.in.dto.response.ApiResponse;
-import com.example.studentcleanarch.application.port.in.exam.CreateExamUseCase;
-import com.example.studentcleanarch.application.port.in.exam.DeleteExamUseCase;
-import com.example.studentcleanarch.application.port.in.exam.SortExamUseCase;
-import com.example.studentcleanarch.application.port.in.exam.UpdateExamUseCase;
+import com.example.studentcleanarch.application.port.in.exam.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,6 +19,7 @@ public class ExamController {
     private final UpdateExamUseCase updateExamUseCase;
     private final DeleteExamUseCase deleteExamUseCase;
     private final SortExamUseCase sortExamUseCase;
+    private final SearchExamUseCase searchExamUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateExamRequest createExamRequest) {
@@ -56,5 +54,10 @@ public class ExamController {
     @GetMapping("/sortexambyscoredesc")
     public ResponseEntity<Object> sortexambyscoredesc() {
         return new ResponseEntity<Object>(sortExamUseCase.sortExamByScoreDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchexambystudentid")
+    public ResponseEntity<Object> searchexambystudentid(@RequestParam Long studentId) {
+        return new ResponseEntity<Object>(searchExamUseCase.searchExamByStudentId(studentId), HttpStatus.OK);
     }
 }

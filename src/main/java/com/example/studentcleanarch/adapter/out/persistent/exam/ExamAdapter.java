@@ -1,9 +1,6 @@
 package com.example.studentcleanarch.adapter.out.persistent.exam;
 
-import com.example.studentcleanarch.application.port.out.exam.CreateExam;
-import com.example.studentcleanarch.application.port.out.exam.DeleteExam;
-import com.example.studentcleanarch.application.port.out.exam.SortExam;
-import com.example.studentcleanarch.application.port.out.exam.UpdateExam;
+import com.example.studentcleanarch.application.port.out.exam.*;
 import com.example.studentcleanarch.common.PersistenceAdapter;
 import com.example.studentcleanarch.common.TimoException;
 import com.example.studentcleanarch.domain.Exam;
@@ -13,11 +10,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam {
+public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam, SearchExam {
 
     private final ExamJpaRepository examJpaRepository;
 
@@ -66,5 +64,20 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam
     @Override
     public List<ExamJpaEntity> sortExamByScoreAsc() {
         return examJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "score"));
+    }
+
+    @Override
+    public List<Exam> searchExamByStudentId(Long studentId) {
+        try {
+            List<ExamJpaEntity> examJpaEntityList = examJpaRepository.findByStudentId(studentId);
+            for (ExamJpaEntity entity : examJpaEntityList) {
+                System.out.println(entity.getSubjectId());
+            }
+            return examJpaRepository.findByStudentId(studentId).stream()
+                    .map(ExamMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Exam could not found by student id:" + studentId);
+        }
     }
 }
