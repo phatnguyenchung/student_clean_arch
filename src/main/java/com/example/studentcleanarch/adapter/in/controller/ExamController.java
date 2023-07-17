@@ -75,4 +75,14 @@ public class ExamController {
     public ResponseEntity<Object> sortexambystudentiddesc() {
         return new ResponseEntity<>(sortExamUseCase.sortExamByStudentIdDesc(), HttpStatus.OK);
     }
+
+    @GetMapping("/sortexambysubjectidasc")
+    public ResponseEntity<Object> sortexambysubjectidasc() {
+        return new ResponseEntity<>(sortExamUseCase.sortExamBySubjectIdAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortexambysubjectiddesc")
+    public ResponseEntity<Object> sortexambysubjectiddesc() {
+        return new ResponseEntity<>(sortExamUseCase.sortExamBySubjectIdDesc(), HttpStatus.OK);
+    }
 }
