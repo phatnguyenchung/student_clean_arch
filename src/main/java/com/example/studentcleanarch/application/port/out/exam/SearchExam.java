@@ -9,4 +9,6 @@ import java.util.List;
 public interface SearchExam {
 
     List<Exam> searchExamByStudentId(Long studentId);
+
+    List<Exam> searchExamBySubjectId(Long subjectId);
 }

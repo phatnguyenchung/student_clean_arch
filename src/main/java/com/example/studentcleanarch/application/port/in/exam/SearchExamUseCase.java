@@ -7,4 +7,6 @@ import java.util.List;
 public interface SearchExamUseCase {
 
     List<Exam> searchExamByStudentId(Long studentId);
+
+    List<Exam> searchExamBySubjectId(Long subjectId);
 }

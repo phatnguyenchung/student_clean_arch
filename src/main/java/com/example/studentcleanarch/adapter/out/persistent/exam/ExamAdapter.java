@@ -90,4 +90,19 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam
             throw new TimoException(500, "Exam could not found by student id:" + studentId);
         }
     }
+
+    @Override
+    public List<Exam> searchExamBySubjectId(Long subjectId) {
+        try {
+            List<ExamJpaEntity> examJpaEntityList = examJpaRepository.findBySubjectId(subjectId);
+            for (ExamJpaEntity entity : examJpaEntityList) {
+                System.out.println(entity.getSubjectId());
+            }
+            return examJpaRepository.findBySubjectId(subjectId).stream()
+                    .map(ExamMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Exam could not found by subject id:" + subjectId);
+        }
+    }
 }

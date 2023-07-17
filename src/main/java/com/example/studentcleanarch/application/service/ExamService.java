@@ -100,4 +100,9 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
     public List<Exam> searchExamByStudentId(Long studentId) {
         return searchExam.searchExamByStudentId(studentId);
     }
+
+    @Override
+    public List<Exam> searchExamBySubjectId(Long subjectId) {
+        return searchExam.searchExamBySubjectId(subjectId);
+    }
 }

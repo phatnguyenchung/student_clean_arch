@@ -13,4 +13,7 @@ public interface ExamJpaRepository extends JpaRepository<ExamJpaEntity, Long>, J
 
     @Query(value = "SELECT * FROM tblExam WHERE studentId LIKE %?1%", nativeQuery = true)
     List<ExamJpaEntity> findByStudentId(Long studentId);
+
+    @Query(value = "SELECT * FROM tblExam WHERE subjectId LIKE %?1%", nativeQuery = true)
+    List<ExamJpaEntity> findBySubjectId(Long subjectId);
 }
