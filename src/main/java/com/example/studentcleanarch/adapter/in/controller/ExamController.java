@@ -38,32 +38,32 @@ public class ExamController {
 
     @GetMapping("/sortexambydateasc")
     public ResponseEntity<Object> sortexambydateasc() {
-        return new ResponseEntity<Object>(sortExamUseCase.sortExamByDateAsc(), HttpStatus.OK);
+        return new ResponseEntity<>(sortExamUseCase.sortExamByDateAsc(), HttpStatus.OK);
     }
 
     @GetMapping("/sortexambydatedesc")
     public ResponseEntity<Object> sortexambydatedesc() {
-        return new ResponseEntity<Object>(sortExamUseCase.sortExamByDateDesc(), HttpStatus.OK);
+        return new ResponseEntity<>(sortExamUseCase.sortExamByDateDesc(), HttpStatus.OK);
     }
 
     @GetMapping("/sortexambyscoreasc")
     public ResponseEntity<Object> sortexambyscoreasc() {
-        return new ResponseEntity<Object>(sortExamUseCase.sortExamByScoreAsc(), HttpStatus.OK);
+        return new ResponseEntity<>(sortExamUseCase.sortExamByScoreAsc(), HttpStatus.OK);
     }
 
     @GetMapping("/sortexambyscoredesc")
     public ResponseEntity<Object> sortexambyscoredesc() {
-        return new ResponseEntity<Object>(sortExamUseCase.sortExamByScoreDesc(), HttpStatus.OK);
+        return new ResponseEntity<>(sortExamUseCase.sortExamByScoreDesc(), HttpStatus.OK);
     }
 
     @GetMapping("/searchexambystudentid")
     public ResponseEntity<Object> searchexambystudentid(@RequestParam Long studentId) {
-        return new ResponseEntity<Object>(searchExamUseCase.searchExamByStudentId(studentId), HttpStatus.OK);
+        return new ResponseEntity<>(searchExamUseCase.searchExamByStudentId(studentId), HttpStatus.OK);
     }
 
     @GetMapping("/searchexambysubjectid")
     public ResponseEntity<Object> searchexambysubjectid(@RequestParam Long subjectId) {
-        return new ResponseEntity<Object>(searchExamUseCase.searchExamBySubjectId(subjectId), HttpStatus.OK);
+        return new ResponseEntity<>(searchExamUseCase.searchExamBySubjectId(subjectId), HttpStatus.OK);
     }
 
     @GetMapping("/sortexambystudentidasc")
