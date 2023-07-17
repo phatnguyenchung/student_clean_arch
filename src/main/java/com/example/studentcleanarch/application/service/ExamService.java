@@ -87,6 +87,16 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
     }
 
     @Override
+    public List<ExamJpaEntity> sortExamByStudentIdDesc() {
+        return sortExam.sortExamByStudentIdDesc();
+    }
+
+    @Override
+    public List<ExamJpaEntity> sortExamByStudentIdAsc() {
+        return sortExam.sortExamByStudentIdAsc();
+    }
+
+    @Override
     public List<Exam> searchExamByStudentId(Long studentId) {
         return searchExam.searchExamByStudentId(studentId);
     }

@@ -60,4 +60,14 @@ public class ExamController {
     public ResponseEntity<Object> searchexambystudentid(@RequestParam Long studentId) {
         return new ResponseEntity<Object>(searchExamUseCase.searchExamByStudentId(studentId), HttpStatus.OK);
     }
+
+    @GetMapping("/sortexambystudentidasc")
+    public ResponseEntity<Object> sortexambystudentidasc() {
+        return new ResponseEntity<>(sortExamUseCase.sortExamByStudentIdAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortexambystudentiddesc")
+    public ResponseEntity<Object> sortexambystudentiddesc() {
+        return new ResponseEntity<>(sortExamUseCase.sortExamByStudentIdDesc(), HttpStatus.OK);
+    }
 }
