@@ -92,4 +92,14 @@ public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubje
     public List<SubjectJpaEntity> sortSubjectNameAsc() {
         return subjectJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "subjectName"));
     }
+
+    @Override
+    public List<SubjectJpaEntity> sortIdDesc() {
+        return subjectJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    }
+
+    @Override
+    public List<SubjectJpaEntity> sortIdAsc() {
+        return subjectJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "id"));
+    }
 }

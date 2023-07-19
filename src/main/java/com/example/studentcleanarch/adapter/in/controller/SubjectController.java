@@ -62,4 +62,14 @@ public class SubjectController {
     public ResponseEntity<Object> sortsubjectnameasc() {
         return new ResponseEntity<Object>(sortSubjectUseCase.sortSubjectNameOrderByAsc(), HttpStatus.OK);
     }
+
+    @GetMapping("/sortiddesc")
+    public ResponseEntity<Object> sortiddesc() {
+        return new ResponseEntity<>(sortSubjectUseCase.sortIdByDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortidasc")
+    public ResponseEntity<Object> sortidasc() {
+        return new ResponseEntity<>(sortSubjectUseCase.sortIdByAsc(), HttpStatus.OK);
+    }
 }

@@ -8,4 +8,8 @@ public interface SortSubject {
     List<SubjectJpaEntity> sortSubjectNameDesc();
 
     List<SubjectJpaEntity> sortSubjectNameAsc();
+
+    List<SubjectJpaEntity> sortIdDesc();
+
+    List<SubjectJpaEntity> sortIdAsc();
 }
