@@ -1,6 +1,8 @@
 package com.example.studentcleanarch.adapter.out.persistent.exam;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,4 +32,13 @@ public class ExamJpaEntity {
 
     @Column(name = "Score")
     private int score;
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updatedDate")
+    private Date updatedDate;
 }
