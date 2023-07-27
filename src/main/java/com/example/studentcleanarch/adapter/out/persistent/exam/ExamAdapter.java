@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -113,6 +114,36 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam
                     .collect(Collectors.toList());
         } catch (Exception e) {
             throw new TimoException(500, "Exam could not found by subject id:" + subjectId);
+        }
+    }
+
+    @Override
+    public List<Exam> searchExamByScore(int score) {
+        try {
+            List<ExamJpaEntity> examJpaEntityList = examJpaRepository.findByScore(score);
+            for (ExamJpaEntity entity : examJpaEntityList) {
+                System.out.println(entity.getSubjectId());
+            }
+            return examJpaRepository.findByScore(score).stream()
+                    .map(ExamMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Exam could not found by score:" + score);
+        }
+    }
+
+    @Override
+    public List<Exam> searchExamByDate(Date examDate) {
+        try {
+            List<ExamJpaEntity> examJpaEntityList = examJpaRepository.findByExamDate(examDate);
+            for (ExamJpaEntity entity : examJpaEntityList) {
+                System.out.println(entity.getSubjectId());
+            }
+            return examJpaRepository.findByExamDate(examDate).stream()
+                    .map(ExamMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Exam could not found by exam date:" + examDate);
         }
     }
 }

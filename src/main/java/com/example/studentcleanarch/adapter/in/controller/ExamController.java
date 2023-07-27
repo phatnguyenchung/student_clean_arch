@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/exam", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -64,6 +66,16 @@ public class ExamController {
     @GetMapping("/searchexambysubjectid")
     public ResponseEntity<Object> searchexambysubjectid(@RequestParam Long subjectId) {
         return new ResponseEntity<>(searchExamUseCase.searchExamBySubjectId(subjectId), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchexambyscore")
+    public ResponseEntity<Object> searchexambyscore(@RequestParam int score) {
+        return new ResponseEntity<>(searchExamUseCase.searchExamByScore(score), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchexambyexamdate")
+    public ResponseEntity<Object> searchexambyexamdate(@RequestParam Date examDate) {
+        return new ResponseEntity<>(searchExamUseCase.searchExamByDate(examDate), HttpStatus.OK);
     }
 
     @GetMapping("/sortexambystudentidasc")
