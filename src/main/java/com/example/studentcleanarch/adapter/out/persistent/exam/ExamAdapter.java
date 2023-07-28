@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam, SearchExam {
+public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam, SearchExam, GetExam {
 
     private final ExamJpaRepository examJpaRepository;
 
@@ -145,5 +145,27 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam
         } catch (Exception e) {
             throw new TimoException(500, "Exam could not found by exam date:" + examDate);
         }
+    }
+
+    @Override
+    public List<Exam> getAllEaxam() {
+        try {
+            List<ExamJpaEntity> examJpaEntityList = examJpaRepository.findAll();
+            for (ExamJpaEntity entity : examJpaEntityList) {
+                System.out.println(entity.getId());
+            }
+            return examJpaRepository.findAll().stream()
+                    .map(ExamMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Cannot get exam list");
+        }
+    }
+
+    @Override
+    public Exam getExamById(Long id) {
+        return examJpaRepository.findById(id)
+                .map(ExamMapper::mapToDomainEntity)
+                .orElseThrow(() -> new TimoException(404, "Exam not found id:" + id));
     }
 }

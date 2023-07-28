@@ -22,6 +22,7 @@ public class ExamController {
     private final DeleteExamUseCase deleteExamUseCase;
     private final SortExamUseCase sortExamUseCase;
     private final SearchExamUseCase searchExamUseCase;
+    private final GetExamUseCase getExamUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateExamRequest createExamRequest) {
@@ -96,5 +97,15 @@ public class ExamController {
     @GetMapping("/sortexambysubjectiddesc")
     public ResponseEntity<Object> sortexambysubjectiddesc() {
         return new ResponseEntity<>(sortExamUseCase.sortExamBySubjectIdDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getexambyid")
+    public ResponseEntity<Object> getexambyid(@RequestParam Long id) {
+        return new ResponseEntity<Object>(getExamUseCase.getExamById(id), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ApiResponse<?> get() {
+        return ApiResponse.success(getExamUseCase.getAllExam());
     }
 }

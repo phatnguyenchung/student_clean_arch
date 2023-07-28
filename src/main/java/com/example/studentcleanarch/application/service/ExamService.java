@@ -14,12 +14,13 @@ import java.util.List;
 
 @UseCase
 @RequiredArgsConstructor
-public class ExamService implements CreateExamUseCase, UpdateExamUseCase, DeleteExamUseCase, SortExamUseCase, SearchExamUseCase {
+public class ExamService implements CreateExamUseCase, UpdateExamUseCase, DeleteExamUseCase, SortExamUseCase, SearchExamUseCase, GetExamUseCase {
     private final CreateExam createExam;
     private final UpdateExam updateExam;
     private final DeleteExam deleteExam;
     private final SortExam sortExam;
     private final SearchExam searchExam;
+    private final GetExam getExam;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -124,5 +125,15 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
     @Override
     public List<Exam> searchExamByDate(Date examDate) {
         return searchExam.searchExamByDate(examDate);
+    }
+
+    @Override
+    public List<Exam> getAllExam() {
+        return getExam.getAllEaxam();
+    }
+
+    @Override
+    public Exam getExamById(Long id) {
+        return getExam.getExamById(id);
     }
 }
