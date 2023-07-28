@@ -166,6 +166,6 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam
     public Exam getExamById(Long id) {
         return examJpaRepository.findById(id)
                 .map(ExamMapper::mapToDomainEntity)
-                .orElseThrow(() -> new TimoException(404, "Exam not found id:" + id));
+                .orElseThrow(() -> new TimoException(500, "Exam not found id:" + id));
     }
 }

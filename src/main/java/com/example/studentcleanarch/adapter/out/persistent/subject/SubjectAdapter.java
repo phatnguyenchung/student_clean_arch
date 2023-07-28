@@ -40,7 +40,7 @@ public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubje
         if (!existById) {
             subjectJpaRepository.findById(id)
                     .map(SubjectMapper::mapToDomainEntity)
-                    .orElseThrow(() -> new TimoException(404, "Subject not found id:" + id));
+                    .orElseThrow(() -> new TimoException(500, "Subject not found id:" + id));
         } else {
             subjectJpaRepository.deleteById(id);
         }
@@ -65,7 +65,7 @@ public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubje
     public Subject getSubjectById(Long id) {
         return subjectJpaRepository.findById(id)
                 .map(SubjectMapper::mapToDomainEntity)
-                .orElseThrow(() -> new TimoException(404, "Subject not found id:" + id));
+                .orElseThrow(() -> new TimoException(500, "Subject not found id:" + id));
     }
 
     @Override
