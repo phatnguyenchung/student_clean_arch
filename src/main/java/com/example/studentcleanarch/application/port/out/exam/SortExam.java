@@ -20,4 +20,8 @@ public interface SortExam {
     List<ExamJpaEntity> sortExamBySubjectIdDesc();
 
     List<ExamJpaEntity> sortExamBySubjectIdAsc();
+
+    List<ExamJpaEntity> sortExamByIdAsc();
+
+    List<ExamJpaEntity> sortExamByIdDesc();
 }

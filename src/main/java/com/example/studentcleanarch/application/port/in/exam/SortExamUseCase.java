@@ -21,4 +21,8 @@ public interface SortExamUseCase {
     List<ExamJpaEntity> sortExamBySubjectIdDesc();
 
     List<ExamJpaEntity> sortExamBySubjectIdAsc();
+
+    List<ExamJpaEntity> sortExamByIdDesc();
+
+    List<ExamJpaEntity> sortExamByIdAsc();
 }

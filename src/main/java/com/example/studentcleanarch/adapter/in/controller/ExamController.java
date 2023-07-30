@@ -99,6 +99,16 @@ public class ExamController {
         return new ResponseEntity<>(sortExamUseCase.sortExamBySubjectIdDesc(), HttpStatus.OK);
     }
 
+    @GetMapping("/sortexambyidasc")
+    public ResponseEntity<Object> sortexambyidasc() {
+        return new ResponseEntity<>(sortExamUseCase.sortExamByIdAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortexambyiddesc")
+    public ResponseEntity<Object> sortexambyiddesc() {
+        return new ResponseEntity<>(sortExamUseCase.sortExamByIdDesc(), HttpStatus.OK);
+    }
+
     @GetMapping("/getexambyid")
     public ResponseEntity<Object> getexambyid(@RequestParam Long id) {
         return new ResponseEntity<Object>(getExamUseCase.getExamById(id), HttpStatus.OK);

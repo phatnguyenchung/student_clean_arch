@@ -88,6 +88,16 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam
     }
 
     @Override
+    public List<ExamJpaEntity> sortExamByIdAsc() {
+        return examJpaRepository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "id"));
+    }
+
+    @Override
+    public List<ExamJpaEntity> sortExamByIdDesc() {
+        return examJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    }
+
+    @Override
     public List<Exam> searchExamByStudentId(Long studentId) {
         try {
             List<ExamJpaEntity> examJpaEntityList = examJpaRepository.findByStudentId(studentId);
