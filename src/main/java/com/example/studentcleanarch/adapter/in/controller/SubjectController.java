@@ -45,7 +45,7 @@ public class SubjectController {
 
     @GetMapping("/getsubjectbyid")
     public ResponseEntity<Object> getsubjectbyid(@RequestParam Long id) {
-        return new ResponseEntity<Object>(getSubjectUseCase.getSubjectById(id), HttpStatus.OK);
+        return new ResponseEntity<>(getSubjectUseCase.getSubjectById(id), HttpStatus.OK);
     }
 
     @GetMapping("/searchbysubjectname")
