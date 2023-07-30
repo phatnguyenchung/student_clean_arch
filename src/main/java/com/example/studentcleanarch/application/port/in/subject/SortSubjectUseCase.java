@@ -12,4 +12,8 @@ public interface SortSubjectUseCase {
     List<SubjectJpaEntity> sortIdByDesc();
 
     List<SubjectJpaEntity> sortIdByAsc();
+
+    List<SubjectJpaEntity> sortStartDateDesc();
+
+    List<SubjectJpaEntity> sortStartDateAsc();
 }

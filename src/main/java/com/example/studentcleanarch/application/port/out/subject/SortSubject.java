@@ -12,4 +12,8 @@ public interface SortSubject {
     List<SubjectJpaEntity> sortIdDesc();
 
     List<SubjectJpaEntity> sortIdAsc();
+
+    List<SubjectJpaEntity> sortStartDateDesc();
+
+    List<SubjectJpaEntity> sortStartDateAsc();
 }

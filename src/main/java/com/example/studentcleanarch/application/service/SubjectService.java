@@ -102,4 +102,14 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
     public List<SubjectJpaEntity> sortIdByAsc() {
         return sortSubject.sortIdAsc();
     }
+
+    @Override
+    public List<SubjectJpaEntity> sortStartDateDesc() {
+        return sortSubject.sortStartDateDesc();
+    }
+
+    @Override
+    public List<SubjectJpaEntity> sortStartDateAsc() {
+        return sortSubject.sortStartDateAsc();
+    }
 }

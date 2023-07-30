@@ -72,4 +72,14 @@ public class SubjectController {
     public ResponseEntity<Object> sortidasc() {
         return new ResponseEntity<>(sortSubjectUseCase.sortIdByAsc(), HttpStatus.OK);
     }
+
+    @GetMapping("/sortstartdatedesc")
+    public ResponseEntity<Object> sortstartdatedesc() {
+        return new ResponseEntity<>(sortSubjectUseCase.sortStartDateDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortstartdateasc")
+    public ResponseEntity<Object> sortstartdateasc() {
+        return new ResponseEntity<>(sortSubjectUseCase.sortStartDateAsc(), HttpStatus.OK);
+    }
 }
