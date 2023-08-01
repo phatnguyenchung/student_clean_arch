@@ -103,8 +103,8 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     }
 
     @Override
-    public DeleteStudentCommandResult deleteStudent(Long id) {
-        deleteStudent.deleteStudent(id);
+    public DeleteStudentCommandResult deleteStudent(DeleteStudentCommand deleteStudentCommand) {
+        deleteStudent.deleteStudent(deleteStudentCommand.getId());
         return DeleteStudentCommandResult.builder().status(true).build();
     }
 

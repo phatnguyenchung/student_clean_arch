@@ -61,11 +61,6 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
         return UpdateExamCommandResult.builder().status(true).build();
     }
 
-    @Override
-    public DeleteExamCommandResult deleteExam(Long id) {
-        deleteExam.deleteExam(id);
-        return DeleteExamCommandResult.builder().status(true).build();
-    }
 
     @Override
     public List<ExamJpaEntity> sortExamByDateDesc() {
@@ -145,5 +140,11 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
     @Override
     public Exam getExamById(Long id) {
         return getExam.getExamById(id);
+    }
+
+    @Override
+    public DeleteExamCommandResult deleteExam(DeleteExamCommand deleteExamCommand) {
+        deleteExam.deleteExam(deleteExamCommand.getId());
+        return DeleteExamCommandResult.builder().status(true).build();
     }
 }

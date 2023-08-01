@@ -35,7 +35,7 @@ public class SubjectController {
 
     @DeleteMapping
     public ApiResponse<?> delete(@RequestBody DeleteSubjectRequest deleteSubjectRequest) {
-        return ApiResponse.success(deleteSubjectUseCase.deleteSubject(deleteSubjectRequest.getId()));
+        return ApiResponse.success(deleteSubjectUseCase.deleteSubject(deleteSubjectRequest.toCommand()));
     }
 
     @GetMapping

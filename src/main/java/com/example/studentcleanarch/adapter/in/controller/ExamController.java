@@ -36,7 +36,7 @@ public class ExamController {
 
     @DeleteMapping
     public ApiResponse<?> delete(@RequestBody DeleteExamRequest deleteExamRequest) {
-        return ApiResponse.success(deleteExamUseCase.deleteExam(deleteExamRequest.getId()));
+        return ApiResponse.success(deleteExamUseCase.deleteExam(deleteExamRequest.toCommand()));
     }
 
     @GetMapping("/sortexambydateasc")

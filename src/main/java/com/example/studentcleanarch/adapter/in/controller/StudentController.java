@@ -40,7 +40,7 @@ public class StudentController {
 
     @DeleteMapping
     public ApiResponse<?> delete(@RequestBody DeleteStudentRequest deleteStudentRequest) {
-        return ApiResponse.success(deleteStudentUseCase.deleteStudent(deleteStudentRequest.getId()));
+        return ApiResponse.success(deleteStudentUseCase.deleteStudent(deleteStudentRequest.toCommand()));
     }
 
     @GetMapping("/searchstudentbylastname")
