@@ -57,15 +57,12 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
-    public void deleteStudent(Long id) {
-        boolean existById = studentJpaRepository.existsById(id);
-        if (!existById) {
-            studentJpaRepository.findById(id)
-                    .map(StudentMapper::mapToDomainEntity)
-                    .orElseThrow(() -> new TimoException(500, "Student not found id:" + id));
-        } else {
-            studentJpaRepository.deleteById(id);
-        }
+    public void deleteStudent(Student student) {
+        Optional<StudentJpaEntity> entity = studentJpaRepository.findById(student.getId());
+        entity.ifPresent(record -> {
+            StudentMapper.mapToExistedJpaEntity(student, record);
+            studentJpaRepository.delete(record);
+        });
     }
 
     @Override
