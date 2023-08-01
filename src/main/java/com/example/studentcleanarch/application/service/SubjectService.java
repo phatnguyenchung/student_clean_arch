@@ -64,7 +64,14 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
 
     @Override
     public DeleteSubjectCommandResult deleteSubject(DeleteSubjectCommand deleteSubjectCommand) {
-        deleteSubject.deleteSubject(deleteSubjectCommand.getId());
+        Subject subject = Subject.builder()
+                .id(deleteSubjectCommand.getId())
+                .subjectId(deleteSubjectCommand.getSubjectId())
+                .subjectName(deleteSubjectCommand.getSubjectName())
+                .startDate(deleteSubjectCommand.getStartDate())
+                .endDate(deleteSubjectCommand.getEndDate())
+                .build();
+        deleteSubject.deleteSubject(subject);
         return DeleteSubjectCommandResult.builder().status(true).build();
     }
 

@@ -35,15 +35,12 @@ public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubje
     }
 
     @Override
-    public void deleteSubject(Long id) {
-        boolean existById = subjectJpaRepository.existsById(id);
-        if (!existById) {
-            subjectJpaRepository.findById(id)
-                    .map(SubjectMapper::mapToDomainEntity)
-                    .orElseThrow(() -> new TimoException(500, "Subject not found id:" + id));
-        } else {
-            subjectJpaRepository.deleteById(id);
-        }
+    public void deleteSubject(Subject subject) {
+        Optional<SubjectJpaEntity> subjectJpaEntity = subjectJpaRepository.findById(subject.getId());
+        subjectJpaEntity.ifPresent(record -> {
+            SubjectMapper.mapToExistedJpaEntity(subject, record);
+            subjectJpaRepository.delete(record);
+        });
     }
 
     @Override
