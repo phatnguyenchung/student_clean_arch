@@ -8,6 +8,8 @@ import com.example.studentcleanarch.domain.Student;
 import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -20,6 +22,14 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     private final DeleteStudent deleteStudent;
     private final SearchStudent searchStudent;
     private final SortStudent sortStudent;
+
+    public static int calculateAge(Date DateOfBirth) {
+        Calendar birthCalendar = Calendar.getInstance();
+        birthCalendar.setTime(DateOfBirth);
+        Calendar currentCalendar = Calendar.getInstance();
+        currentCalendar.setTime(new Date());
+        return currentCalendar.get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);
+    }
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -46,9 +56,12 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .admissionDate(createStudentCommand.getAdmissionDate())
                 .active(createStudentCommand.getActive())
                 .build();
+        int currentAge = calculateAge(createStudentCommand.getBirthDate());
         if (createStudentCommand.getExpiredDate().before(createStudentCommand.getIssueDate())) {
             return CreateStudentCommandResult.builder().status(false).build();
         } else if (createStudentCommand.getBirthDate().after(createStudentCommand.getIssueDate())) {
+            return CreateStudentCommandResult.builder().status(false).build();
+        } else if (currentAge < 18) {
             return CreateStudentCommandResult.builder().status(false).build();
         } else {
             createStudent.saveStudent(student);
@@ -82,9 +95,12 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .admissionDate(updateStudentCommand.getAdmissionDate())
                 .active(updateStudentCommand.getActive())
                 .build();
+        int currentAge = calculateAge(updateStudentCommand.getBirthDate());
         if (updateStudentCommand.getExpiredDate().before(updateStudentCommand.getIssueDate())) {
             return UpdateStudentCommandResult.builder().status(false).build();
         } else if (updateStudentCommand.getBirthDate().after(updateStudentCommand.getIssueDate())) {
+            return UpdateStudentCommandResult.builder().status(false).build();
+        } else if (currentAge < 18) {
             return UpdateStudentCommandResult.builder().status(false).build();
         } else {
             updateStudent.updateStudent(student);
