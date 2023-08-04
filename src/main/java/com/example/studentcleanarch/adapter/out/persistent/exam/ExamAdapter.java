@@ -169,10 +169,14 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam
 
     @Override
     public void deleteExam(Exam exam) {
-        Optional<ExamJpaEntity> entity = examJpaRepository.findById(exam.getId());
-        entity.ifPresent(record -> {
-            ExamMapper.mapToExistedJpaEntity(exam, record);
-            examJpaRepository.delete(record);
-        });
+        try {
+            Optional<ExamJpaEntity> entity = examJpaRepository.findById(exam.getId());
+            entity.ifPresent(record -> {
+                ExamMapper.mapToExistedJpaEntity(exam, record);
+                examJpaRepository.delete(record);
+            });
+        } catch (Exception e) {
+            throw new TimoException(500, "Exam is not exist!");
+        }
     }
 }

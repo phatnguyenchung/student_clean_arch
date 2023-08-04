@@ -58,11 +58,15 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
 
     @Override
     public void deleteStudent(Student student) {
-        Optional<StudentJpaEntity> entity = studentJpaRepository.findById(student.getId());
-        entity.ifPresent(record -> {
-            StudentMapper.mapToExistedJpaEntity(student, record);
-            studentJpaRepository.delete(record);
-        });
+        try {
+            Optional<StudentJpaEntity> entity = studentJpaRepository.findById(student.getId());
+            entity.ifPresent(record -> {
+                StudentMapper.mapToExistedJpaEntity(student, record);
+                studentJpaRepository.delete(record);
+            });
+        } catch (Exception e) {
+            throw new TimoException(500, "Student is not exist!");
+        }
     }
 
     @Override
