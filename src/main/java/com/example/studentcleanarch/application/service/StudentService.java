@@ -8,6 +8,7 @@ import com.example.studentcleanarch.domain.Student;
 import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
+import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -58,13 +59,14 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .build();
         int studentAge = calculateAge(createStudentCommand.getBirthDate());
         int parentAge = calculateAge(createStudentCommand.getBirthParent());
-        if (createStudentCommand.getExpiredDate().before(createStudentCommand.getIssueDate())) {
+        if (createStudentCommand.getExpiredDate().before(createStudentCommand.getIssueDate())
+                && createStudentCommand.getExpiredDate().before(Date.from(Instant.now()))) {
             return CreateStudentCommandResult.builder().status(false).build();
         } else if (createStudentCommand.getBirthDate().after(createStudentCommand.getIssueDate())) {
             return CreateStudentCommandResult.builder().status(false).build();
-        } else if (studentAge < 18 && parentAge < 18 && parentAge < studentAge) {
+        } else if (studentAge < 18 && parentAge < 18 && parentAge < studentAge)
             return CreateStudentCommandResult.builder().status(false).build();
-        } else if (createStudentCommand.getCIC().length() > 12 && createStudentCommand.getCIC().length() < 0) {
+        else if (createStudentCommand.getCIC().length() > 12) {
             return CreateStudentCommandResult.builder().status(false).build();
         } else {
             createStudent.saveStudent(student);
@@ -100,13 +102,14 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .build();
         int studentAge = calculateAge(updateStudentCommand.getBirthDate());
         int parentAge = calculateAge(updateStudentCommand.getBirthParent());
-        if (updateStudentCommand.getExpiredDate().before(updateStudentCommand.getIssueDate())) {
+        if (updateStudentCommand.getExpiredDate().before(updateStudentCommand.getIssueDate())
+                && updateStudentCommand.getExpiredDate().before(Date.from(Instant.now()))) {
             return UpdateStudentCommandResult.builder().status(false).build();
         } else if (updateStudentCommand.getBirthDate().after(updateStudentCommand.getIssueDate())) {
             return UpdateStudentCommandResult.builder().status(false).build();
         } else if (studentAge < 18 && parentAge < 18 && parentAge < studentAge) {
             return UpdateStudentCommandResult.builder().status(false).build();
-        } else if (updateStudentCommand.getCIC().length() > 12 && updateStudentCommand.getCIC().length() < 0) {
+        } else if (updateStudentCommand.getCIC().length() > 12) {
             return UpdateStudentCommandResult.builder().status(false).build();
         } else {
             updateStudent.updateStudent(student);
