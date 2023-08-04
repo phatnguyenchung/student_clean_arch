@@ -36,18 +36,6 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam
     }
 
     @Override
-    public void deleteExam(Long id) {
-        boolean existById = examJpaRepository.existsById(id);
-        if (!existById) {
-            examJpaRepository.findById(id)
-                    .map(ExamMapper::mapToDomainEntity)
-                    .orElseThrow(() -> new TimoException(404, "Exam not found id:" + id));
-        } else {
-            examJpaRepository.deleteById(id);
-        }
-    }
-
-    @Override
     public List<ExamJpaEntity> sortExamByDateDesc() {
         return examJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "examDate"));
     }
@@ -177,5 +165,14 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam
         return examJpaRepository.findById(id)
                 .map(ExamMapper::mapToDomainEntity)
                 .orElseThrow(() -> new TimoException(500, "Exam not found id:" + id));
+    }
+
+    @Override
+    public void deleteExam(Exam exam) {
+        Optional<ExamJpaEntity> entity = examJpaRepository.findById(exam.getId());
+        entity.ifPresent(record -> {
+            ExamMapper.mapToExistedJpaEntity(exam, record);
+            examJpaRepository.delete(record);
+        });
     }
 }
