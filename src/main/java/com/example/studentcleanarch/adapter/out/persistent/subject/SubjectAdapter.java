@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -81,6 +82,21 @@ public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubje
                     .collect(Collectors.toList());
         } catch (Exception e) {
             throw new TimoException(500, "Student could not found subject name:" + subjectName);
+        }
+    }
+
+    @Override
+    public List<Subject> searchSubjectByStartDate(Date startDate) {
+        try {
+            List<SubjectJpaEntity> subjectJpaEntityList = subjectJpaRepository.findByStartDate(startDate);
+            for (SubjectJpaEntity entity : subjectJpaEntityList) {
+                System.out.println(entity.getSubjectId());
+            }
+            return subjectJpaRepository.findByStartDate(startDate).stream()
+                    .map(SubjectMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Subject could not found by start date:" + startDate);
         }
     }
 

@@ -91,6 +91,11 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
     }
 
     @Override
+    public List<Subject> searchSubjectByStartDate(Date startDate) {
+        return searchSubject.searchSubjectByStartDate(startDate);
+    }
+
+    @Override
     public List<SubjectJpaEntity> sortSubjectNameOrderByDesc() {
         return sortSubject.sortSubjectNameDesc();
     }

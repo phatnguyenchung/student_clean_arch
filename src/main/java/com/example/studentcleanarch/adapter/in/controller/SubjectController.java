@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/subject", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -51,6 +53,11 @@ public class SubjectController {
     @GetMapping("/searchbysubjectname")
     public ResponseEntity<Object> searchbysubjectname(@RequestParam String subjectName) {
         return new ResponseEntity<Object>(searchSubjectUseCase.searchSubject(subjectName), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchsubjectbystartdate")
+    public ResponseEntity<Object> searchsubjectbystartdate(@RequestParam Date startDate) {
+        return new ResponseEntity<Object>(searchSubjectUseCase.searchSubjectByStartDate(startDate), HttpStatus.OK);
     }
 
     @GetMapping("/sortsubjectnamedesc")
