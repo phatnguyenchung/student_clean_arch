@@ -57,12 +57,12 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .active(createStudentCommand.getActive())
                 .build();
         int studentAge = calculateAge(createStudentCommand.getBirthDate());
-        int parrentAge = calculateAge(createStudentCommand.getBirthParent());
+        int parentAge = calculateAge(createStudentCommand.getBirthParent());
         if (createStudentCommand.getExpiredDate().before(createStudentCommand.getIssueDate())) {
             return CreateStudentCommandResult.builder().status(false).build();
         } else if (createStudentCommand.getBirthDate().after(createStudentCommand.getIssueDate())) {
             return CreateStudentCommandResult.builder().status(false).build();
-        } else if (studentAge < 18 && parrentAge < 18 && parrentAge < studentAge) {
+        } else if (studentAge < 18 && parentAge < 18 && parentAge < studentAge) {
             return CreateStudentCommandResult.builder().status(false).build();
         } else {
             createStudent.saveStudent(student);
@@ -97,12 +97,12 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .active(updateStudentCommand.getActive())
                 .build();
         int studentAge = calculateAge(updateStudentCommand.getBirthDate());
-        int parrentAge = calculateAge(updateStudentCommand.getBirthParent());
+        int parentAge = calculateAge(updateStudentCommand.getBirthParent());
         if (updateStudentCommand.getExpiredDate().before(updateStudentCommand.getIssueDate())) {
             return UpdateStudentCommandResult.builder().status(false).build();
         } else if (updateStudentCommand.getBirthDate().after(updateStudentCommand.getIssueDate())) {
             return UpdateStudentCommandResult.builder().status(false).build();
-        } else if (studentAge < 18 && parrentAge < 18 && parrentAge < studentAge) {
+        } else if (studentAge < 18 && parentAge < 18 && parentAge < studentAge) {
             return UpdateStudentCommandResult.builder().status(false).build();
         } else {
             updateStudent.updateStudent(student);
