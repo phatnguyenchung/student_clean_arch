@@ -66,7 +66,7 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
             return CreateStudentCommandResult.builder().status(false).build();
         } else if (studentAge < 18 && parentAge < 18 && parentAge < studentAge)
             return CreateStudentCommandResult.builder().status(false).build();
-        else if (createStudentCommand.getCIC().length() > 12) {
+        else if (createStudentCommand.getCIC().length() > 12 && createStudentCommand.getCIC().length() < 9) {
             return CreateStudentCommandResult.builder().status(false).build();
         } else {
             createStudent.saveStudent(student);
@@ -109,7 +109,7 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
             return UpdateStudentCommandResult.builder().status(false).build();
         } else if (studentAge < 18 && parentAge < 18 && parentAge < studentAge) {
             return UpdateStudentCommandResult.builder().status(false).build();
-        } else if (updateStudentCommand.getCIC().length() > 12) {
+        } else if (updateStudentCommand.getCIC().length() > 12 && updateStudentCommand.getCIC().length() < 9) {
             return UpdateStudentCommandResult.builder().status(false).build();
         } else {
             updateStudent.updateStudent(student);
