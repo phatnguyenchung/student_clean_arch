@@ -22,6 +22,6 @@ public interface ExamJpaRepository extends JpaRepository<ExamJpaEntity, Long>, J
     @Query(value = "SELECT * FROM tblExam WHERE score LIKE %?1%", nativeQuery = true)
     List<ExamJpaEntity> findByScore(int score);
 
-    @Query(value = "SELECT * FROM tblExam t WHERE t.examDate  <= :examDate", nativeQuery = true)
+    @Query(value = "SELECT t FROM tblExam t WHERE t.examDate <= :examDate", nativeQuery = true)
     List<ExamJpaEntity> findByExamDate(@Param("examDate") Date examDate);
 }
