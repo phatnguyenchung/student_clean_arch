@@ -11,7 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @RestController
 @RequiredArgsConstructor
@@ -75,7 +75,7 @@ public class ExamController {
     }
 
     @GetMapping("/searchexambyexamdate")
-    public ResponseEntity<Object> searchexambyexamdate(@RequestParam Date examDate) {
+    public ResponseEntity<Object> searchexambyexamdate(@RequestParam LocalDateTime examDate) {
         return new ResponseEntity<>(searchExamUseCase.searchExamByDate(examDate), HttpStatus.OK);
     }
 

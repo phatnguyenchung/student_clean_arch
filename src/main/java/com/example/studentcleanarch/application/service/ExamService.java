@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -128,7 +129,7 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
     }
 
     @Override
-    public List<Exam> searchExamByDate(Date examDate) {
+    public List<Exam> searchExamByDate(LocalDateTime examDate) {
         return searchExam.searchExamByDate(examDate);
     }
 
