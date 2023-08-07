@@ -192,4 +192,14 @@ public class StudentController {
     public ResponseEntity<Object> sortstudentbynationalityasc() {
         return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByNationalityAsc(), HttpStatus.OK);
     }
+
+    @GetMapping("/sortstudentbybirthdatedesc")
+    public ResponseEntity<Object> sortstudentbybirthdatedesc() {
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByBirthDateDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortstudentbybirthdateasc")
+    public ResponseEntity<Object> sortstudentbybirthdateasc() {
+        return new ResponseEntity<Object>(sortStudentUseCase.sortStudentByBirthDateAsc(), HttpStatus.OK);
+    }
 }
