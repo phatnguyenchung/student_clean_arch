@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -88,7 +89,7 @@ public class SubjectAdapter implements CreateSubject, UpdateSubject, DeleteSubje
     @Override
     public List<Subject> searchSubjectByStartDate(Date startDate) {
         try {
-            List<SubjectJpaEntity> subjectJpaEntityList = subjectJpaRepository.findByStartDate(startDate);
+            List<SubjectJpaEntity> subjectJpaEntityList = subjectJpaRepository.findByStartDate(new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(startDate)));
             for (SubjectJpaEntity entity : subjectJpaEntityList) {
                 System.out.println(entity.getSubjectId());
             }
