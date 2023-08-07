@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -132,7 +132,7 @@ public class ExamAdapter implements CreateExam, UpdateExam, DeleteExam, SortExam
 
 
     @Override
-    public List<Exam> searchExamByDate(LocalDateTime examDate) {
+    public List<Exam> searchExamByDate(Date examDate) {
         try {
             List<ExamJpaEntity> examJpaEntityList = examJpaRepository.findByExamDate(examDate);
             for (ExamJpaEntity entity : examJpaEntityList) {

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -23,5 +23,5 @@ public interface ExamJpaRepository extends JpaRepository<ExamJpaEntity, Long>, J
     List<ExamJpaEntity> findByScore(int score);
 
     @Query(value = "SELECT t FROM tblExam t WHERE t.examDate <= :examDate", nativeQuery = true)
-    List<ExamJpaEntity> findByExamDate(@Param("examDate") LocalDateTime examDate);
+    List<ExamJpaEntity> findByExamDate(@Param("examDate") Date examDate);
 }

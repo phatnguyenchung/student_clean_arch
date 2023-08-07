@@ -2,7 +2,7 @@ package com.example.studentcleanarch.application.port.in.exam;
 
 import com.example.studentcleanarch.domain.Exam;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public interface SearchExamUseCase {
@@ -13,5 +13,5 @@ public interface SearchExamUseCase {
 
     List<Exam> searchExamByScore(int score);
 
-    List<Exam> searchExamByDate(LocalDateTime examDate);
+    List<Exam> searchExamByDate(Date examDate);
 }

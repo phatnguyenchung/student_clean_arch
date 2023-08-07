@@ -6,12 +6,13 @@ import com.example.studentcleanarch.adapter.in.dto.request.exam.UpdateExamReques
 import com.example.studentcleanarch.adapter.in.dto.response.ApiResponse;
 import com.example.studentcleanarch.application.port.in.exam.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @RestController
 @RequiredArgsConstructor
@@ -75,7 +76,7 @@ public class ExamController {
     }
 
     @GetMapping("/searchexambyexamdate")
-    public ResponseEntity<Object> searchexambyexamdate(@RequestParam LocalDateTime examDate) {
+    public ResponseEntity<Object> searchexambyexamdate(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date examDate) {
         return new ResponseEntity<>(searchExamUseCase.searchExamByDate(examDate), HttpStatus.OK);
     }
 
