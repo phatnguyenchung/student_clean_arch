@@ -4,7 +4,6 @@ package com.example.studentcleanarch.adapter.out.persistent.exam;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -23,5 +22,5 @@ public interface ExamJpaRepository extends JpaRepository<ExamJpaEntity, Long>, J
     List<ExamJpaEntity> findByScore(int score);
 
     @Query(value = "SELECT t FROM tblExam t WHERE t.examDate <= :examDate", nativeQuery = true)
-    List<ExamJpaEntity> findByExamDate(@Param("examDate") Date examDate);
+    List<ExamJpaEntity> findByExamDate(Date examDate);
 }
