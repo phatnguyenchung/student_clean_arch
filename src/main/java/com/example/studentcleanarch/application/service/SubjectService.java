@@ -32,9 +32,8 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
                 .startDate(createSubjectCommand.getStartDate())
                 .endDate(createSubjectCommand.getEndDate())
                 .build();
-        if (createSubjectCommand.getStartDate().after(createSubjectCommand.getEndDate())) {
-            return CreateSubjectCommandResult.builder().status(false).build();
-        } else if (createSubjectCommand.getStartDate().before(Date.from(Instant.now()))) {
+        if (createSubjectCommand.getStartDate().after(createSubjectCommand.getEndDate()) &&
+                createSubjectCommand.getStartDate().before(Date.from(Instant.now()))) {
             return CreateSubjectCommandResult.builder().status(false).build();
         } else {
             createSubject.saveSubject(subject);
@@ -52,9 +51,8 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
                 .startDate(updateSubjectCommand.getStartDate())
                 .endDate(updateSubjectCommand.getEndDate())
                 .build();
-        if (updateSubjectCommand.getStartDate().after(updateSubjectCommand.getEndDate())) {
-            return UpdateSubjectCommandResult.builder().status(false).build();
-        } else if (updateSubjectCommand.getStartDate().before(Date.from(Instant.now()))) {
+        if (updateSubjectCommand.getStartDate().after(updateSubjectCommand.getEndDate()) &&
+                updateSubjectCommand.getStartDate().before(Date.from(Instant.now()))) {
             return UpdateSubjectCommandResult.builder().status(false).build();
         } else {
             updateSubject.updateSubject(subject);
