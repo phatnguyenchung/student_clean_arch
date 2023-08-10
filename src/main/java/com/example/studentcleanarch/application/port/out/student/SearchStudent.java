@@ -24,4 +24,6 @@ public interface SearchStudent {
     List<Student> searchStudentByStudentId(Long studentId);
 
     List<Student> searchStudentByNationality(String nationality);
+
+    List<Student> searchStudentByAddress(String address);
 }
