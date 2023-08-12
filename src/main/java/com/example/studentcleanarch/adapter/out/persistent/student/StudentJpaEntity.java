@@ -76,8 +76,17 @@ public class StudentJpaEntity {
     @Column(name = "BirthParent")
     private Date birthParent;
 
+    @Column(name = "AddressParent")
+    private String addressParent;
+
     @Column(name = "PhoneNumberParent")
     private Long phoneNumberParent;
+
+    @Column(name = "AdmissionDate")
+    private Date admissionDate;
+
+    @Column(name = "Active")
+    private Boolean active;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -89,9 +98,4 @@ public class StudentJpaEntity {
     @Column(name = "updatedDate")
     private Date updatedDate;
 
-    @Column(name = "AdmissionDate")
-    private Date admissionDate;
-
-    @Column(name = "Active")
-    private Boolean active;
 }

@@ -32,6 +32,7 @@ public class DeleteStudentCommand {
     private String StudentRelation;
     private String JobTitle;
     private Date BirthParent;
+    private String addressParent;
     private Long PhoneNumberParent;
     private Date AdmissionDate;
     private Boolean Active;

@@ -28,6 +28,7 @@ public class CreateStudentRequest {
     private String studentRelation;
     private String jobTitle;
     private Date birthParent;
+    private String addressParent;
     private Long phoneNumberParent;
     private Date admissionDate;
     private boolean active;
@@ -51,6 +52,7 @@ public class CreateStudentRequest {
                 .StudentRelation(studentRelation)
                 .JobTitle(jobTitle)
                 .BirthParent(birthParent)
+                .AddressParent(addressParent)
                 .PhoneNumberParent(phoneNumberParent)
                 .AdmissionDate(admissionDate)
                 .Active(active)

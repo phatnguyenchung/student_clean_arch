@@ -8,9 +8,6 @@ import com.example.studentcleanarch.domain.Student;
 import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
-import java.time.Instant;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 
@@ -23,14 +20,6 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     private final DeleteStudent deleteStudent;
     private final SearchStudent searchStudent;
     private final SortStudent sortStudent;
-
-    public static int calculateAge(Date DateOfBirth) {
-        Calendar birthCalendar = Calendar.getInstance();
-        birthCalendar.setTime(DateOfBirth);
-        Calendar currentCalendar = Calendar.getInstance();
-        currentCalendar.setTime(new Date());
-        return currentCalendar.get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);
-    }
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -53,24 +42,12 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .studentRelation(createStudentCommand.getStudentRelation())
                 .jobTitle(createStudentCommand.getJobTitle())
                 .birthParent(createStudentCommand.getBirthParent())
+                .addressParent(createStudentCommand.getAddressParent())
                 .phoneNumberParent(createStudentCommand.getPhoneNumberParent())
                 .admissionDate(createStudentCommand.getAdmissionDate())
                 .active(createStudentCommand.getActive())
                 .build();
-        int studentAge = calculateAge(createStudentCommand.getBirthDate());
-        int parentAge = calculateAge(createStudentCommand.getBirthParent());
-        if (createStudentCommand.getExpiredDate().before(createStudentCommand.getIssueDate())
-                && createStudentCommand.getExpiredDate().before(Date.from(Instant.now()))) {
-            return CreateStudentCommandResult.builder().status(false).build();
-        } else if (createStudentCommand.getBirthDate().after(createStudentCommand.getIssueDate())) {
-            return CreateStudentCommandResult.builder().status(false).build();
-        } else if (studentAge < 18 && parentAge < 18 && parentAge < studentAge && (parentAge - studentAge) < 18)
-            return CreateStudentCommandResult.builder().status(false).build();
-        else if (createStudentCommand.getCIC().length() != 12 || createStudentCommand.getCIC().length() != 9) {
-            return CreateStudentCommandResult.builder().status(false).build();
-        } else {
-            createStudent.saveStudent(student);
-        }
+        createStudent.saveStudent(student);
         return CreateStudentCommandResult.builder().status(true).build();
     }
 
@@ -96,24 +73,12 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .studentRelation(updateStudentCommand.getStudentRelation())
                 .jobTitle(updateStudentCommand.getJobTitle())
                 .birthParent(updateStudentCommand.getBirthParent())
+                .addressParent(updateStudentCommand.getAddressParent())
                 .phoneNumberParent(updateStudentCommand.getPhoneNumberParent())
                 .admissionDate(updateStudentCommand.getAdmissionDate())
                 .active(updateStudentCommand.getActive())
                 .build();
-        int studentAge = calculateAge(updateStudentCommand.getBirthDate());
-        int parentAge = calculateAge(updateStudentCommand.getBirthParent());
-        if (updateStudentCommand.getExpiredDate().before(updateStudentCommand.getIssueDate())
-                && updateStudentCommand.getExpiredDate().before(Date.from(Instant.now()))) {
-            return UpdateStudentCommandResult.builder().status(false).build();
-        } else if (updateStudentCommand.getBirthDate().after(updateStudentCommand.getIssueDate())) {
-            return UpdateStudentCommandResult.builder().status(false).build();
-        } else if (studentAge < 18 && parentAge < 18 && parentAge < studentAge && (parentAge - studentAge) < 18) {
-            return UpdateStudentCommandResult.builder().status(false).build();
-        } else if (updateStudentCommand.getCIC().length() != 12 || updateStudentCommand.getCIC().length() != 9) {
-            return UpdateStudentCommandResult.builder().status(false).build();
-        } else {
-            updateStudent.updateStudent(student);
-        }
+        updateStudent.updateStudent(student);
         return UpdateStudentCommandResult.builder().status(true).build();
     }
 
@@ -148,6 +113,7 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
                 .studentRelation(deleteStudentCommand.getStudentRelation())
                 .jobTitle(deleteStudentCommand.getJobTitle())
                 .birthParent(deleteStudentCommand.getBirthParent())
+                .addressParent(deleteStudentCommand.getAddressParent())
                 .phoneNumberParent(deleteStudentCommand.getPhoneNumberParent())
                 .admissionDate(deleteStudentCommand.getAdmissionDate())
                 .active(deleteStudentCommand.getActive())

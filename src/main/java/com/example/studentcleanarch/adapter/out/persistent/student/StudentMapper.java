@@ -24,6 +24,7 @@ public class StudentMapper {
                 .studentRelation(student.getStudentRelation())
                 .jobTitle(student.getJobTitle())
                 .birthParent(student.getBirthParent())
+                .addressParent(student.getAddressParent())
                 .phoneNumberParent(student.getPhoneNumberParent())
                 .admissionDate(student.getAdmissionDate())
                 .active(student.getActive())
@@ -50,6 +51,7 @@ public class StudentMapper {
                 .studentRelation(entity.getStudentRelation())
                 .jobTitle(entity.getJobTitle())
                 .birthParent(entity.getBirthParent())
+                .addressParent(entity.getAddressParent())
                 .phoneNumberParent(entity.getPhoneNumberParent())
                 .admissionDate(entity.getAdmissionDate())
                 .active(entity.getActive())
@@ -75,6 +77,7 @@ public class StudentMapper {
         entity.setStudentRelation(student.getStudentRelation());
         entity.setJobTitle(student.getJobTitle());
         entity.setBirthParent(student.getBirthParent());
+        entity.setAddressParent(student.getAddressParent());
         entity.setPhoneNumberParent(student.getPhoneNumberParent());
         entity.setAdmissionDate(student.getAdmissionDate());
         entity.setActive(student.getActive());

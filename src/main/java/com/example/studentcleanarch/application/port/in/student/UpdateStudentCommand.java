@@ -28,6 +28,7 @@ public class UpdateStudentCommand {
     private String StudentRelation;
     private String JobTitle;
     private Date BirthParent;
+    private String AddressParent;
     private Long PhoneNumberParent;
     private Date AdmissionDate;
     private Boolean Active;

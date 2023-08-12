@@ -28,6 +28,7 @@ public class Student {
     private String studentRelation;
     private String jobTitle;
     private Date birthParent;
+    private String addressParent;
     private Long phoneNumberParent;
     private Date admissionDate;
     private Boolean active;
