@@ -2,6 +2,7 @@ package com.example.studentcleanarch.application.service;
 
 import com.example.studentcleanarch.application.port.in.teacher.*;
 import com.example.studentcleanarch.application.port.out.teacher.CreateTeacher;
+import com.example.studentcleanarch.application.port.out.teacher.DeleteTeacher;
 import com.example.studentcleanarch.application.port.out.teacher.UpdateTeacher;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Teacher;
@@ -11,10 +12,11 @@ import javax.transaction.Transactional;
 
 @UseCase
 @RequiredArgsConstructor
-public class TeacherService implements CreateTeacherUseCase, UpdateTeacherUseCase {
+public class TeacherService implements CreateTeacherUseCase, UpdateTeacherUseCase, DeleteTeacherUseCase {
 
     private final CreateTeacher createTeacher;
     private final UpdateTeacher updateTeacher;
+    private final DeleteTeacher deleteTeacher;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -63,5 +65,14 @@ public class TeacherService implements CreateTeacherUseCase, UpdateTeacherUseCas
                 .build();
         updateTeacher.updateTeacher(teacher);
         return UpdateTeacherCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public DeleteTeacherCommandResult deleteTeacher(DeleteTeacherCommand deleteTeacherCommand) {
+        Teacher teacher = Teacher.builder()
+                .id(deleteTeacherCommand.getId())
+                .build();
+        deleteTeacher.deleteTeacher(teacher);
+        return DeleteTeacherCommandResult.builder().status(true).build();
     }
 }

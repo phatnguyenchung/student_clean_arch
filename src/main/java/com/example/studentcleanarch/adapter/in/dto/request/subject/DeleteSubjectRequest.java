@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class DeleteSubjectRequest {
+
     private Long id;
 
     public DeleteSubjectCommand toCommand() {
