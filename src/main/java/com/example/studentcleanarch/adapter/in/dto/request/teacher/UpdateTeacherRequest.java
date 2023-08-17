@@ -24,6 +24,7 @@ public class UpdateTeacherRequest {
     private Date birthDate;
     private String nationality;
     private String address;
+    private String phoneNumber;
     private Boolean active;
 
     public UpdateTeacherCommand toCommand() {
@@ -41,6 +42,7 @@ public class UpdateTeacherRequest {
                 .birthDate(birthDate)
                 .nationality(nationality)
                 .address(address)
+                .phoneNumber(phoneNumber)
                 .active(active)
                 .build();
     }

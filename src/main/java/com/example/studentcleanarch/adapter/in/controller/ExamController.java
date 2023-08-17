@@ -111,7 +111,7 @@ public class ExamController {
 
     @GetMapping("/getexambyid")
     public ResponseEntity<Object> getexambyid(@RequestParam Long id) {
-        return new ResponseEntity<Object>(getExamUseCase.getExamById(id), HttpStatus.OK);
+        return new ResponseEntity<>(getExamUseCase.getExamById(id), HttpStatus.OK);
     }
 
     @GetMapping

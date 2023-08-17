@@ -4,10 +4,7 @@ import com.example.studentcleanarch.adapter.in.dto.request.teacher.CreateTeacher
 import com.example.studentcleanarch.adapter.in.dto.request.teacher.DeleteTeacherRequest;
 import com.example.studentcleanarch.adapter.in.dto.request.teacher.UpdateTeacherRequest;
 import com.example.studentcleanarch.adapter.in.dto.response.ApiResponse;
-import com.example.studentcleanarch.application.port.in.teacher.CreateTeacherUseCase;
-import com.example.studentcleanarch.application.port.in.teacher.DeleteTeacherUseCase;
-import com.example.studentcleanarch.application.port.in.teacher.GetTeacherUseCase;
-import com.example.studentcleanarch.application.port.in.teacher.UpdateTeacherUseCase;
+import com.example.studentcleanarch.application.port.in.teacher.*;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,6 +21,8 @@ public class TeacherController {
     private final UpdateTeacherUseCase updateTeacherUseCase;
     private final DeleteTeacherUseCase deleteTeacherUseCase;
     private final GetTeacherUseCase getTeacherUseCase;
+    private final SearchTeacherUseCase searchTeacherUseCase;
+    private final SortTeacherUseCase sortTeacherUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateTeacherRequest createTeacherRequest) {
@@ -47,6 +46,56 @@ public class TeacherController {
 
     @GetMapping("/getteacherbyid")
     public ResponseEntity<Object> getteacherbyid(@RequestParam Long id) {
-        return new ResponseEntity<Object>(getTeacherUseCase.getTeacherById(id), HttpStatus.OK);
+        return new ResponseEntity<>(getTeacherUseCase.getTeacherById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchteacherbylastname")
+    public ResponseEntity<Object> searchteacherbylastname(@RequestParam String teacherLastName) {
+        return new ResponseEntity<>(searchTeacherUseCase.searchTeacherByLastName(teacherLastName), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchteacherbycic")
+    public ResponseEntity<Object> searchteacherbycic(@RequestParam String CIC) {
+        return new ResponseEntity<>(searchTeacherUseCase.searchTeacherByCIC(CIC), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchteacherbyaddress")
+    public ResponseEntity<Object> searchteacherbyaddress(@RequestParam String address) {
+        return new ResponseEntity<>(searchTeacherUseCase.searchTeacherByAddress(address), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchteacherbyphonenumber")
+    public ResponseEntity<Object> searchteacherbyphonenumber(@RequestParam String phoneNumber) {
+        return new ResponseEntity<>(searchTeacherUseCase.searchTeacherByPhoneNumber(phoneNumber), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortiddesc")
+    public ResponseEntity<Object> sortiddesc() {
+        return new ResponseEntity<>(sortTeacherUseCase.sortTeacherByIdDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortidasc")
+    public ResponseEntity<Object> sortidasc() {
+        return new ResponseEntity<>(sortTeacherUseCase.sortTeacherByIdAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortteacheriddesc")
+    public ResponseEntity<Object> sortteacheriddesc() {
+        return new ResponseEntity<>(sortTeacherUseCase.sortTeacherByTeacherIdDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortteacheridasc")
+    public ResponseEntity<Object> sortteacheridasc() {
+        return new ResponseEntity<>(sortTeacherUseCase.sortTeacherByTeacherIdAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortteacherlastnamedesc")
+    public ResponseEntity<Object> sortteacherlastnamedesc() {
+        return new ResponseEntity<>(sortTeacherUseCase.sortTeacherByTeacherLastNameDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortteacherlastnameasc")
+    public ResponseEntity<Object> sortteacherlastnameasc() {
+        return new ResponseEntity<>(sortTeacherUseCase.sortTeacherByTeacherLastNameAsc(), HttpStatus.OK);
     }
 }

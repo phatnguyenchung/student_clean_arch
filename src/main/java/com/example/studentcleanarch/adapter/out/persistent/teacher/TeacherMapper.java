@@ -19,6 +19,7 @@ public class TeacherMapper {
                 .birthDate(teacher.getBirthDate())
                 .nationality(teacher.getNationality())
                 .address(teacher.getAddress())
+                .phoneNumber(teacher.getPhoneNumber())
                 .active(teacher.getActive())
                 .build();
     }
@@ -38,6 +39,7 @@ public class TeacherMapper {
                 .birthDate(entity.getBirthDate())
                 .nationality(entity.getNationality())
                 .address(entity.getAddress())
+                .phoneNumber(entity.getPhoneNumber())
                 .active(entity.isActive())
                 .build();
     }
@@ -56,6 +58,7 @@ public class TeacherMapper {
         entity.setBirthDate(teacher.getBirthDate());
         entity.setNationality(teacher.getNationality());
         entity.setAddress(teacher.getAddress());
+        entity.setPhoneNumber(teacher.getPhoneNumber());
         entity.setActive(teacher.getActive());
         return entity;
     }

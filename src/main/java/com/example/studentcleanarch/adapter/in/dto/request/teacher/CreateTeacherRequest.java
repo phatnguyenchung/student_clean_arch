@@ -23,6 +23,7 @@ public class CreateTeacherRequest {
     private Date birthDate;
     private String nationality;
     private String address;
+    private String phoneNumber;
     private Boolean active;
 
     public CreateTeacherCommand toCommand() {
@@ -39,6 +40,7 @@ public class CreateTeacherRequest {
                 .birthDate(birthDate)
                 .nationality(nationality)
                 .address(address)
+                .phoneNumber(phoneNumber)
                 .active(active)
                 .build();
     }

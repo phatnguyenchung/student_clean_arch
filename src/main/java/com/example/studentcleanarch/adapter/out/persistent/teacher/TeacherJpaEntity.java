@@ -54,6 +54,9 @@ public class TeacherJpaEntity {
     @Column(name = "Address")
     private String address;
 
+    @Column(name = "PhoneNumber")
+    private String phoneNumber;
+
     @Column(name = "Active")
     private boolean active;
 }

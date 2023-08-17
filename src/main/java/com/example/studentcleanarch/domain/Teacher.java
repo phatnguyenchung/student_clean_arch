@@ -23,5 +23,6 @@ public class Teacher {
     private Date birthDate;
     private String nationality;
     private String address;
+    private String phoneNumber;
     private Boolean active;
 }

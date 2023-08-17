@@ -52,22 +52,22 @@ public class SubjectController {
 
     @GetMapping("/searchbysubjectname")
     public ResponseEntity<Object> searchbysubjectname(@RequestParam String subjectName) {
-        return new ResponseEntity<Object>(searchSubjectUseCase.searchSubject(subjectName), HttpStatus.OK);
+        return new ResponseEntity<>(searchSubjectUseCase.searchSubject(subjectName), HttpStatus.OK);
     }
 
     @GetMapping("/searchsubjectbystartdate")
     public ResponseEntity<Object> searchsubjectbystartdate(@RequestParam Date startDate) {
-        return new ResponseEntity<Object>(searchSubjectUseCase.searchSubjectByStartDate(startDate), HttpStatus.OK);
+        return new ResponseEntity<>(searchSubjectUseCase.searchSubjectByStartDate(startDate), HttpStatus.OK);
     }
 
     @GetMapping("/sortsubjectnamedesc")
     public ResponseEntity<Object> sortsubjectnamedesc() {
-        return new ResponseEntity<Object>(sortSubjectUseCase.sortSubjectNameOrderByDesc(), HttpStatus.OK);
+        return new ResponseEntity<>(sortSubjectUseCase.sortSubjectNameOrderByDesc(), HttpStatus.OK);
     }
 
     @GetMapping("/sortsubjectnameasc")
     public ResponseEntity<Object> sortsubjectnameasc() {
-        return new ResponseEntity<Object>(sortSubjectUseCase.sortSubjectNameOrderByAsc(), HttpStatus.OK);
+        return new ResponseEntity<>(sortSubjectUseCase.sortSubjectNameOrderByAsc(), HttpStatus.OK);
     }
 
     @GetMapping("/sortiddesc")
