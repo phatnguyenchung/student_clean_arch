@@ -23,5 +23,5 @@ public class Teacher {
     private Date birthDate;
     private String nationality;
     private String address;
-    private boolean active;
+    private Boolean active;
 }
