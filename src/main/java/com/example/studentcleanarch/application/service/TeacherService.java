@@ -3,20 +3,23 @@ package com.example.studentcleanarch.application.service;
 import com.example.studentcleanarch.application.port.in.teacher.*;
 import com.example.studentcleanarch.application.port.out.teacher.CreateTeacher;
 import com.example.studentcleanarch.application.port.out.teacher.DeleteTeacher;
+import com.example.studentcleanarch.application.port.out.teacher.GetTeacher;
 import com.example.studentcleanarch.application.port.out.teacher.UpdateTeacher;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Teacher;
 import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @UseCase
 @RequiredArgsConstructor
-public class TeacherService implements CreateTeacherUseCase, UpdateTeacherUseCase, DeleteTeacherUseCase {
+public class TeacherService implements CreateTeacherUseCase, UpdateTeacherUseCase, DeleteTeacherUseCase, GetTeacherUseCase {
 
     private final CreateTeacher createTeacher;
     private final UpdateTeacher updateTeacher;
     private final DeleteTeacher deleteTeacher;
+    private final GetTeacher getTeacher;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -74,5 +77,15 @@ public class TeacherService implements CreateTeacherUseCase, UpdateTeacherUseCas
                 .build();
         deleteTeacher.deleteTeacher(teacher);
         return DeleteTeacherCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public List<Teacher> getAllTeacher() {
+        return getTeacher.getAllTeacher();
+    }
+
+    @Override
+    public Teacher getTeacherById(Long id) {
+        return getTeacher.getTeacherById(id);
     }
 }
