@@ -27,6 +27,9 @@ public class SubjectJpaEntity {
     @Column(name = "SubjectName")
     private String subjectName;
 
+    @Column(name = "TeacherId")
+    private Long teacherId;
+
     @Column(name = "StartDate")
     private Date startDate;
 

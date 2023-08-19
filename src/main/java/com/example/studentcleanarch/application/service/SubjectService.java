@@ -29,6 +29,7 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
         Subject subject = Subject.builder()
                 .subjectId(createSubjectCommand.getSubjectId())
                 .subjectName(createSubjectCommand.getSubjectName())
+                .teacherId(createSubjectCommand.getTeacherId())
                 .startDate(createSubjectCommand.getStartDate())
                 .endDate(createSubjectCommand.getEndDate())
                 .build();
@@ -48,6 +49,7 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
                 .id(updateSubjectCommand.getId())
                 .subjectId(updateSubjectCommand.getSubjectId())
                 .subjectName(updateSubjectCommand.getSubjectName())
+                .teacherId(updateSubjectCommand.getTeacherId())
                 .startDate(updateSubjectCommand.getStartDate())
                 .endDate(updateSubjectCommand.getEndDate())
                 .build();

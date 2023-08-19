@@ -12,6 +12,7 @@ public class CreateSubjectCommand {
     @NotBlank
     private Long subjectId;
     private String subjectName;
+    private Long teacherId;
     private Date startDate;
     private Date endDate;
 }

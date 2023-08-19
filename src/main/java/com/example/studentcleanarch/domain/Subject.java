@@ -13,6 +13,7 @@ public class Subject {
     private Long id;
     private Long subjectId;
     private String subjectName;
+    private Long teacherId;
     private Date startDate;
     private Date endDate;
 }
