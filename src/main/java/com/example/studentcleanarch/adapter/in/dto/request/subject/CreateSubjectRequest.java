@@ -14,6 +14,7 @@ public class CreateSubjectRequest {
 
     private Long subjectId;
     private String subjectName;
+    private Long teacherId;
     private Date startDate;
     private Date endDate;
 
@@ -21,6 +22,7 @@ public class CreateSubjectRequest {
         return CreateSubjectCommand.builder()
                 .subjectId(subjectId)
                 .subjectName(subjectName)
+                .teacherId(teacherId)
                 .startDate(startDate)
                 .endDate(endDate)
                 .build();

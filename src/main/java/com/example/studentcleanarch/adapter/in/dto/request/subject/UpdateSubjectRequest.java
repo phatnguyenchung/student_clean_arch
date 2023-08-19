@@ -14,6 +14,7 @@ public class UpdateSubjectRequest {
     private Long id;
     private Long subjectId;
     private String subjectName;
+    private Long teacherId;
     private Date startDate;
     private Date endDate;
 
@@ -22,6 +23,7 @@ public class UpdateSubjectRequest {
                 .id(id)
                 .subjectId(subjectId)
                 .subjectName(subjectName)
+                .teacherId(teacherId)
                 .startDate(startDate)
                 .endDate(endDate)
                 .build();
