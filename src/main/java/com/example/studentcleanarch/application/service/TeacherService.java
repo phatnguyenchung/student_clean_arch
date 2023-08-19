@@ -113,31 +113,41 @@ public class TeacherService implements CreateTeacherUseCase, UpdateTeacherUseCas
 
     @Override
     public List<TeacherJpaEntity> sortTeacherByIdAsc() {
-        return null;
+        return sortTeacher.sortTeacherByIdAsc();
     }
 
     @Override
     public List<TeacherJpaEntity> sortTeacherByIdDesc() {
-        return null;
+        return sortTeacher.sortTeacherByIdDesc();
     }
 
     @Override
     public List<TeacherJpaEntity> sortTeacherByTeacherIdAsc() {
-        return null;
+        return sortTeacher.sortTeacherByTeacherIdAsc();
     }
 
     @Override
     public List<TeacherJpaEntity> sortTeacherByTeacherIdDesc() {
-        return null;
+        return sortTeacher.sortTeacherByTeacherIdDesc();
     }
 
     @Override
     public List<TeacherJpaEntity> sortTeacherByTeacherLastNameAsc() {
-        return null;
+        return sortTeacher.sortTeacherByTeacherLastNameAsc();
     }
 
     @Override
     public List<TeacherJpaEntity> sortTeacherByTeacherLastNameDesc() {
-        return null;
+        return sortTeacher.sortTeacherByTeacherLastNameDesc();
+    }
+
+    @Override
+    public List<TeacherJpaEntity> sortTeacherByTeacherFirstNameAsc() {
+        return sortTeacher.sortTeacherByTeacherFirstNameAsc();
+    }
+
+    @Override
+    public List<TeacherJpaEntity> sortTeacherByTeacherFirstNameDesc() {
+        return sortTeacher.sortTeacherByTeacherFirstNameDesc();
     }
 }

@@ -98,4 +98,15 @@ public class TeacherController {
     public ResponseEntity<Object> sortteacherlastnameasc() {
         return new ResponseEntity<>(sortTeacherUseCase.sortTeacherByTeacherLastNameAsc(), HttpStatus.OK);
     }
+
+
+    @GetMapping("/sortteacherfirstnamedesc")
+    public ResponseEntity<Object> sortteacherfirstnamedesc() {
+        return new ResponseEntity<>(sortTeacherUseCase.sortTeacherByTeacherFirstNameDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortteacherfirstnameasc")
+    public ResponseEntity<Object> sortteacherfirstnameasc() {
+        return new ResponseEntity<>(sortTeacherUseCase.sortTeacherByTeacherFirstNameAsc(), HttpStatus.OK);
+    }
 }

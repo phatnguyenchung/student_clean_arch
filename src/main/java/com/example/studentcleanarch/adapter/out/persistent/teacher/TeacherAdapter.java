@@ -159,4 +159,14 @@ public class TeacherAdapter implements CreateTeacher, UpdateTeacher, DeleteTeach
     public List<TeacherJpaEntity> sortTeacherByTeacherLastNameDesc() {
         return repository.findAll(Sort.by(Sort.Direction.DESC, "teacherLastName"));
     }
+
+    @Override
+    public List<TeacherJpaEntity> sortTeacherByTeacherFirstNameAsc() {
+        return repository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "teacherFirstName"));
+    }
+
+    @Override
+    public List<TeacherJpaEntity> sortTeacherByTeacherFirstNameDesc() {
+        return repository.findAll(Sort.by(Sort.Direction.DESC, "teacherFirstName"));
+    }
 }

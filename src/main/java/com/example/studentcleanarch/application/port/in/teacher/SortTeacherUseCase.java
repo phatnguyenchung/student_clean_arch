@@ -17,4 +17,8 @@ public interface SortTeacherUseCase {
     List<TeacherJpaEntity> sortTeacherByTeacherLastNameAsc();
 
     List<TeacherJpaEntity> sortTeacherByTeacherLastNameDesc();
+
+    List<TeacherJpaEntity> sortTeacherByTeacherFirstNameAsc();
+
+    List<TeacherJpaEntity> sortTeacherByTeacherFirstNameDesc();
 }
