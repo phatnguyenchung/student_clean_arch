@@ -27,6 +27,9 @@ public class ExamJpaEntity {
     @Column(name = "SubjectId")
     private Long subjectId;
 
+    @Column(name = "TeacherId")
+    private Long teacherId;
+
     @Column(name = "ExamDate")
     private Date examDate;
 

@@ -13,6 +13,8 @@ public class CreateExamCommand {
     private Long StudentId;
     @NotBlank
     private Long SubjectId;
+    @NotBlank
+    private Long TeacherId;
     private Date ExamDate;
     private Integer Score;
 }

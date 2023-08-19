@@ -28,6 +28,7 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
         Exam exam = Exam.builder()
                 .studentId(createExamCommand.getStudentId())
                 .subjectId(createExamCommand.getSubjectId())
+                .teacherId(createExamCommand.getTeacherId())
                 .examDate(createExamCommand.getExamDate())
                 .score(createExamCommand.getScore())
                 .build();
@@ -48,6 +49,7 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
                 .id(updateExamCommand.getId())
                 .studentId(updateExamCommand.getStudentId())
                 .subjectId(updateExamCommand.getSubjectId())
+                .teacherId(updateExamCommand.getTeacherId())
                 .examDate(updateExamCommand.getExamDate())
                 .score(updateExamCommand.getScore())
                 .build();
@@ -148,6 +150,7 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
                 .id(deleteExamCommand.getId())
                 .studentId(deleteExamCommand.getStudentId())
                 .subjectId(deleteExamCommand.getSubjectId())
+                .teacherId(deleteExamCommand.getTeacherId())
                 .examDate(deleteExamCommand.getExamDate())
                 .score(deleteExamCommand.getScore())
                 .build();

@@ -13,6 +13,7 @@ import java.util.Date;
 public class CreateExamRequest {
     private Long studentId;
     private Long subjectId;
+    private Long teacherId;
     private Date examDate;
     private int score;
 
@@ -20,6 +21,7 @@ public class CreateExamRequest {
         return CreateExamCommand.builder()
                 .StudentId(studentId)
                 .SubjectId(subjectId)
+                .TeacherId(teacherId)
                 .ExamDate(examDate)
                 .Score(score)
                 .build();

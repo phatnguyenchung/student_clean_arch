@@ -13,6 +13,7 @@ public class Exam {
     private Long id;
     private Long studentId;
     private Long subjectId;
+    private Long teacherId;
     private Date examDate;
     private int score;
 }

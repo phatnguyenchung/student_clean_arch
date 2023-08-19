@@ -15,6 +15,7 @@ public class UpdateExamRequest {
     private Long id;
     private Long studentId;
     private Long subjectId;
+    private Long teacherId;
     private Date examDate;
     private int score;
 
@@ -23,6 +24,7 @@ public class UpdateExamRequest {
                 .id(id)
                 .StudentId(studentId)
                 .SubjectId(subjectId)
+                .TeacherId(teacherId)
                 .ExamDate(examDate)
                 .Score(score)
                 .build();
