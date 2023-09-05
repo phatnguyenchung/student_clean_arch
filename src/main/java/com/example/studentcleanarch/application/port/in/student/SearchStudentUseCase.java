@@ -8,6 +8,8 @@ public interface SearchStudentUseCase {
 
     List<Student> searchStudentByStudentLastName(String studentLastName);
 
+    List<Student> searchStudentByStudentFirstName(String studentFirstName);
+
     List<Student> searchStudentByPhoneNumber(Long phoneNumber);
 
     List<Student> searchStudentByCIC(String cic);

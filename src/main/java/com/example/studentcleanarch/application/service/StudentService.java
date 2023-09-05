@@ -127,6 +127,11 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
         return searchStudent.searchStudentByLastName(studentLastName);
     }
 
+    @Override
+    public List<Student> searchStudentByStudentFirstName(String studentFirstName) {
+        return searchStudent.searchStudentByFirstName(studentFirstName);
+    }
+
 
     @Override
     public List<Student> searchStudentByPhoneNumber(Long phoneNumber) {

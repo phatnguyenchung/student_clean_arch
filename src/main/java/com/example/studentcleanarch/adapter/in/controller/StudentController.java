@@ -48,6 +48,11 @@ public class StudentController {
         return new ResponseEntity<>(searchStudentUseCase.searchStudentByStudentLastName(studentLastName), HttpStatus.OK);
     }
 
+    @GetMapping("/searchstudentbyfirstname")
+    public ResponseEntity<Object> searchstudentbyfirstname(@RequestParam String studentFirstName) {
+        return new ResponseEntity<>(searchStudentUseCase.searchStudentByStudentFirstName(studentFirstName), HttpStatus.OK);
+    }
+
     @GetMapping("/searchstudentbyphonenumber")
     public ResponseEntity<Object> searchstudentphonenumber(@RequestParam Long phoneNumber) {
         return new ResponseEntity<>(searchStudentUseCase.searchStudentByPhoneNumber(phoneNumber), HttpStatus.OK);

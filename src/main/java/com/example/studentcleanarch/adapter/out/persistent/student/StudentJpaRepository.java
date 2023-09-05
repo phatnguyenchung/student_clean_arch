@@ -9,8 +9,12 @@ import java.util.List;
 
 @Repository
 public interface StudentJpaRepository extends JpaRepository<StudentJpaEntity, Long>, JpaSpecificationExecutor<StudentJpaEntity> {
+
     @Query(value = "SELECT * FROM tblStudent WHERE studentLastName LIKE %?1%", nativeQuery = true)
-    List<StudentJpaEntity> findByStudentLastName(String studentName);
+    List<StudentJpaEntity> findByStudentFirstName(String studentFirstName);
+
+    @Query(value = "SELECT * FROM tblStudent WHERE studentLastName LIKE %?1%", nativeQuery = true)
+    List<StudentJpaEntity> findByStudentLastName(String studentLastName);
 
     @Query(value = "SELECT * FROM tblStudent WHERE phoneNumber LIKE %?1%", nativeQuery = true)
     List<StudentJpaEntity> findByPhoneNumber(Long phoneNumber);

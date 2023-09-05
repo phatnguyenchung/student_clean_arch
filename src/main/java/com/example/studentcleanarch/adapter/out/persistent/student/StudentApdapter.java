@@ -70,6 +70,21 @@ public class StudentApdapter implements CreateStudent, UpdateStudent, GetStudent
     }
 
     @Override
+    public List<Student> searchStudentByFirstName(String studentFirstName) {
+        try {
+            List<StudentJpaEntity> studentJpaEntityList = studentJpaRepository.findByStudentFirstName(studentFirstName);
+            for (StudentJpaEntity entity : studentJpaEntityList) {
+                System.out.println(entity.getStudentId());
+            }
+            return studentJpaRepository.findByStudentFirstName(studentFirstName).stream()
+                    .map(StudentMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Student could not found first name:" + studentFirstName);
+        }
+    }
+
+    @Override
 
 
     public List<Student> searchStudentByLastName(String studentLastName) {
