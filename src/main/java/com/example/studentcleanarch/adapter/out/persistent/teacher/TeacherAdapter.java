@@ -86,6 +86,21 @@ public class TeacherAdapter implements CreateTeacher, UpdateTeacher, DeleteTeach
     }
 
     @Override
+    public List<Teacher> searchTeacherByFirstName(String teacherFirstName) {
+        try {
+            List<TeacherJpaEntity> teacherJpaEntityList = repository.searchTeacherByFirstName(teacherFirstName);
+            for (TeacherJpaEntity entity : teacherJpaEntityList) {
+                System.out.println(entity.getTeacherId());
+            }
+            return repository.searchTeacherByFirstName(teacherFirstName).stream()
+                    .map(TeacherMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Teacher could not found first name:" + teacherFirstName);
+        }
+    }
+
+    @Override
     public List<Teacher> searchTeacherByCIC(String CIC) {
         try {
             List<TeacherJpaEntity> teacherJpaEntityList = repository.searchTeacherByCIC(CIC);

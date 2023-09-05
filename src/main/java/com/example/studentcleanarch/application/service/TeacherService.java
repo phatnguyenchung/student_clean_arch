@@ -97,6 +97,11 @@ public class TeacherService implements CreateTeacherUseCase, UpdateTeacherUseCas
     }
 
     @Override
+    public List<Teacher> searchTeacherByFirstName(String teacherFirstName) {
+        return searchTeacher.searchTeacherByFirstName(teacherFirstName);
+    }
+
+    @Override
     public List<Teacher> searchTeacherByCIC(String CIC) {
         return searchTeacher.searchTeacherByCIC(CIC);
     }

@@ -10,6 +10,8 @@ public interface SearchTeacher {
 
     List<Teacher> searchTeacherByLastName(String teacherLastName);
 
+    List<Teacher> searchTeacherByFirstName(String teacherFirstName);
+
     List<Teacher> searchTeacherByCIC(String CIC);
 
     List<Teacher> searchTeacherByAddress(String address);

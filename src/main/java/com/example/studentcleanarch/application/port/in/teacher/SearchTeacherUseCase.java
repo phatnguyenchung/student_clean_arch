@@ -7,6 +7,8 @@ import java.util.List;
 public interface SearchTeacherUseCase {
     List<Teacher> searchTeacherByLastName(String teacherLastName);
 
+    List<Teacher> searchTeacherByFirstName(String teacherFirstName);
+
     List<Teacher> searchTeacherByCIC(String CIC);
 
     List<Teacher> searchTeacherByAddress(String address);

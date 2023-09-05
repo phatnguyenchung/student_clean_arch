@@ -13,6 +13,9 @@ public interface TeacherJpaRepository extends JpaRepository<TeacherJpaEntity, Lo
     @Query(value = "SELECT * FROM tblTeacher WHERE teacherLastName LIKE %?1%", nativeQuery = true)
     List<TeacherJpaEntity> searchTeacherByLastName(String teacherLastName);
 
+    @Query(value = "SELECT * FROM tblTeacher WHERE teacherFirstName LIKE %?1%", nativeQuery = true)
+    List<TeacherJpaEntity> searchTeacherByFirstName(String teacherFirstName);
+
     @Query(value = "SELECT * FROM tblTeacher WHERE CIC LIKE %?1%", nativeQuery = true)
     List<TeacherJpaEntity> searchTeacherByCIC(String cic);
 

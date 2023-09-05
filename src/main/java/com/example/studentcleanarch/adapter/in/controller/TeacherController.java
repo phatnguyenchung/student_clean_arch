@@ -54,6 +54,11 @@ public class TeacherController {
         return new ResponseEntity<>(searchTeacherUseCase.searchTeacherByLastName(teacherLastName), HttpStatus.OK);
     }
 
+    @GetMapping("/searchteacherbyfirstname")
+    public ResponseEntity<Object> searchteacherbyfirstname(@RequestParam String teacherFirstName) {
+        return new ResponseEntity<>(searchTeacherUseCase.searchTeacherByFirstName(teacherFirstName), HttpStatus.OK);
+    }
+
     @GetMapping("/searchteacherbycic")
     public ResponseEntity<Object> searchteacherbycic(@RequestParam String CIC) {
         return new ResponseEntity<>(searchTeacherUseCase.searchTeacherByCIC(CIC), HttpStatus.OK);
