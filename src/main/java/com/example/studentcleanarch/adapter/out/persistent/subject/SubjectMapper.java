@@ -12,6 +12,7 @@ public class SubjectMapper {
                 .teacherId(subject.getTeacherId())
                 .startDate(subject.getStartDate())
                 .endDate(subject.getEndDate())
+                .active(subject.getActive())
                 .build();
     }
 
@@ -23,6 +24,7 @@ public class SubjectMapper {
                 .teacherId(entity.getTeacherId())
                 .startDate(entity.getStartDate())
                 .endDate(entity.getEndDate())
+                .active(entity.isActive())
                 .build();
     }
 
@@ -33,6 +35,7 @@ public class SubjectMapper {
         entity.setTeacherId(subject.getTeacherId());
         entity.setStartDate(subject.getStartDate());
         entity.setEndDate(subject.getEndDate());
+        entity.setActive(subject.getActive());
         return entity;
     }
 }

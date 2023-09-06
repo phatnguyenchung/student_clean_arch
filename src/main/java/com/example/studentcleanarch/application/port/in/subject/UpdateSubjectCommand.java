@@ -16,4 +16,5 @@ public class UpdateSubjectCommand {
     private Long teacherId;
     private Date startDate;
     private Date endDate;
+    private Boolean active;
 }

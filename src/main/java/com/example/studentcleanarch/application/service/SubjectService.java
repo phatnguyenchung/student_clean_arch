@@ -32,6 +32,7 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
                 .teacherId(createSubjectCommand.getTeacherId())
                 .startDate(createSubjectCommand.getStartDate())
                 .endDate(createSubjectCommand.getEndDate())
+                .active(createSubjectCommand.getActive())
                 .build();
         if (createSubjectCommand.getStartDate().after(createSubjectCommand.getEndDate()) &&
                 createSubjectCommand.getStartDate().before(Date.from(Instant.now()))) {
@@ -52,6 +53,7 @@ public class SubjectService implements CreateSubjectUseCase, UpdateSubjectUseCas
                 .teacherId(updateSubjectCommand.getTeacherId())
                 .startDate(updateSubjectCommand.getStartDate())
                 .endDate(updateSubjectCommand.getEndDate())
+                .active(updateSubjectCommand.getActive())
                 .build();
         if (updateSubjectCommand.getStartDate().after(updateSubjectCommand.getEndDate()) &&
                 updateSubjectCommand.getStartDate().before(Date.from(Instant.now()))) {

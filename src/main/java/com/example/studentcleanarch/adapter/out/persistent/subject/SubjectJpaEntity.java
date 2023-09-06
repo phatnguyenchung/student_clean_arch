@@ -44,4 +44,7 @@ public class SubjectJpaEntity {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updatedDate")
     private Date updatedDate;
+
+    @Column(name = "Active")
+    private boolean active;
 }

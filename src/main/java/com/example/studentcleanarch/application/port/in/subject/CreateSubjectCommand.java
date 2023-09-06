@@ -15,4 +15,5 @@ public class CreateSubjectCommand {
     private Long teacherId;
     private Date startDate;
     private Date endDate;
+    private Boolean active;
 }

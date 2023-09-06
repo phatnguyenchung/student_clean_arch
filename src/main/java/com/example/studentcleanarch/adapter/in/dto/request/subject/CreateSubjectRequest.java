@@ -17,6 +17,7 @@ public class CreateSubjectRequest {
     private Long teacherId;
     private Date startDate;
     private Date endDate;
+    private Boolean active;
 
     public CreateSubjectCommand toCommand() {
         return CreateSubjectCommand.builder()
@@ -25,6 +26,7 @@ public class CreateSubjectRequest {
                 .teacherId(teacherId)
                 .startDate(startDate)
                 .endDate(endDate)
+                .active(active)
                 .build();
     }
 }
