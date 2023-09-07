@@ -148,11 +148,6 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
     public DeleteExamCommandResult deleteExam(DeleteExamCommand deleteExamCommand) {
         Exam exam = Exam.builder()
                 .id(deleteExamCommand.getId())
-                .studentId(deleteExamCommand.getStudentId())
-                .subjectId(deleteExamCommand.getSubjectId())
-                .teacherId(deleteExamCommand.getTeacherId())
-                .examDate(deleteExamCommand.getExamDate())
-                .score(deleteExamCommand.getScore())
                 .build();
         deleteExam.deleteExam(exam);
         return DeleteExamCommandResult.builder().status(true).build();

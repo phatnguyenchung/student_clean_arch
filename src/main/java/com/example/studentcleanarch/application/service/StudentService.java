@@ -96,27 +96,6 @@ public class StudentService implements CreateStudentUseCase, UpdateStudentUseCas
     public DeleteStudentCommandResult deleteStudent(DeleteStudentCommand deleteStudentCommand) {
         Student student = Student.builder()
                 .id(deleteStudentCommand.getId())
-                .studentId(deleteStudentCommand.getStudentId())
-                .studentFirstName(deleteStudentCommand.getStudentFirstName())
-                .studentLastName(deleteStudentCommand.getStudentLastName())
-                .className(deleteStudentCommand.getClassName())
-                .gender(deleteStudentCommand.getGender())
-                .cic(deleteStudentCommand.getCIC())
-                .issuePlace(deleteStudentCommand.getIssuePlace())
-                .issueDate(deleteStudentCommand.getIssueDate())
-                .expiredDate(deleteStudentCommand.getExpiredDate())
-                .birthDate(deleteStudentCommand.getBirthDate())
-                .nationality(deleteStudentCommand.getNationality())
-                .address(deleteStudentCommand.getAddress())
-                .phoneNumber(deleteStudentCommand.getPhoneNumber())
-                .studentParent(deleteStudentCommand.getStudentParent())
-                .studentRelation(deleteStudentCommand.getStudentRelation())
-                .jobTitle(deleteStudentCommand.getJobTitle())
-                .birthParent(deleteStudentCommand.getBirthParent())
-                .addressParent(deleteStudentCommand.getAddressParent())
-                .phoneNumberParent(deleteStudentCommand.getPhoneNumberParent())
-                .admissionDate(deleteStudentCommand.getAdmissionDate())
-                .active(deleteStudentCommand.getActive())
                 .build();
         deleteStudent.deleteStudent(student);
         return DeleteStudentCommandResult.builder().status(true).build();
