@@ -22,6 +22,7 @@ public class SalaryController {
     private final DeleteSalaryUseCase deleteSalaryUseCase;
     private final GetSalaryUseCase getSalaryUseCase;
     private final SearchSalaryUseCase searchSalaryUseCase;
+    private final SortSalaryUseCase sortSalaryUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateSalaryRequest createSalaryRequest) {
@@ -56,5 +57,35 @@ public class SalaryController {
     @GetMapping("/searchbyteacherid")
     public ResponseEntity<Object> searchbyteacherid(@RequestParam Long teacherId) {
         return new ResponseEntity<>(searchSalaryUseCase.searchByTeacherId(teacherId), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortsalarybyiddesc")
+    public ResponseEntity<Object> sortsalarybyiddesc() {
+        return new ResponseEntity<>(sortSalaryUseCase.sortByIdDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortsalarybyidasc")
+    public ResponseEntity<Object> sortsalarybyidasc() {
+        return new ResponseEntity<>(sortSalaryUseCase.sortByIdAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortsalarybyteacheriddesc")
+    public ResponseEntity<Object> sortsalarybyteacheriddesc() {
+        return new ResponseEntity<>(sortSalaryUseCase.sortByTeacherIdDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortsalarybyteacheridasc")
+    public ResponseEntity<Object> sortsalarybyteacheridasc() {
+        return new ResponseEntity<>(sortSalaryUseCase.sortByTeacherIdAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortsalarybysalarydesc")
+    public ResponseEntity<Object> sortsalarybysalarydesc() {
+        return new ResponseEntity<>(sortSalaryUseCase.sortBySalaryDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortsalarybysalaryasc")
+    public ResponseEntity<Object> sortsalarybysalaryasc() {
+        return new ResponseEntity<>(sortSalaryUseCase.sortBySalaryAsc(), HttpStatus.OK);
     }
 }

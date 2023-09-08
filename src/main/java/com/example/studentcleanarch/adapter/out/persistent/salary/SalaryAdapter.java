@@ -6,6 +6,7 @@ import com.example.studentcleanarch.common.PersistenceAdapter;
 import com.example.studentcleanarch.common.TimoException;
 import com.example.studentcleanarch.domain.Salary;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class SalaryAdapter implements CreateSalary, UpdateSalary, DeleteSalary, GetSalary, SearchSalary {
+public class SalaryAdapter implements CreateSalary, UpdateSalary, DeleteSalary, GetSalary, SearchSalary, SortSalary {
     private final SalaryJpaRepository repository;
 
     @Override
@@ -96,5 +97,35 @@ public class SalaryAdapter implements CreateSalary, UpdateSalary, DeleteSalary, 
         } catch (Exception e) {
             throw new TimoException(500, "Salary could not found teacher id:" + teacherId);
         }
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortByIdDesc() {
+        return repository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortByIdAsc() {
+        return repository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "id"));
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortByTeacherIdDesc() {
+        return repository.findAll(Sort.by(Sort.Direction.DESC, "teacherId"));
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortByTeacherIdAsc() {
+        return repository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "teacherId"));
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortBySalaryDesc() {
+        return repository.findAll(Sort.by(Sort.Direction.DESC, "salary"));
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortBySalaryAsc() {
+        return repository.findAll(Sort.by(Sort.DEFAULT_DIRECTION, "salary"));
     }
 }

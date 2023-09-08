@@ -1,5 +1,6 @@
 package com.example.studentcleanarch.application.service;
 
+import com.example.studentcleanarch.adapter.out.persistent.salary.SalaryJpaEntity;
 import com.example.studentcleanarch.application.port.in.salary.*;
 import com.example.studentcleanarch.application.port.out.salary.*;
 import com.example.studentcleanarch.common.UseCase;
@@ -11,12 +12,13 @@ import java.util.List;
 
 @UseCase
 @RequiredArgsConstructor
-public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, DeleteSalaryUseCase, GetSalaryUseCase, SearchSalaryUseCase {
+public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, DeleteSalaryUseCase, GetSalaryUseCase, SearchSalaryUseCase, SortSalaryUseCase {
     private final CreateSalary createSalary;
     private final UpdateSalary updateSalary;
     private final DeleteSalary deleteSalary;
     private final GetSalary getSalary;
     private final SearchSalary searchSalary;
+    private final SortSalary sortSalary;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -80,5 +82,35 @@ public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, 
     @Override
     public List<Salary> searchByTeacherId(Long teacherId) {
         return searchSalary.searchByTeacherId(teacherId);
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortByIdDesc() {
+        return sortSalary.sortByIdDesc();
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortByIdAsc() {
+        return sortSalary.sortByIdAsc();
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortByTeacherIdDesc() {
+        return sortSalary.sortByTeacherIdDesc();
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortByTeacherIdAsc() {
+        return sortSalary.sortByTeacherIdAsc();
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortBySalaryDesc() {
+        return sortSalary.sortBySalaryDesc();
+    }
+
+    @Override
+    public List<SalaryJpaEntity> sortBySalaryAsc() {
+        return sortSalary.sortBySalaryAsc();
     }
 }
