@@ -1,9 +1,8 @@
 package com.example.studentcleanarch.application.service;
 
-import com.example.studentcleanarch.application.port.in.salary.CreateSalaryCommand;
-import com.example.studentcleanarch.application.port.in.salary.CreateSalaryCommandResult;
-import com.example.studentcleanarch.application.port.in.salary.CreateSalaryUseCase;
+import com.example.studentcleanarch.application.port.in.salary.*;
 import com.example.studentcleanarch.application.port.out.salary.CreateSalary;
+import com.example.studentcleanarch.application.port.out.salary.UpdateSalary;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Salary;
 import lombok.RequiredArgsConstructor;
@@ -12,8 +11,9 @@ import javax.transaction.Transactional;
 
 @UseCase
 @RequiredArgsConstructor
-public class SalaryService implements CreateSalaryUseCase {
+public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase {
     private final CreateSalary createSalary;
+    private final UpdateSalary updateSalary;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -26,8 +26,27 @@ public class SalaryService implements CreateSalaryUseCase {
                 .build();
         if (createSalaryCommand.getSalary() < 0)
             CreateSalaryCommandResult.builder().status(false).build();
+        else if (createSalaryCommand.getTeacherId() == null)
+            CreateSalaryCommandResult.builder().status(false).build();
         else
             createSalary.saveSalary(salary);
         return CreateSalaryCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public UpdateSalaryCommandResult updateSalary(UpdateSalaryCommand updateSalaryCommand) {
+        Salary salary = Salary.builder()
+                .id(updateSalaryCommand.getId())
+                .teacherId(updateSalaryCommand.getTeacherId())
+                .salary(updateSalaryCommand.getSalary())
+                .salaryGiven(updateSalaryCommand.getSalaryGiven())
+                .build();
+        if (updateSalaryCommand.getSalary() < 0)
+            UpdateSalaryCommandResult.builder().status(false).build();
+        else if (updateSalaryCommand.getTeacherId() == null && updateSalaryCommand.getId() == null) {
+            UpdateSalaryCommandResult.builder().status(false).build();
+        } else
+            updateSalary.updateSalary(salary);
+        return UpdateSalaryCommandResult.builder().status(true).build();
     }
 }
