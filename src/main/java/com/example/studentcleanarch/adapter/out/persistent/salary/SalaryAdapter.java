@@ -1,10 +1,7 @@
 package com.example.studentcleanarch.adapter.out.persistent.salary;
 
 
-import com.example.studentcleanarch.application.port.out.salary.CreateSalary;
-import com.example.studentcleanarch.application.port.out.salary.DeleteSalary;
-import com.example.studentcleanarch.application.port.out.salary.GetSalary;
-import com.example.studentcleanarch.application.port.out.salary.UpdateSalary;
+import com.example.studentcleanarch.application.port.out.salary.*;
 import com.example.studentcleanarch.common.PersistenceAdapter;
 import com.example.studentcleanarch.common.TimoException;
 import com.example.studentcleanarch.domain.Salary;
@@ -18,7 +15,7 @@ import java.util.stream.Collectors;
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Service
-public class SalaryAdapter implements CreateSalary, UpdateSalary, DeleteSalary, GetSalary {
+public class SalaryAdapter implements CreateSalary, UpdateSalary, DeleteSalary, GetSalary, SearchSalary {
     private final SalaryJpaRepository repository;
 
     @Override
@@ -69,5 +66,35 @@ public class SalaryAdapter implements CreateSalary, UpdateSalary, DeleteSalary, 
         return repository.findById(id)
                 .map(SalaryMapper::mapToDomainEntity)
                 .orElseThrow(() -> new TimoException(500, "Salary not found id:" + id));
+    }
+
+    @Override
+    public List<Salary> searchBySalary(int salary) {
+        try {
+            List<SalaryJpaEntity> salaryJpaEntityList = repository.findBySalary(salary);
+            for (SalaryJpaEntity entity : salaryJpaEntityList) {
+                System.out.println(entity.getId());
+            }
+            return repository.findBySalary(salary).stream()
+                    .map(SalaryMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Salary could not found:" + salary);
+        }
+    }
+
+    @Override
+    public List<Salary> searchByTeacherId(Long teacherId) {
+        try {
+            List<SalaryJpaEntity> salaryJpaEntityList = repository.findByTeacherId(teacherId);
+            for (SalaryJpaEntity entity : salaryJpaEntityList) {
+                System.out.println(entity.getId());
+            }
+            return repository.findByTeacherId(teacherId).stream()
+                    .map(SalaryMapper::mapToDomainEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new TimoException(500, "Salary could not found teacher id:" + teacherId);
+        }
     }
 }

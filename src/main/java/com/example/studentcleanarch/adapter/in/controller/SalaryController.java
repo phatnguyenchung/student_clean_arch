@@ -5,10 +5,7 @@ import com.example.studentcleanarch.adapter.in.dto.request.salary.CreateSalaryRe
 import com.example.studentcleanarch.adapter.in.dto.request.salary.DeleteSalaryRequest;
 import com.example.studentcleanarch.adapter.in.dto.request.salary.UpdateSalaryRequest;
 import com.example.studentcleanarch.adapter.in.dto.response.ApiResponse;
-import com.example.studentcleanarch.application.port.in.salary.CreateSalaryUseCase;
-import com.example.studentcleanarch.application.port.in.salary.DeleteSalaryUseCase;
-import com.example.studentcleanarch.application.port.in.salary.GetSalaryUseCase;
-import com.example.studentcleanarch.application.port.in.salary.UpdateSalaryUseCase;
+import com.example.studentcleanarch.application.port.in.salary.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,6 +21,7 @@ public class SalaryController {
     private final UpdateSalaryUseCase updateSalaryUseCase;
     private final DeleteSalaryUseCase deleteSalaryUseCase;
     private final GetSalaryUseCase getSalaryUseCase;
+    private final SearchSalaryUseCase searchSalaryUseCase;
 
     @PostMapping
     public ApiResponse<?> create(@RequestBody CreateSalaryRequest createSalaryRequest) {
@@ -48,5 +46,15 @@ public class SalaryController {
     @GetMapping("/getsalarybyid")
     public ResponseEntity<Object> getsalarybyid(@RequestParam Long id) {
         return new ResponseEntity<>(getSalaryUseCase.getSalaryById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchbysalary")
+    public ResponseEntity<Object> searchbysalary(@RequestParam int salary) {
+        return new ResponseEntity<>(searchSalaryUseCase.searchBySalary(salary), HttpStatus.OK);
+    }
+
+    @GetMapping("/searchbyteacherid")
+    public ResponseEntity<Object> searchbyteacherid(@RequestParam Long teacherId) {
+        return new ResponseEntity<>(searchSalaryUseCase.searchByTeacherId(teacherId), HttpStatus.OK);
     }
 }
