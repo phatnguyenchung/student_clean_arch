@@ -2,6 +2,7 @@ package com.example.studentcleanarch.application.service;
 
 import com.example.studentcleanarch.application.port.in.salary.*;
 import com.example.studentcleanarch.application.port.out.salary.CreateSalary;
+import com.example.studentcleanarch.application.port.out.salary.DeleteSalary;
 import com.example.studentcleanarch.application.port.out.salary.UpdateSalary;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Salary;
@@ -11,9 +12,10 @@ import javax.transaction.Transactional;
 
 @UseCase
 @RequiredArgsConstructor
-public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase {
+public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, DeleteSalaryUseCase {
     private final CreateSalary createSalary;
     private final UpdateSalary updateSalary;
+    private final DeleteSalary deleteSalary;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -48,5 +50,14 @@ public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase {
         } else
             updateSalary.updateSalary(salary);
         return UpdateSalaryCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public DeleteSalaryCommandResult deleteSalary(DeleteSalaryCommand deleteSalaryCommand) {
+        Salary salary = Salary.builder()
+                .id(deleteSalaryCommand.getId())
+                .build();
+        deleteSalary.deleteSalary(salary);
+        return DeleteSalaryCommandResult.builder().status(true).build();
     }
 }
