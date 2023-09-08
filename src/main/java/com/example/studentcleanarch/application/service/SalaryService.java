@@ -3,19 +3,22 @@ package com.example.studentcleanarch.application.service;
 import com.example.studentcleanarch.application.port.in.salary.*;
 import com.example.studentcleanarch.application.port.out.salary.CreateSalary;
 import com.example.studentcleanarch.application.port.out.salary.DeleteSalary;
+import com.example.studentcleanarch.application.port.out.salary.GetSalary;
 import com.example.studentcleanarch.application.port.out.salary.UpdateSalary;
 import com.example.studentcleanarch.common.UseCase;
 import com.example.studentcleanarch.domain.Salary;
 import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @UseCase
 @RequiredArgsConstructor
-public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, DeleteSalaryUseCase {
+public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, DeleteSalaryUseCase, GetSalaryUseCase {
     private final CreateSalary createSalary;
     private final UpdateSalary updateSalary;
     private final DeleteSalary deleteSalary;
+    private final GetSalary getSalary;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -59,5 +62,15 @@ public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, 
                 .build();
         deleteSalary.deleteSalary(salary);
         return DeleteSalaryCommandResult.builder().status(true).build();
+    }
+
+    @Override
+    public List<Salary> getAllSalary() {
+        return getSalary.getAllSalary();
+    }
+
+    @Override
+    public Salary getSalaryById(Long id) {
+        return getSalary.getSalaryById(id);
     }
 }
