@@ -36,6 +36,8 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
             return CreateExamCommandResult.builder().status(false).build();
         } else if (createExamCommand.getExamDate().after(Date.from(Instant.now()))) {
             return CreateExamCommandResult.builder().status(false).build();
+        } else if (createExamCommand.getSubjectId() == null || createExamCommand.getStudentId() == null) {
+            return CreateExamCommandResult.builder().status(false).build();
         } else {
             createExam.saveExam(exam);
         }
@@ -56,6 +58,8 @@ public class ExamService implements CreateExamUseCase, UpdateExamUseCase, Delete
         if (updateExamCommand.getScore() > 10 || updateExamCommand.getScore() < 0) {
             return UpdateExamCommandResult.builder().status(false).build();
         } else if (updateExamCommand.getExamDate().after(Date.from(Instant.now()))) {
+            return UpdateExamCommandResult.builder().status(false).build();
+        } else if (updateExamCommand.getSubjectId() == null || updateExamCommand.getStudentId() == null || updateExamCommand.getId() == null) {
             return UpdateExamCommandResult.builder().status(false).build();
         } else {
             updateExam.updateExam(exam);
