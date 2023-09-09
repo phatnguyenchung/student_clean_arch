@@ -32,7 +32,7 @@ public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, 
                 .build();
         if (createSalaryCommand.getSalary() < 0 || createSalaryCommand.getBonus() < 0)
             CreateSalaryCommandResult.builder().status(false).build();
-        else if (createSalaryCommand.getTeacherId() == null)
+        else if (createSalaryCommand.getTeacherId() == null && createSalaryCommand.getSalaryDate() == null)
             CreateSalaryCommandResult.builder().status(false).build();
         else
             createSalary.saveSalary(salary);
@@ -51,7 +51,8 @@ public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, 
                 .build();
         if (updateSalaryCommand.getSalary() < 0 || updateSalaryCommand.getBonus() < 0)
             UpdateSalaryCommandResult.builder().status(false).build();
-        else if (updateSalaryCommand.getTeacherId() == null && updateSalaryCommand.getId() == null) {
+        else if (updateSalaryCommand.getTeacherId() == null && updateSalaryCommand.getId() == null
+                && updateSalaryCommand.getSalaryDate() == null) {
             UpdateSalaryCommandResult.builder().status(false).build();
         } else
             updateSalary.updateSalary(salary);
