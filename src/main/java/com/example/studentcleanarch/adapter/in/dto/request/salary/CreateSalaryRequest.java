@@ -13,6 +13,7 @@ import java.util.Date;
 public class CreateSalaryRequest {
     private Long teacherId;
     private int salary;
+    private int bonus;
     private Date salaryDate;
     private Boolean salaryGiven;
 
@@ -20,6 +21,7 @@ public class CreateSalaryRequest {
         return CreateSalaryCommand.builder()
                 .TeacherId(teacherId)
                 .Salary(salary)
+                .Bonus(bonus)
                 .SalaryDate(salaryDate)
                 .SalaryGiven(salaryGiven)
                 .build();

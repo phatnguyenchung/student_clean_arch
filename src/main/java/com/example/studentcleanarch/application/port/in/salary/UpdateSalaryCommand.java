@@ -12,8 +12,8 @@ public class UpdateSalaryCommand {
     private Long id;
     @NotBlank
     private Long TeacherId;
-
     private int Salary;
+    private int Bonus;
     private Date SalaryDate;
     private Boolean SalaryGiven;
 }

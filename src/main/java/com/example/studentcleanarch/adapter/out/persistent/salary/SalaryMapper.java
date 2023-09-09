@@ -9,6 +9,7 @@ public class SalaryMapper {
                 .id(salary.getId())
                 .teacherId(salary.getTeacherId())
                 .salary(salary.getSalary())
+                .bonus(salary.getBonus())
                 .salaryDate(salary.getSalaryDate())
                 .salaryGiven(salary.getSalaryGiven())
                 .build();
@@ -19,6 +20,7 @@ public class SalaryMapper {
                 .id(entity.getId())
                 .teacherId(entity.getTeacherId())
                 .salary(entity.getSalary())
+                .bonus(entity.getBonus())
                 .salaryDate(entity.getSalaryDate())
                 .salaryGiven(entity.getSalaryGiven())
                 .build();
@@ -28,6 +30,7 @@ public class SalaryMapper {
         entity.setId(salary.getId());
         entity.setTeacherId(salary.getTeacherId());
         entity.setSalary(salary.getSalary());
+        entity.setBonus(salary.getBonus());
         entity.setSalaryDate(salary.getSalaryDate());
         entity.setSalaryGiven(salary.getSalaryGiven());
         return entity;

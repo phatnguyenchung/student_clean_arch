@@ -1,6 +1,8 @@
 package com.example.studentcleanarch.adapter.out.persistent.teacher;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -59,4 +61,15 @@ public class TeacherJpaEntity {
 
     @Column(name = "Active")
     private boolean active;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "createdDate")
+    private Date createdDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updatedDate")
+    private Date updatedDate;
+
 }

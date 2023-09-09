@@ -26,10 +26,11 @@ public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, 
         Salary salary = Salary.builder()
                 .teacherId(createSalaryCommand.getTeacherId())
                 .salary(createSalaryCommand.getSalary())
+                .bonus(createSalaryCommand.getBonus())
                 .salaryDate(createSalaryCommand.getSalaryDate())
                 .salaryGiven(createSalaryCommand.getSalaryGiven())
                 .build();
-        if (createSalaryCommand.getSalary() < 0)
+        if (createSalaryCommand.getSalary() < 0 || createSalaryCommand.getBonus() < 0)
             CreateSalaryCommandResult.builder().status(false).build();
         else if (createSalaryCommand.getTeacherId() == null)
             CreateSalaryCommandResult.builder().status(false).build();
@@ -44,9 +45,11 @@ public class SalaryService implements CreateSalaryUseCase, UpdateSalaryUseCase, 
                 .id(updateSalaryCommand.getId())
                 .teacherId(updateSalaryCommand.getTeacherId())
                 .salary(updateSalaryCommand.getSalary())
+                .bonus(updateSalaryCommand.getBonus())
+                .salaryDate(updateSalaryCommand.getSalaryDate())
                 .salaryGiven(updateSalaryCommand.getSalaryGiven())
                 .build();
-        if (updateSalaryCommand.getSalary() < 0)
+        if (updateSalaryCommand.getSalary() < 0 || updateSalaryCommand.getBonus() < 0)
             UpdateSalaryCommandResult.builder().status(false).build();
         else if (updateSalaryCommand.getTeacherId() == null && updateSalaryCommand.getId() == null) {
             UpdateSalaryCommandResult.builder().status(false).build();

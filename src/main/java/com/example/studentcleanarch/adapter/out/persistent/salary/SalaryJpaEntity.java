@@ -1,6 +1,8 @@
 package com.example.studentcleanarch.adapter.out.persistent.salary;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,9 +26,23 @@ public class SalaryJpaEntity {
     @Column(name = "Salary")
     private int salary;
 
+    @Column(name = "Bonus")
+    private int bonus;
+
     @Column(name = "SalaryDate")
     private Date salaryDate;
 
     @Column(name = "SalaryGiven")
     private Boolean salaryGiven;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "createdDate")
+    private Date createdDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updatedDate")
+    private Date updatedDate;
+
 }
